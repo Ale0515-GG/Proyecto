@@ -1,0 +1,77 @@
+<app-late></app-late>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulario de Expediente Médico</title>
+
+</head>
+<body>
+  <div class="container">
+    <h2>Formulario de Expediente Médico</h2>
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="nombre">Nombre:</label>
+          <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="edad">Edad:</label>
+          <input type="number" class="form-control" id="edad" placeholder="Ingrese su edad">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="direccion">Dirección:</label>
+        <input type="text" class="form-control" id="direccion" placeholder="Ingrese su dirección">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="telefono">Teléfono:</label>
+          <input type="text" class="form-control" id="telefono" placeholder="Ingrese su número de teléfono">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="genero">Género:</label>
+        <select class="form-control" id="genero">
+          <option value="masculino">Masculino</option>
+          <option value="femenino">Femenino</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="sintomas">Síntomas:</label>
+        <textarea class="form-control" id="sintomas" rows="3" placeholder="Describa sus síntomas"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="diagnostico">Diagnóstico:</label>
+        <textarea class="form-control" id="diagnostico" rows="3" placeholder="Ingrese el diagnóstico"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="tratamiento">Tratamiento:</label>
+        <textarea class="form-control" id="tratamiento" rows="3" placeholder="Ingrese el tratamiento"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="medicamentos">Medicamentos recetados:</label>
+        <textarea class="form-control" id="medicamentos" rows="3" placeholder="Ingrese los medicamentos recetados"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="fecha">Fecha de consulta:</label>
+        <input type="date" class="form-control" id="fecha">
+      </div>
+      <div class="form-group">
+        <label for="medico">Médico tratante:</label>
+        <input type="text" class="form-control" id="medico" placeholder="Ingrese el nombre del médico tratante">
+      </div>
+      <div class="form-group">
+        <label for="notas">Notas adicionales:</label>
+        <textarea class="form-control" id="notas" rows="3" placeholder="Ingrese notas adicionales"></textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+  </div>
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2023 SaludParaTI. Todos los derechos reservados.</p>
+  </footer>
+</body>
+
+</html>

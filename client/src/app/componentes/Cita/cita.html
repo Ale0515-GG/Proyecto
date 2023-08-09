@@ -1,0 +1,52 @@
+<app-late></app-late>
+<div class="card mx-auto">
+    <div class="card-header bg-white text-center">
+      <h5 style="color: black">Cita Medica</h5>
+    </div>
+    <form action="/cargar-articulo">
+        <div class="card-body">
+            <div class="entrada mb-3">
+                <select class="form-select" aria-label="Default select example">
+                    <i class="fa-solid fa-landmark" style="color: #000000;"></i>
+                    <option selected>Especialidad</option>
+                    <option value="1">Medico General </option>
+                    <option value="2">Cirujano </option>
+                </select>
+            </div>
+            <select class="form-select" aria-label="Default select example">
+                <i class="fa-solid fa-landmark" style="color: #000000;"></i>
+                <option selected>Medico </option>
+                <option value="1">Luis Oswaldo</option>
+                <option value="2">Ramiro Herrera</option>
+                <option value="2">Mayra Galvan </option>
+                <option value="2">Roxana Ortega</option>
+                
+            </select>
+            <br>
+            <div class="entrada mb-3">
+                <i class="fa-solid fa-book fa-beat-fade" style="color: #000000;"></i>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Numero de Consulta ">
+            </div>
+            <div class="entrada mb-3">
+                <i class="fa-solid fa-circle-user fa-beat-fade" style="color: #000000;"></i>
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nombre del Paciente">
+            </div>
+            <div class="entrada mb-3">
+                <i class="fa-solid fa-circle-user fa-beat-fade" style="color: #000000;"></i>
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Numero de Telefono">
+            </div>
+            <div class="entrada mb-3">
+                <i class="fa-solid fa-book-open fa-beat-fade" style="color: #000000;"></i>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Motivo de la consulta"></textarea>
+            </div>
+            <div class="entrada mb-3">
+                <i class="fa-solid fa-book fa-beat-fade" style="color: #000000;"></i>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Horario de Consulta ">
+            </div>
+            <button type="button" class="btn btn-dark">Generar</button>
+        </div>
+  </form>
+  </div>
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2023 SaludParaTI. Todos los derechos reservados.</p>
+  </footer>
