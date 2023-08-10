@@ -18,6 +18,7 @@ import { GenePACComponent } from './componentes/gene-pac/gene-pac.component';
 import { ConfirPacienteComponent } from './componentes/confir-paciente/confir-paciente.component';
 
 import { PacienteService } from './service/paciente.service';
+import { CitaconfComponent } from './componentes/citaconf/citaconf.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { PacienteService } from './service/paciente.service';
     GeneMEDComponent,
     GenePACComponent,
     ConfirPacienteComponent,
+    CitaconfComponent,
 
   ],
   imports: [
