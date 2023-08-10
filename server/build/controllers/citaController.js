@@ -65,5 +65,19 @@ class CitaController {
             res.json({ text: "Cita " + req.params.id + " was updated" });
         });
     }
+    list1(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const connection = yield database_1.default; // Assuming pool is your database connection pool
+                const queryResult = yield connection.query("SELECT Id, Nombre FROM Medico");
+                const doctors = queryResult.rows; // Assuming the result is an array of rows
+                res.render('your-template', { doctors }); // Pass the doctors array to your template engine
+            }
+            catch (error) {
+                console.error("Error retrieving doctors:", error);
+                res.status(500).json({ error: "An error occurred while retrieving doctors." });
+            }
+        });
+    }
 }
 exports.citaController = new CitaController();
