@@ -1,19 +1,78 @@
-import { Router } from "express"; //objeto
-import {citaController} from "../controllers/citaController";
-class CitaRoutes{
-    public router: Router = Router();
+import {Request, Response } from 'express';
 
-    constructor(){
-        this.config();
+import pool from '../database';
+
+class CitaController {
+    public async list (req: Request, res: Response){
+         const result =  await pool.then(async (connection)=> {
+             return await connection.query(
+                 "SELECT * FROM Cita"
+             );
+        })   
+         res.json(result);
     }
 
-    config(): void{
-        this.router.get('/',citaController.list); //ruta inicial
-        this.router.post('/',citaController.create);
-        this.router.put('/:id',citaController.update);
-        this.router.delete('/:id',citaController.delete);
-        this.router.get('/:id',citaController.select);
+    public async select(req:Request,res:Response):Promise<any>{
+        const {id}=req.params;
+        const result = await pool.then(async (connection) => {
+            return await connection.query(
+                'SELECT * FROM Cita WHERE id=?',[id]
+            );
+        })
+        if (result.length >0){
+            return res.json(result[0]); //revuelve al cliente
+        }
+        console.log(result);
+        res.status(404).json({text:'El Cita no existe'});//codigo de estado
+    }
+
+        public async create (req:Request, res:Response): Promise<void>{
+        //console.log(req.body)
+        const result = await pool.then(async (connection) => {
+            return await connection.query(
+                'INSERT INTO Cita set ?',[req.body]
+            );
+        })
+    
+        res.json({texto:"Cita Saved"});
+    
+    }
+
+    public async delete(req:Request,res:Response):Promise<any>{
+        const {id}=req.params;
+        const result = await pool.then(async (connection) => {
+            return await connection.query(
+                'DELETE FROM Cita WHERE id=?',[id]
+            );
+        })
+        res.json({text:"Cita "+req.params.id+" was deleted"});
+        // res.json({text:"deleting cita"});
+    }
+
+    public async update(req:Request,res:Response):Promise<void>{
+        const {id}=req.params;
+        const result = await pool.then(async (connection) => {
+            return await connection.query(
+                'UPDATE Cita SET ? WHERE id=?',[req.body,id]//el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
+            );
+        })
+        res.json({text:"Cita "+req.params.id+" was updated"});
+    }
+
+   public async list1(req: Request, res: Response) {
+    try {
+        const connection = await pool; // Assuming pool is your database connection pool
+        const queryResult = await connection.query("SELECT Id, Nombre FROM Medico");
+        const doctors = queryResult.rows; // Assuming the result is an array of rows
+
+        res.render('your-template', { doctors }); // Pass the doctors array to your template engine
+    } catch (error) {
+        console.error("Error retrieving doctors:", error);
+        res.status(500).json({ error: "An error occurred while retrieving doctors." });
     }
 }
-const  citaRoutes = new CitaRoutes();
-export default citaRoutes.router;
+
+
+}
+
+export const citaController = new CitaController()
