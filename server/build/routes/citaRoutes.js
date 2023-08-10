@@ -1,83 +1,19 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.citaController = void 0;
-const database_1 = __importDefault(require("../database"));
-class CitaController {
-    list(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query("SELECT * FROM Cita");
-            }));
-            res.json(result);
-        });
+const express_1 = require("express"); //objeto
+const citaController_1 = require("../controllers/citaController");
+class CitaRoutes {
+    constructor() {
+        this.router = (0, express_1.Router)();
+        this.config();
     }
-    select(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('SELECT * FROM Cita WHERE id=?', [id]);
-            }));
-            if (result.length > 0) {
-                return res.json(result[0]); //revuelve al cliente
-            }
-            console.log(result);
-            res.status(404).json({ text: 'El Cita no existe' }); //codigo de estado
-        });
-    }
-    create(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            //console.log(req.body)
-            const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('INSERT INTO Cita set ?', [req.body]);
-            }));
-            res.json({ texto: "Cita Saved" });
-        });
-    }
-    delete(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('DELETE FROM Cita WHERE id=?', [id]);
-            }));
-            res.json({ text: "Cita " + req.params.id + " was deleted" });
-            // res.json({text:"deleting cita"});
-        });
-    }
-    update(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('UPDATE Cita SET ? WHERE id=?', [req.body, id] //el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
-                );
-            }));
-            res.json({ text: "Cita " + req.params.id + " was updated" });
-        });
-    }
-    list1(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const connection = yield database_1.default; // Assuming pool is your database connection pool
-                const queryResult = yield connection.query("SELECT Id, Nombre FROM Medico");
-                const doctors = queryResult.rows; // Assuming the result is an array of rows
-                res.render('your-template', { doctors }); // Pass the doctors array to your template engine
-            }
-            catch (error) {
-                console.error("Error retrieving doctors:", error);
-                res.status(500).json({ error: "An error occurred while retrieving doctors." });
-            }
-        });
+    config() {
+        this.router.get('/', citaController_1.citaController.list); //ruta inicial
+        this.router.post('/', citaController_1.citaController.create);
+        this.router.put('/:id', citaController_1.citaController.update);
+        this.router.delete('/:id', citaController_1.citaController.delete);
+        this.router.get('/:id', citaController_1.citaController.select);
     }
 }
-exports.citaController = new CitaController();
+const citaRoutes = new CitaRoutes();
+exports.default = citaRoutes.router;

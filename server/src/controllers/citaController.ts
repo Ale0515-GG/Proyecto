@@ -59,6 +59,20 @@ class CitaController {
         res.json({text:"Cita "+req.params.id+" was updated"});
     }
 
+   public async list1(req: Request, res: Response) {
+    try {
+        const connection = await pool; // Assuming pool is your database connection pool
+        const queryResult = await connection.query("SELECT Id, Nombre FROM Medico");
+        const doctors = queryResult.rows; // Assuming the result is an array of rows
+
+        res.render('your-template', { doctors }); // Pass the doctors array to your template engine
+    } catch (error) {
+        console.error("Error retrieving doctors:", error);
+        res.status(500).json({ error: "An error occurred while retrieving doctors." });
+    }
+}
+
+
 }
 
 export const citaController = new CitaController()
