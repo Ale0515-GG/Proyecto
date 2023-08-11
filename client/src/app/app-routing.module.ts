@@ -9,6 +9,7 @@ import { PasienteComponent } from './componentes/pasiente/pasiente.component';
 import { MedicosComponent } from './componentes/medicos/medicos.component';
 import { GeneMEDComponent } from './componentes/gene-med/gene-med.component';
 import { GenePACComponent } from './componentes/gene-pac/gene-pac.component';
+import { CitaconfComponent } from './componentes/citaconf/citaconf.component';
 import { ConfirPacienteComponent } from './componentes/confir-paciente/confir-paciente.component';
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'Medicosge', component: GeneMEDComponent},
   {path: 'PACGENE', component: GenePACComponent},
   {path: 'Confirpaciente', component: ConfirPacienteComponent},
+  {path: 'Citaconf', component: CitaconfComponent}
   
 ];
 

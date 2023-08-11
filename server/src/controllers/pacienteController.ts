@@ -68,6 +68,26 @@ class PacienteController {
         res.json({text:"Paciente "+req.params.id+" was updated"});
     }
 
+    public async select1(req: Request, res: Response): Promise<any> {
+        const { id } = req.params;
+        
+        const { Especialidad, telefono, nombrepaciente, motivo } = req.body; // Asumiendo que estos valores se envían en el cuerpo de la solicitud
+    
+        const result = await pool.then(async (connection) => {
+            return await connection.query(
+                'CALL GenerarCita(?, ?, ?, ?)',
+                [Especialidad, telefono, nombrepaciente, motivo]
+            );
+        });
+    
+        if (result.affectedRows > 0) {
+            return res.json({ text: 'Cita generada exitosamente' });
+        }
+    
+        res.status(404).json({ text: 'No se pudo generar la cita' });
+    }
+    
+
     }
 
 
