@@ -1,15 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { Medi } from 'src/app/models/Medico';
 
 @Component({
   selector: 'app-medicos',
   templateUrl: './medicos.component.html',
   styleUrls: ['./medicos.component.css']
 })
-export class MedicosComponent {
-  nombre: string = 'Dr. Juan Pérez';
-  especialidad: string = 'Cirujano';
-  telefono: string = '123456789';
-  correo: string = 'doctor@example.com';
-  pacientes: string[] = ['Paciente 1', 'Paciente 2', 'Paciente 3'];
-  citas: string[] = ['Cita 1', 'Cita 2', 'Cita 3'];
+
+export class MedicosComponent implements OnInit{
+  @HostBinding('class') clases ='row';
+
+  medi: Medi = {
+    id: 0,
+    nombre: '',
+    especialidad: '',
+    Telefono: '',
+    correo: ''
+};
+
+ngOnInit(): void {
+}
+
+saveNewGame(){ //generamos el metodo
+  // console.log(this.game);
+
+  this.gameService.saveGame(this.game).subscribe(
+    res =>{
+      console.log(res);
+      this.router.navigate(['/games']);
+    },
+    err => console.error(err)
+  )
+}
+
 }
