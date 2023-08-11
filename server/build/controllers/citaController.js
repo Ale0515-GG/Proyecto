@@ -65,6 +65,18 @@ class CitaController {
             res.json({ text: "Cita " + req.params.id + " was updated" });
         });
     }
-
+    setp(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { telefono } = req.params;
+            const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
+                return yield connection.query('SELECT * FROM Paciente as P WHERE P.Telefono = telefono = ?', [telefono]);
+            }));
+            if (result.length > 0) {
+                return res.json(result[0]); // devuelve al cliente
+            }
+            console.log(result);
+            res.status(404).send('El Paciente no existe'); // mensaje en el navegador
+        });
+    }
 }
 exports.citaController = new CitaController();

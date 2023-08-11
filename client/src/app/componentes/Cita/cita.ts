@@ -23,7 +23,11 @@ export class CargarCita implements OnInit {
 
   ngOnInit(): void {}
 
+
   saveNewCita() {
+
+    delete this.cita.IdCita;
+
     this.citaService.saveCita(this.cita).subscribe(
       res => {
         console.log(res);
