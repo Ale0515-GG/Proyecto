@@ -56,7 +56,7 @@ CREATE TABLE Expediente(
 	Diagnostico VARCHAR(100),
     Tratamiento VARCHAR(180),
     MedRecetado VARCHAR(200),
-    Fecha DATETIME,
+    Fecha DATE,
     MedicoTratante VARCHAR(100),
     Nota VARCHAR(200),
 	FOREIGN KEY (idPaciente) REFERENCES Paciente(Id),
@@ -67,3 +67,4 @@ DESCRIBE Paciente;
 DESCRIBE Medico;
 DESCRIBE Cita;
 DESCRIBE Paciente;
+DESCRIBE Expediente;
