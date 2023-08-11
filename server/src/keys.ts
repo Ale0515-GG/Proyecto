@@ -2,7 +2,7 @@ export default{
     database:{
         host: 'localhost',
         user: 'root',
-        password: '123456',
+        password: '1234',
         database: 'SaludParaTi'
     }
 }
