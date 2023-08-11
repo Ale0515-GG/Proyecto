@@ -36,7 +36,9 @@ export class CitaService {
 
   }
 
-
+  call(id:string, updatedPaciente: Cita){
+    return this.http.put(`${this.API_URI}/cita/${id}`,updatedPaciente);
+  }
 
 
 
