@@ -13,9 +13,7 @@ export class CargarCita implements OnInit {
 
   cita: Cita = {
     IdCita: 0,
-    idPaciente: 0,
-    Especialidad: '',
-    NomMedico: '',
+    Especialidad: '',   
     NomPaciente: '',
     NumTelefono: '',
     Motivo: '',
@@ -25,7 +23,11 @@ export class CargarCita implements OnInit {
 
   ngOnInit(): void {}
 
+
   saveNewCita() {
+
+    delete this.cita.IdCita;
+
     this.citaService.saveCita(this.cita).subscribe(
       res => {
         console.log(res);

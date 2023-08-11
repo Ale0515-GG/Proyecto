@@ -1,42 +1,33 @@
-<app-late></app-late>
 <div class="card mx-auto">
     <div class="card-header bg-white text-center">
-        <h5 style="color: black">Cita Medica</h5>
+      <h5 style="color: black">Cita Medica</h5>
     </div>
-    <form action="/cargar-articulo">
-        <div class="card-body">
-            <div class="entrada mb-3">
-                <select class="form-select" aria-label="Default select example">
-                    <i class="fa-solid fa-landmark" style="color: #000000;"></i>
-                    <option selected>Especialidad</option>
-                    <option value="1">Medico General</option>
-                    <option value="2">Cirujano</option>
-                </select>
-            </div>
-            <br>
-
-            <div class="entrada mb-3">
-                <i class="fa-solid fa-circle-user fa-beat-fade" style="color: #000000;"></i>
-                <input type="text" class="form-control" placeholder="Nombre del Paciente">
-            </div>
-            <div class="entrada mb-3">
-                <i class="fa-solid fa-circle-user fa-beat-fade" style="color: #000000;"></i>
-                <input type="text" class="form-control" placeholder="Numero de Telefono">
-            </div>
-            <div class="entrada mb-3">
-                <i class="fa-solid fa-book-open fa-beat-fade" style="color: #000000;"></i>
-                <textarea class="form-control" rows="3" placeholder="Motivo de la consulta"></textarea>
-            </div>
-
-            <!-- Hidden fields for backend processing -->
-            <input type="hidden" id="idPaciente" value="123">
-            <input type="hidden" id="Especialidad" value="Medico General">
-            <!-- Add more hidden fields as needed -->
-
-            <button type="button" class="btn btn-dark">Generar</button>
+    <form (ngSubmit)="saveNewCita()">
+      <div class="card-body">
+        <div class="entrada mb-3">
+          <select class="form-select" aria-label="Default select example" name="especialidad">
+            <option value="" disabled selected>Especialidad</option>
+            <option value="Medico General">Medico General</option>
+            <option value="Cirujano">Cirujano</option>
+          </select>
         </div>
+  
+        <br>
+        <div class="entrada mb-3">
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nombre del Paciente"name="nomPaciente">
+        </div>
+        <div class="entrada mb-3">
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Numero de Telefono"  name="numTelefono">
+        </div>
+        <div class="entrada mb-3">
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Motivo de la consulta"  name="motivo"></textarea>
+        </div>
+  
+        <button type="submit" class="btn btn-dark">Generar</button>
+      </div>
     </form>
-</div>
-<footer class="bg-dark text-white text-center py-3">
+  </div>
+  <footer class="bg-dark text-white text-center py-3">
     <p>&copy; 2023 SaludParaTI. Todos los derechos reservados.</p>
-</footer>
+  </footer>
+  
