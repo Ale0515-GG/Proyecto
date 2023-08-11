@@ -14,7 +14,6 @@ export class CargarCita implements OnInit {
   cita: Cita = {
     IdCita: 0,
     idPaciente: 0,
-    idMedico: 0,
     Especialidad: '',
     NomMedico: '',
     NomPaciente: '',
