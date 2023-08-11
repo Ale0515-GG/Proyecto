@@ -14,7 +14,7 @@ class PacienteRoutes{
         this.router.post('/',pacienteController.create);
         this.router.put('/:id',pacienteController.update);
         this.router.delete('/:id',pacienteController.delete);
-        this.router.get('/:id',pacienteController.select);
+        this.router.get('/:Nombre',pacienteController.select);
     }
 }
 const  pacienteRoutes = new PacienteRoutes();

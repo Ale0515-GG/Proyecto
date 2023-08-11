@@ -1,3 +1,4 @@
+
 export interface Medico{
 
     Id?:number;

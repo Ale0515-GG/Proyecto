@@ -19,8 +19,8 @@ export class PacienteService {
   }
 
   //Devuelve solo un paciente
-  getPaciente(id: String){
-    return this.http.get(`${this.API_URI}/paciente/${id}`); //peticio al id que proporcione
+  getPaciente(Nombre: String){
+  return this.http.get(`${this.API_URI}/paciente/${Nombre}`); //peticio al id que proporcione
   }
 
   deltePaciente(id: String){
