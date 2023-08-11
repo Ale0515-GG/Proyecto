@@ -33,9 +33,9 @@ class PacienteController {
     }
     select(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
+            const { Nombre } = req.params;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('SELECT * FROM Paciente WHERE id=?', [id]);
+                return yield connection.query('SELECT * FROM Paciente WHERE Nombre=?', [Nombre]);
             }));
             if (result.length > 0) {
                 return res.json(result[0]); //revuelve al cliente

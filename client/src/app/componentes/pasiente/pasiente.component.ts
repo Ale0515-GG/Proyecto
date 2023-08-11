@@ -9,6 +9,7 @@ import { PacienteService } from 'src/app/service/paciente.service';
 export class PasienteComponent implements OnInit{
 
   paciente:any =[]
+  pacienteEncontrado: any;
   constructor(private pacienteService:PacienteService){}
 
   ngOnInit(){
@@ -19,5 +20,19 @@ export class PasienteComponent implements OnInit{
       },
       err => console.error(err)
     );
+  }
+
+  buscarPaciente() {
+    this.pacienteService.getPaciente(this.paciente)
+      .subscribe(
+        (paciente) => {
+          console.log()
+          this.pacienteEncontrado = paciente;
+        },
+        (error) => {
+          console.error('Error al buscar paciente:', error);
+          this.pacienteEncontrado = null;
+        }
+      );
   }
 }

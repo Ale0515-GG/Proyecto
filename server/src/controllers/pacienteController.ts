@@ -22,10 +22,10 @@ class PacienteController {
     }
 
     public async select(req:Request,res:Response):Promise<any>{
-        const {id}=req.params;
+        const {Nombre}=req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'SELECT * FROM Paciente WHERE id=?',[id]
+                'SELECT * FROM Paciente WHERE Nombre=?',[Nombre]
             );
         })
         if (result.length >0){
