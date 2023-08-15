@@ -8,4 +8,3 @@ exports.default = {
         database: 'SaludParaTi'
     }
 };
-

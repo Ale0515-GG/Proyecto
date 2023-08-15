@@ -38,9 +38,6 @@ export class HistorialComponent implements OnInit {
       Nota : ''
   };
 
-  formatearFecha(Fecha: string): string {
-    return Fecha ? new Date(Fecha).toISOString().substring(0, 10) : '';
-  }
   
   //fecha = new Date(); // Aquí debes usar la fecha que corresponda
    //fechaFormateada = Fecha.toISOString().substring(0, 10); // Obtiene el formato 'YYYY-MM-DD'
