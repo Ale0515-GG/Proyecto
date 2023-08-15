@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Medi } from '../models/Medico';
+import { Medico } from 'src/app/models/Medico';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,23 +12,23 @@ export class MedicoService {
 
   constructor(private http:HttpClient) { }
   getMedicos(){
-      return this.http.get(`${this.API_URI}/medicos`);
+      return this.http.get(`${this.API_URI}/medico`);
   }
 
   getMedi(id:string){
-    return this.http.get(`${this.API_URI}/medicos/${id}`);
+    return this.http.get(`${this.API_URI}/medico/${id}`);
   }
 
   deleteMedi(id:string){
-    return this.http.delete(`${this.API_URI}/medicos/${id}`);
+    return this.http.delete(`${this.API_URI}/medico/${id}`);
   }
 
-  saveMedi(medi:Medi){
-    return this.http.post(`${this.API_URI}/medicos`,medi);
+  saveMedi(medi:Medico){
+    return this.http.post(`${this.API_URI}/medico`,medi);
   }
 
-  updateMedi(id:string, updateMedi:Medi ): Observable<Medi>{
-    return this.http.put(`${this.API_URI}/medicos/${id}`,updateMedi);
+  updateMedi(id:string, updateMedi:Medico ): Observable<Medico>{
+    return this.http.put(`${this.API_URI}/medico/${id}`,updateMedi);
   }
 
 }

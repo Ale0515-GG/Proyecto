@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 
 import { PacienteService } from './service/paciente.service';
 import { CitaconfComponent } from './componentes/citaconf/citaconf.component';
+import { CitarealComponent } from './componentes/citareal/citareal.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CitaconfComponent } from './componentes/citaconf/citaconf.component';
     GenePACComponent,
     ConfirPacienteComponent,
     CitaconfComponent,
+    CitarealComponent,
 
   ],
   imports: [

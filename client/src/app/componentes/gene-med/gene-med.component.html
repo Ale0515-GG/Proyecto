@@ -15,21 +15,21 @@
                 <form id="doctorForm">
                     <div class="form-group">
                         <label for="nombre">Nombre:</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Nombre del médico">
+                        <input type="text" class="form-control" id="nombre" placeholder="Nombre del médico" name="Nombre"[(ngModel)]="medi.Nombre">
                     </div>
                     <div class="form-group">
                         <label for="especialidad">Especialidad:</label>
-                        <input type="text" class="form-control" id="especialidad" placeholder="Especialidad del médico">
+                        <input type="text" class="form-control" id="especialidad" placeholder="Especialidad del médico"name="Especialidad"[(ngModel)]="medi.Especialidad">
                     </div>
                     <div class="form-group">
                         <label for="telefono">Teléfono:</label>
-                        <input type="text" class="form-control" id="telefono" placeholder="Teléfono del médico">
+                        <input type="text" class="form-control" id="telefono" placeholder="Teléfono del médico" name="Telefono" [(ngModel)]="medi.Telefono">
                     </div>
                     <div class="form-group">
                         <label for="correo">Correo Electrónico:</label>
-                        <input type="email" class="form-control" id="correo" placeholder="Correo electrónico del médico">
+                        <input type="email" class="form-control" id="correo" placeholder="Correo electrónico del médico" name="Correo" [(ngModel)]="medi.Correo">
                     </div>
-                    <button type="submit" class="btn btn-primary">Agregar Médico</button>
+                    <button type="submit" class="btn btn-primary" (click)="saveNewMedi()">Agregar Médico</button>
                 </form>
             </div>
         </div>

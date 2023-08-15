@@ -16,4 +16,4 @@ class MedicoRoutes{
     }
 }
 const  medicoRoutes = new MedicoRoutes();
-export default medicoRoutes.router;
+export default medicoRoutes.router; 

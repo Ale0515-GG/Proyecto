@@ -33,7 +33,7 @@ export class HistorialComponent implements OnInit {
       Diagnostico : '',
       Tratamiento: '',
       MedRecetado : '',
-      Fecha: new Date(),
+      Fecha: new Date,
       MedicoTratante: '',
       Nota : ''
   };
