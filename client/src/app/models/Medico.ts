@@ -5,6 +5,6 @@ export interface Medico{
     Nombre?:String;
     Especialidad?:String;
     Telefono?:String;
-    Correo?:String;
+   Correo?:String;
 
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Medi } from '../models/Medico';
+import { Medico } from 'src/app/models/Medico';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -23,11 +23,11 @@ export class MedicoService {
     return this.http.delete(`${this.API_URI}/medicos/${id}`);
   }
 
-  saveMedi(medi:Medi){
+  saveMedi(medi:Medico){
     return this.http.post(`${this.API_URI}/medicos`,medi);
   }
 
-  updateMedi(id:string, updateMedi:Medi ): Observable<Medi>{
+  updateMedi(id:string, updateMedi:Medico ): Observable<Medico>{
     return this.http.put(`${this.API_URI}/medicos/${id}`,updateMedi);
   }
 

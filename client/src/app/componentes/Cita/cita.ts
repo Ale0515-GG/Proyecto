@@ -16,7 +16,7 @@ export class CargarCita implements OnInit {
     Especialidad: '',   
     NomPaciente: '',
     NumTelefono: '',
-    Motivo: '',
+    Motivo: ''
   };
 
   constructor(private citaService: CitaService, private router: Router) {}

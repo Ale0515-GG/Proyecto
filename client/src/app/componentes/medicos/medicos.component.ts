@@ -1,6 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Medi } from 'src/app/models/Medico';
+import { Medico } from 'src/app/models/Medico';
 import { MedicoService } from 'src/app/service/medico.service';
 
 @Component({
@@ -12,12 +12,12 @@ import { MedicoService } from 'src/app/service/medico.service';
 export class MedicosComponent implements OnInit{
   @HostBinding('class') clases ='row';
 
-  medi: Medi = {
-    id: 0,
-    nombre: '',
-    especialidad: '',
-    Telefono: '',
-    correo: ''
+  medi: Medico = {
+    Id:0,
+    Nombre:'',
+    Especialidad:'',
+    Telefono:'',
+   Correo:''
 };
 
 ngOnInit(): void {
