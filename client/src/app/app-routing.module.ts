@@ -11,15 +11,17 @@ import { GeneMEDComponent } from './componentes/gene-med/gene-med.component';
 import { GenePACComponent } from './componentes/gene-pac/gene-pac.component';
 import { CitaconfComponent } from './componentes/citaconf/citaconf.component';
 import { ConfirPacienteComponent } from './componentes/confir-paciente/confir-paciente.component';
+import { CitarealComponent } from './componentes/citareal/citareal.component';
 
 const routes: Routes = [
+
   {path: 'login', component: LoginComponent},
   {path: '', component: LoginComponent},
   
   {path: 'pagina-inicio',component:PrincipalComponent},
   {path: 'registrar', component: RegistroComponent},
   {path: 'cargar-historial', component: HistorialComponent},
-  {path: 'cargar-cita', component: CargarCita},
+  {path: 'cargar-cita', component: CitarealComponent},
   {path: 'paciente', component: PasienteComponent},
   {path: 'Medicos', component: MedicosComponent},
   {path: 'Medicosge', component: GeneMEDComponent},
