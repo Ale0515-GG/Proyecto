@@ -12,23 +12,23 @@ export class MedicoService {
 
   constructor(private http:HttpClient) { }
   getMedicos(){
-      return this.http.get(`${this.API_URI}/medicos`);
+      return this.http.get(`${this.API_URI}/medico`);
   }
 
   getMedi(id:string){
-    return this.http.get(`${this.API_URI}/medicos/${id}`);
+    return this.http.get(`${this.API_URI}/medico/${id}`);
   }
 
   deleteMedi(id:string){
-    return this.http.delete(`${this.API_URI}/medicos/${id}`);
+    return this.http.delete(`${this.API_URI}/medico/${id}`);
   }
 
   saveMedi(medi:Medico){
-    return this.http.post(`${this.API_URI}/medicos`,medi);
+    return this.http.post(`${this.API_URI}/medico`,medi);
   }
 
   updateMedi(id:string, updateMedi:Medico ): Observable<Medico>{
-    return this.http.put(`${this.API_URI}/medicos/${id}`,updateMedi);
+    return this.http.put(`${this.API_URI}/medico/${id}`,updateMedi);
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Medico } from 'src/app/models/Medico';
 import { MedicoService } from 'src/app/service/medico.service';
+
 @Component({
   selector: 'app-gene-med',
   templateUrl: './gene-med.component.html',
@@ -25,6 +26,7 @@ constructor(private mediService: MedicoService,private router:Router){}
 
 saveNewMedi(){ //generamos el metodo
   // console.log(this.game);
+  delete this.medi.Id;
 
   this.mediService.saveMedi(this.medi).subscribe(
     res =>{
