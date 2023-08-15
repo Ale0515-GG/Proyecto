@@ -15,7 +15,7 @@ import loginRoutes from './routes/loginRoutes';
 class Server{
     public app: Application;
 
-    constructor(){
+    constructor(){ 
         this.app = express();
         this.config();//configura app
         this.routes();//rutas
