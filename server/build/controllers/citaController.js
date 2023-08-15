@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.citaController = void 0;
 const database_1 = __importDefault(require("../database"));
-
 class CitaController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -37,9 +36,6 @@ class CitaController {
             res.status(404).json({ text: 'El Cita no existe' }); //codigo de estado
         });
     }
-
-
-
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //console.log(req.body)
@@ -49,9 +45,6 @@ class CitaController {
             res.json({ texto: "Cita Saved" });
         });
     }
-
-
-    
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
