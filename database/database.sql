@@ -39,7 +39,7 @@ CREATE TABLE Cita(
     NumTelefono VARCHAR(15),
     Motivo VARCHAR(100),
     Horario TIME,
-	FOREIGN KEY (idPaciente) REFERENCES Paciente(Id),
+	FOREIGN KEY (idPaciente) REFERENCES Paciente(Id), 
     FOREIGN KEY (idMedico) REFERENCES Medico(Id)
 );	
 
