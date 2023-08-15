@@ -12,26 +12,26 @@
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="nombre">Nombre:</label>
-          <input type="text" class="form-control" id="nombre" [(ngModel)]="expediente.Nombre" placeholder="Ingrese su nombre">
+          <input type="text" class="form-control" id="nombre" name="Nombre" [(ngModel)]="expediente.Nombre"  placeholder="Ingrese su nombre">
         </div>
         <div class="form-group col-md-6">
           <label for="edad">Edad:</label>
-          <input type="number" class="form-control" id="edad" [(ngModel)]="expediente.Edad" placeholder="Ingrese su edad">
+          <input type="number" class="form-control" id="edad" name="Edad" [(ngModel)]="expediente.Edad" placeholder="Ingrese su edad">
         </div>
       </div>
       <div class="form-group">
         <label for="direccion">Dirección:</label>
-        <input type="text" class="form-control" id="direccion" [(ngModel)]="expediente.Direecion" placeholder="Ingrese su dirección">
+        <input type="text" class="form-control" id="direccion"  name="Direecion"[(ngModel)]="expediente.Direecion" placeholder="Ingrese su dirección">
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="telefono">Teléfono:</label>
-          <input type="text" class="form-control" id="telefono" [(ngModel)]="expediente.Telefono" placeholder="Ingrese su número de teléfono">
+          <input type="tel" class="form-control" id="telefono" name="Telefono" [(ngModel)]="expediente.Telefono" placeholder="Ingrese su número de teléfono">
         </div>
       </div>
       <div class="form-group">
         <label for="genero">Género:</label>
-        <select class="form-control" id="genero" [(ngModel)]="expediente.Genero">
+        <select class="form-control" id="genero"  name="Genero"[(ngModel)]="expediente.Genero">
           <option value="masculino">Masculino</option>
           <option value="femenino">Femenino</option>
           <option value="otro">Otro</option>
@@ -39,31 +39,31 @@
       </div>
       <div class="form-group">
         <label for="sintomas">Síntomas:</label>
-        <textarea class="form-control" id="sintomas" rows="3" [(ngModel)]="expediente.Sintomas" placeholder="Describa sus síntomas"></textarea>
+        <textarea class="form-control" id="sintomas" rows="3" name="Sintomas" [(ngModel)]="expediente.Sintomas" placeholder="Describa sus síntomas"></textarea>
       </div>
       <div class="form-group">
         <label for="diagnostico">Diagnóstico:</label>
-        <textarea class="form-control" id="diagnostico" rows="3" [(ngModel)]="expediente.Diagnostico" placeholder="Ingrese el diagnóstico"></textarea>
+        <textarea class="form-control" id="diagnostico" rows="3" name="Diagnostico" [(ngModel)]="expediente.Diagnostico" placeholder="Ingrese el diagnóstico"></textarea>
       </div>
       <div class="form-group">
         <label for="tratamiento">Tratamiento:</label>
-        <textarea class="form-control" id="tratamiento" rows="3" [(ngModel)]="expediente.Tratamiento" placeholder="Ingrese el tratamiento"></textarea>
+        <textarea class="form-control" id="tratamiento" rows="3"  name="Tratamiento" [(ngModel)]="expediente.Tratamiento" placeholder="Ingrese el tratamiento"></textarea>
       </div>
       <div class="form-group">
         <label for="medicamentos">Medicamentos recetados:</label>
-        <textarea class="form-control" id="medicamentos" rows="3" [(ngModel)]="expediente.MedRecetado" placeholder="Ingrese los medicamentos recetados"></textarea>
+        <textarea class="form-control" id="medicamentos" rows="3" name="MedRecetado" [(ngModel)]="expediente.MedRecetado" placeholder="Ingrese los medicamentos recetados"></textarea>
       </div>
       <div class="form-group">
         <label for="fecha">Fecha de consulta:</label>
-        <input type="date" class="form-control" id="fecha" [(ngModel)]="expediente.Fecha" >
+        <input type="date" class="form-control" id="fecha" name="Fecha" [(ngModel)]="expediente.Fecha" >
       </div>
       <div class="form-group">
         <label for="medico">Médico tratante:</label>
-        <input type="text" class="form-control" id="medico" [(ngModel)]="expediente.MedicoTratante" placeholder="Ingrese el nombre del médico tratante">
+        <input type="text" class="form-control" id="medico" name="MedicoTratante" [(ngModel)]="expediente.MedicoTratante" placeholder="Ingrese el nombre del médico tratante">
       </div>
       <div class="form-group">
         <label for="notas">Notas adicionales:</label>
-        <textarea class="form-control" id="notas" rows="3" [(ngModel)]="expediente.Nota" placeholder="Ingrese notas adicionales"></textarea>
+        <textarea class="form-control" id="notas" rows="3" name="Nota" [(ngModel)]="expediente.Nota" placeholder="Ingrese notas adicionales"></textarea>
       </div>
       
       <button type="submit" class="btn btn-primary" (click)="saveNewExpediente()">Guardar</button>

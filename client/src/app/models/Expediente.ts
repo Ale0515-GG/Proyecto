@@ -11,7 +11,7 @@ export interface Expediente{
     Diagnostico?:String;
     Tratamiento?:String;
     MedRecetado?:String;
-    Fecha?:Date;
+    Fecha:Date;
     MedicoTratante?:String;
     Nota?:String;
 

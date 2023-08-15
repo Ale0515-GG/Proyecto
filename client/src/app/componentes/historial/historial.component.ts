@@ -38,13 +38,7 @@ export class HistorialComponent implements OnInit {
       Nota : ''
   };
 
-  formatearFecha(Fecha: string): string {
-    return Fecha ? new Date(Fecha).toISOString().substring(0, 10) : '';
-  }
   
-  //fecha = new Date(); // Aquí debes usar la fecha que corresponda
-   //fechaFormateada = Fecha.toISOString().substring(0, 10); // Obtiene el formato 'YYYY-MM-DD'
-
   constructor(private expedienteService: ExpedienteService, private router: Router){}
   ngOnInit(): void {
     
@@ -53,7 +47,11 @@ export class HistorialComponent implements OnInit {
   saveNewExpediente(){
     //console.log(this.game);
     //delete this.game.created_at;
-    //delete this.game.id;
+    delete this.expediente.idExpediente;
+    delete this.expediente.idPaciente;
+    delete this.expediente.idMedico;
+    delete this.expediente.Edad;
+    
     
     this.expedienteService.saveExpediente(this.expediente)
     .subscribe(res=> {
