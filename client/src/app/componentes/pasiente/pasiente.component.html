@@ -14,17 +14,17 @@
       </div>
       <div class="card-body">
         <div class="form-row">
-          <input type="text" id="busqueda" class="form-control" placeholder="Buscar...">
-          <button class="btn btn-primary" id="lupa" (click)="buscarPaciente()">Buscar</button>
+          <input type="text" [formControl]="control" id="busqueda" class="form-control" placeholder="Buscar...">
+          <button class="btn btn-primary" id="lupa"  >Buscar</button>
           <br>
           <br>
           <div class="form-group col-md-6">
             <label for="nombre">Nombre:</label>
-            <input type="text" class="form-control" id="nombre" value="Nombre del Paciente" disabled>
+            <input type="text" class="form-control" id="nombre" value="Nombre del Paciente">
           </div>
           <div class="form-group col-md-6">
             <label for="telefono">Teléfono:</label>
-            <input type="text" class="form-control" id="telefono" value="Número de Teléfono" disabled>
+            <input type="text" class="form-control" id="telefono" value="Número de Teléfono"> 
           </div>
         </div>
       </div>

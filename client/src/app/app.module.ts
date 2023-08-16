@@ -16,11 +16,15 @@ import { MedicosComponent } from './componentes/medicos/medicos.component';
 import { GeneMEDComponent } from './componentes/gene-med/gene-med.component';
 import { GenePACComponent } from './componentes/gene-pac/gene-pac.component';
 import { ConfirPacienteComponent } from './componentes/confir-paciente/confir-paciente.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PacienteService } from './service/paciente.service';
 import { CitaconfComponent } from './componentes/citaconf/citaconf.component';
 import { CitarealComponent } from './componentes/citareal/citareal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -39,12 +43,17 @@ import { CitarealComponent } from './componentes/citareal/citareal.component';
     CitaconfComponent,
     CitarealComponent,
 
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    
   ],
   providers: [
     PacienteService
