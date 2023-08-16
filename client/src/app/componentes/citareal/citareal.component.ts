@@ -64,13 +64,13 @@ delteCita(id: string){
 }
 updateGame(){
 
- // this.citaService.updateCita(this.cita).subscribe(
-   // res => {
-   //   console.log(res);
-  //    this.router.navigate(['/games']);
-   // },
-  //  err => console.log(err)
-  //)
+  this.citaService.updateCita(this.cita.IdCita,this.cita).subscribe(
+    res => {
+     console.log(res);
+      this.router.navigate(['/games']);
+   },
+   err => console.log(err)
+  )
 }
 
 }
