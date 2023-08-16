@@ -23,7 +23,7 @@ export class CitaService {
     return this.http.get(`${this.API_URI}/cita/${id}`); //peticio al id que proporcione
   }
 
-  delteCita(id: String){
+  deleteCita(id: String){
     return this.http.delete(`${this.API_URI}/cita/${id}`);
   }
 

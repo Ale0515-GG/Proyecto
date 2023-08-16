@@ -24,29 +24,7 @@
     </form>
   </div>
 
-  <div class="container">
-    <div class="row">
-    <div class="col-md-4" *ngFor="let citas of citas1">
-    
-        <div class="card text-center">
-            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-                {{citas.Nombre}}
-                <button class="btn btn-danger" (click)="delteCita(citas.id)"><!--Evento click cuando le de clic va a mandar a llamar al delete y le vamos a pasar el id al typescript-->
-                    <i class="far fa-trash-alt"></i>
-                </button>
-            </div>
-             <img src="{{citas.Especialidad}}" class="card-img-top"> <!--angular [src]="juego.image"-->
-            <div class="card-body">
-                <p>{{citas.description}}</p>
-                <a [routerLink]="['/games/edit',citas.id]" class="btn btn-info btn-block">
-                    EDIT GAME
-                </a>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-
+ 
 
   
   <footer class="bg-dark text-white text-center py-3">

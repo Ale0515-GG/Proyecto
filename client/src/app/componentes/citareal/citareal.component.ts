@@ -25,19 +25,10 @@ export class CitarealComponent implements	 OnInit {
   
 constructor(private citaService: CitaService,private router:Router,private activeRoute:ActivatedRoute){}
 
-ngOnInit(){
-  const params =this.activeRoute.snapshot.params;
-  // console.log(params);
-  this.citaService.getCita(params['id']).subscribe(
-    res => {
-      console.log(res); //nos regresa los valores de la base de datos
-      this.cita = res; //todo el game nos lo imprime
-      this.edit = true;//VARIABLEEE
-    },
-    err => console.error(err)
-  )
-}
 
+ngOnInit(){
+  this.getCita();
+}
 
 
 saveNewCita(){
@@ -54,9 +45,9 @@ delete this.cita.IdCita;
 }
 
 
-delteCita(id: string){
+deleteCita(id: string){
   // console.log(id);//se lo manda a consola
-  this.citaService.delteCita(id).subscribe(
+  this.citaService.deleteCita(id).subscribe(
     res =>{
       console.log(res)//mueste lo de la api, aqui se puede poner lo de registro eliminado
       this.router.navigate(['/cita']);
@@ -64,6 +55,7 @@ delteCita(id: string){
     err => console.log(err)
   )
 }
+
 updateGame(){
 
   this.citaService.updateCita(this.cita.IdCita,this.cita).subscribe(
@@ -75,5 +67,16 @@ updateGame(){
   )
 }
 
+
+getCita(){
+
+this.citaService.getCitas().subscribe(
+  res =>{
+    console.log(res);
+    this.router.navigate(['/cita']);
+  },
+  err => console.error(err)
+)
+}
 }
 
