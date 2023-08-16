@@ -37,38 +37,4 @@ saveNewMedi(){ //generamos el metodo
     err => console.error(err)
   )
 }
-
-}
-
-export class MediListComponent implements	 OnInit{
-  @HostBinding('class') classes='row';
-  medi:any =[]
-  constructor(private medicoService:MedicoService){
-
-  }
-  ngOnInit(){
-    this.getMedicos();
-  }
-
-  getMedicos(){
-    this.medicoService.getMedicos().subscribe(
-      // res => console.log(res),
-      res => {
-        this.medi=res;
-      },
-      err => console.log(err)
-    )
-  }
-
-  deleteMedi(id: string){
-    // console.log(id);//se lo manda a consola
-    this.medicoService.deleteMedi(id).subscribe(
-      res =>{
-        console.log(res)//mueste lo de la api, aqui se puede poner lo de registro eliminado
-        this.getMedicos();
-      },
-      err => console.log(err)
-    )
-  }
-
 }
