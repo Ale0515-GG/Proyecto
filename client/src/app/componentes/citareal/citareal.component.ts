@@ -10,7 +10,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 })
 export class CitarealComponent implements	 OnInit {
   @HostBinding('class') clases ='row';
-  citaksk:any =[]
+  citas1:any =[]
   edit : boolean = false;
 
 
@@ -37,6 +37,8 @@ ngOnInit(){
     err => console.error(err)
   )
 }
+
+
 
 saveNewCita(){
 
