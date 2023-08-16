@@ -22,8 +22,9 @@ import { PacienteService } from './service/paciente.service';
 import { CitaconfComponent } from './componentes/citaconf/citaconf.component';
 import { CitarealComponent } from './componentes/citareal/citareal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+
+//import { MatFormFieldModule } from '@angular/material/form-field';
+//import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -52,7 +53,7 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
+  //  MatFormFieldModule,
     
   ],
   providers: [
