@@ -26,7 +26,7 @@ export class PasienteComponent implements OnInit{
     this.pacienteService.getPaciente(this.paciente)
       .subscribe(
         (paciente) => {
-          console.log()
+          console.log('Paciente encontrado:', paciente);
           this.pacienteEncontrado = paciente;
         },
         (error) => {
@@ -35,4 +35,4 @@ export class PasienteComponent implements OnInit{
         }
       );
   }
-}
+} 
