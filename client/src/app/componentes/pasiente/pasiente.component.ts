@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime, pipe } from 'rxjs';
+import { debounceTime } from 'rxjs';
 import { Paciente } from 'src/app/models/Paciente';
 import { PacienteService } from 'src/app/service/paciente.service';
 
@@ -10,56 +10,59 @@ import { PacienteService } from 'src/app/service/paciente.service';
   templateUrl: './pasiente.component.html',
   styleUrls: ['./pasiente.component.css']
 })
-export class PasienteComponent implements OnInit{
+export class PasienteComponent implements OnInit {
 
-  paciente:any =[]
-  pacienteEncontrado: any;  
-
+  paciente: any = [];
+  pacienteEncontrado: any;
+  
   control = new FormControl();
-  // constructor(private http : HttpClient){}
-  constructor(private pacienteService : PacienteService){}
 
+  constructor(private pacienteService: PacienteService) {}
 
-  ngOnInit(): void{
-     this.pacienteService.getPacientes().subscribe(
-       res => {
-          this.paciente = res;
-        },
-        err => console.error(err)
-     );
-    this.observerChangeSearch()
+  ngOnInit(): void {
+    this.pacienteService.getPacientes().subscribe(
+      res => {
+        this.paciente = res;
+      },
+      err => console.error(err)
+    );
+    this.observerChangeSearch();
   }
 
-  observerChangeSearch(){
+  observerChangeSearch() {
     this.control.valueChanges.pipe(
-      debounceTime(1000) //tiemñpo espera
+      debounceTime(1000)
     ).subscribe(query => {
-      console.log(query)
-    })
+      console.log(query);
+      // Llama el método para buscar paciente cuando se genera un cambio en el valor
+      this.buscarPaciente(query); // Pasa el valor 'query' como argumento
+    });
   }
 
-  buscarPaciente() {
-      this.pacienteService.getPaciente(this.paciente)
+  buscarPaciente(query: string) {
+    this.pacienteService.getPaciente(query) // Usa el valor de 'query' en la búsqueda
       .subscribe(
-          (paciente) => {
-            console.log('Paciente encontrado:', paciente);
-            this.pacienteEncontrado = paciente;
-          },
-          (error) => {
-            console.error('Error al buscar paciente:', error);
-            this.pacienteEncontrado = null;
-         }
+        (paciente) => {
+          console.log('Paciente encontrado:', paciente);
+          this.pacienteEncontrado = paciente;
+        },
+        (error) => {
+          console.error('Error al buscar paciente:', error);
+          this.pacienteEncontrado = null;
+        } 
       );
-   }
-  //  getPacientequery(query:String){
-  //    this.http.get('http://localhost:3000/api/paciente',{
-  //      params: new HttpParams()
-  //      .set('access_token',this.token)
-  //      .set('q',query)
-  //    }).pipe{
-  //      map(result => result-Response.hits)
-  //    }.subscribe(result =>{
-  //      console.log(result)
-  //    })
-  // }
-} 
+  }
+}
+
+  //   getPacientequery(query:String){
+  //     this.http.get('http://localhost:3000/api/paciente',{
+  //       params: new HttpParams()
+  //       .set('access_token',this.token)
+  //       .set('q',query)
+  //     }).pipe{
+  //       map(result => result-Response.hits)
+  //     }.subscribe(result =>{
+  //       console.log(result)
+  //     })
+  //  }
+
