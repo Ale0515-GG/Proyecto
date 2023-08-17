@@ -21,31 +21,32 @@
         </div>
       </div>
     </div>
+    <div class="col-md-8" *ngIf="editingCita">
+      <!-- Formulario de edición -->
+      <div class="card">
+        <div class="card-header bg-white text-center">
+          <h5 style="color: black">Editar Cita Medica</h5>
+        </div>
+        <form>
+          <div class="entrada mb-3">
+            <input type="text" class="form-control" placeholder="Especialidad" name="Especialidad" [(ngModel)]="editingCita.Especialidad">
+          </div>
+          <div class="entrada mb-3">
+            <input type="text" class="form-control" placeholder="Nombre del Paciente" name="NomPaciente" [(ngModel)]="editingCita.NomPaciente">
+          </div>
+          <div class="entrada mb-3">
+            <input type="text" class="form-control" placeholder="Numero de Telefono" name="NumTelefono" [(ngModel)]="editingCita.NumTelefono">
+          </div>
+          <div class="entrada mb-3">
+            <textarea class="form-control" rows="3" placeholder="Motivo de la consulta" name="Motivo" [(ngModel)]="editingCita.Motivo"></textarea>
+          </div>
+          
+          <button type="button" class="btn btn-dark" (click)="updateCita(editingCita.IdCita)">Guardar Cambios</button>
+          <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>
+        </form>
+      </div>
+    </div>
   </div>
-</div>
-
-<!-- Formulario de edición -->
-<div class="card mx-auto" *ngIf="editingCita">
-  <div class="card-header bg-white text-center">
-    <h5 style="color: black">Editar Cita Medica</h5>
-  </div>
-  <form>
-    <div class="entrada mb-3">
-      <input type="text" class="form-control" placeholder="Especialidad" name="Especialidad" [(ngModel)]="editingCita.Especialidad">
-    </div>
-    <div class="entrada mb-3">
-      <input type="text" class="form-control" placeholder="Nombre del Paciente" name="NomPaciente" [(ngModel)]="editingCita.NomPaciente">
-    </div>
-    <div class="entrada mb-3">
-      <input type="text" class="form-control" placeholder="Numero de Telefono" name="NumTelefono" [(ngModel)]="editingCita.NumTelefono">
-    </div>
-    <div class="entrada mb-3">
-      <textarea class="form-control" rows="3" placeholder="Motivo de la consulta" name="Motivo" [(ngModel)]="editingCita.Motivo"></textarea>
-    </div>
-    
-    <button type="button" class="btn btn-dark" (click)="updateCita(editingCita.IdCita)">Guardar Cambios</button>
-    <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>
-  </form>
 </div>
 
 <footer class="bg-dark text-white text-center py-3">

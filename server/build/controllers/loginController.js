@@ -18,7 +18,7 @@ class LoginController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query("SELECT * FROM Trabajador");
+                return yield connection.query("SELECT * FROM Login");
             }));
             res.json(result);
         });
@@ -27,41 +27,56 @@ class LoginController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('SELECT * FROM Trabajador WHERE id=?', [id]);
+                return yield connection.query('SELECT * FROM Login WHERE id=?', [id]);
             }));
             if (result.length > 0) {
                 return res.json(result[0]); //revuelve al cliente
             }
             console.log(result);
-            res.status(404).json({ text: 'El Trabajador no existe' }); //codigo de estado
+            res.status(404).json({ text: 'El Login no existe' }); //codigo de estado
         });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //console.log(req.body)
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('INSERT INTO Trabajador set ?', [req.body]);
+                return yield connection.query('INSERT INTO Login set ?', [req.body]);
             }));
-            res.json({ texto: "Trabajador Saved" });
+            res.json({ texto: "Login Saved" });
         });
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('DELETE FROM Trabajador WHERE id=?', [id]);
+                return yield connection.query('DELETE FROM Login WHERE id=?', [id]);
             }));
-            res.json({ text: "Trabajador " + req.params.id + " was deleted" });
+            res.json({ text: "Login " + req.params.id + " was deleted" });
         });
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('UPDATE Trabajador SET ? WHERE id=?', [req.body, id] //el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
+                return yield connection.query('UPDATE Login SET ? WHERE id=?', [req.body, id] //el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
                 );
             }));
-            res.json({ text: "Trabajador " + req.params.id + " was updated" });
+            res.json({ text: "Login " + req.params.id + " was updated" });
+        });
+    }
+    selectlogin(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const { correo } = req.params;
+            const { contra } = req.params;
+            const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
+                return yield connection.query('SELECT * FROM Login WHERE Id=?, Correo=? Contrasena=?', [req.body, id]);
+            }));
+            if (result.length > 0) {
+                return res.json(result[0]); //revuelve al cliente
+            }
+            console.log(result);
+            res.status(404).json({ text: 'El Login no existe' }); //codigo de estado
         });
     }
 }

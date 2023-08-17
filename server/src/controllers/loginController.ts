@@ -6,7 +6,7 @@ class LoginController {
     public async list (req: Request, res: Response){
          const result =  await pool.then(async (connection)=> {
              return await connection.query(
-                "SELECT * FROM Trabajador"
+                "SELECT * FROM Login"
              );
         })   
          res.json(result);
@@ -16,25 +16,25 @@ class LoginController {
         const {id}=req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'SELECT * FROM Trabajador WHERE id=?',[id]
+                'SELECT * FROM Login WHERE id=?',[id]
             );
         })
         if (result.length >0){
             return res.json(result[0]); //revuelve al cliente
         }
         console.log(result);
-        res.status(404).json({text:'El Trabajador no existe'});//codigo de estado
+        res.status(404).json({text:'El Login no existe'});//codigo de estado
     }
 
     public async create (req:Request, res:Response): Promise<void>{
         //console.log(req.body)
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'INSERT INTO Trabajador set ?',[req.body]
+                'INSERT INTO Login set ?',[req.body]
             );
         })
     
-        res.json({texto:"Trabajador Saved"});
+        res.json({texto:"Login Saved"});
     
     }
 
@@ -42,21 +42,43 @@ class LoginController {
         const {id}=req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'DELETE FROM Trabajador WHERE id=?',[id]
+                'DELETE FROM Login WHERE id=?',[id]
             );
         })
-        res.json({text:"Trabajador "+req.params.id+" was deleted"});
+        res.json({text:"Login "+req.params.id+" was deleted"});
     }
 
     public async update(req:Request,res:Response):Promise<void>{
         const {id}=req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'UPDATE Trabajador SET ? WHERE id=?',[req.body,id]//el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
+                'UPDATE Login SET ? WHERE id=?',[req.body,id]//el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
             );
         })
-        res.json({text:"Trabajador "+req.params.id+" was updated"});
+        res.json({text:"Login "+req.params.id+" was updated"});
+    }
+
+
+
+    
+    public async selectlogin(req:Request,res:Response):Promise<any>{
+        const {id}=req.params;
+        const {correo}=req.params;
+        const {contra}= req.params;
+        const result = await pool.then(async (connection) => {
+            return await connection.query(
+                'SELECT * FROM Login WHERE Id=?, Correo=? Contrasena=?',[req.body,id]
+            );
+        })
+        if (result.length >0){
+            return res.json(result[0]); //revuelve al cliente
+        }
+        console.log(result);
+        res.status(404).json({text:'El Login no existe'});//codigo de estado
     }
 }
+
+
+
 
 export const loginController = new LoginController()
