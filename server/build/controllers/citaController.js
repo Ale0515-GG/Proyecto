@@ -59,7 +59,7 @@ class CitaController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('UPDATE Cita SET ? WHERE IdCita = ?', [req.body, id]);
+                return yield connection.query("UPDATE Cita SET ? WHERE IdCita =?", [req.body, id]);
             }));
             res.json({ text: "Cita " + req.params.id + " was updated" });
         });

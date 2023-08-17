@@ -49,8 +49,8 @@ export class CitaconfComponent {
     this.editingCita = null;
   }
 
-  updateCita() {
-    this.citaService.updateCita(this.editingCita.id, this.editingCita).subscribe(
+  updateCita(id: string) {
+    this.citaService.updateCita(id, this.editingCita).subscribe(
       res => {
         console.log(res);
         this.editingCita = null; // Limpiamos la variable de edición

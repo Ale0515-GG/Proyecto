@@ -53,7 +53,7 @@ class CitaController {
         const { id } = req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'UPDATE Cita SET ? WHERE IdCita = ?', [req.body, id]
+                "UPDATE Cita SET ? WHERE IdCita =?", [req.body, id]
             );
         });
         res.json({ text: "Cita " + req.params.id + " was updated" });
