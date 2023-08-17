@@ -49,7 +49,7 @@ class CitaController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('DELETE FROM Cita WHERE id=?', [id]);
+                return yield connection.query('DELETE FROM Cita WHERE IdCita=?', [id]);
             }));
             res.json({ text: "Cita " + req.params.id + " was deleted" });
             // res.json({text:"deleting cita"});
@@ -59,8 +59,7 @@ class CitaController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('UPDATE Cita SET ? WHERE id=?', [req.body, id] //el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
-                );
+                return yield connection.query('UPDATE Cita SET ? WHERE IdCita = ?', [req.body, id]);
             }));
             res.json({ text: "Cita " + req.params.id + " was updated" });
         });

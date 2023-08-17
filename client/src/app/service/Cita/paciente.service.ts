@@ -30,16 +30,9 @@ export class CitaService {
   saveCita(paciente: Cita){
     return this.http.post(`${this.API_URI}/cita`, paciente);
   }
-  updateCita(id:string|any, updateGame:Cita):Observable<Cita>{
-    return this.http.put(`${this.API_URI}/cita/${id}`,updateGame);
+  updateCita(id:string|any, updateCita:Cita):Observable<Cita>{
+    return this.http.put(`${this.API_URI}/cita/${id}`,updateCita);
 
   }
-
-  call(id:string, updatedPaciente: Cita){
-    return this.http.put(`${this.API_URI}/cita/${id}`,updatedPaciente);
-  }
-
-
-
 
 }

@@ -1,41 +1,62 @@
-import { Component,HostBinding,OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { CitaService } from 'src/app/service/Cita/paciente.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-citaconf',
   templateUrl: './citaconf.component.html',
   styleUrls: ['./citaconf.component.css']
 })
 export class CitaconfComponent {
-  @HostBinding('class') classes='row';
-  cita:any =[]
-  constructor(private citaService:CitaService,private router:Router){
+  @HostBinding('class') classes = 'row';
+  cita: any = [];
+  editingCita: any = null; // Variable para almacenar la cita en edición
 
-  }
-  ngOnInit(){
+  constructor(
+    private citaService: CitaService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
     this.getCitas();
   }
 
-  getCitas(){
+  getCitas() {
     this.citaService.getCitas().subscribe(
-      // res => console.log(res),
       res => {
-        this.cita=res;
+        this.cita = res;
       },
       err => console.log(err)
-    )
+    );
   }
 
-  deleteCita(id: string){
-    // console.log(id);//se lo manda a consola
+  deleteCita(id: string) {
     this.citaService.deleteCita(id).subscribe(
-      res =>{
-        console.log(res)//mueste lo de la api, aqui se puede poner lo de registro eliminado
-        this.router.navigate(['/cita']);
+      res => {
+        console.log(res);
+        this.getCitas();
       },
       err => console.log(err)
-    )
+    );
   }
-  
 
+  editCita(cita: any) {
+    this.editingCita = { ...cita }; // Clonamos la cita para no afectar la original
+  }
+
+  cancelEdit() {
+    this.editingCita = null;
+  }
+
+  updateCita() {
+    this.citaService.updateCita(this.editingCita.id, this.editingCita).subscribe(
+      res => {
+        console.log(res);
+        this.editingCita = null; // Limpiamos la variable de edición
+        this.getCitas();
+      },
+      err => console.log(err)
+    );
+  }
 }

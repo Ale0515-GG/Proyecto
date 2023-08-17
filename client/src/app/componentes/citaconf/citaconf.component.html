@@ -1,29 +1,52 @@
-<app-late></app-late>
-
 <div class="container">
-    <div class="row">
-      <div class="col-md-4" *ngFor="let citas of cita">
-        
-        <div class="card text-center">
-          <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-            {{citas.IdCita}}
-            <button class="btn btn-danger" (click)="deleteCita(citas.id)">
-              <i class="far fa-trash-alt"></i>
-            </button>
-          </div>
-          <div class="card-body">
-            <p>{{citas.Especialidad}}</p>
-            <p>{{citas.NomPaciente}}</p>
-            <p>{{citas.NumTelefono}}</p>
-            <p>{{citas.Motivo}}</p>
-            <a [routerLink]="['/citas/edit', citas.id]" class="btn btn-info btn-block">Editar Cita</a>
-          </div>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let citas of cita">
+      <!-- Tarjeta de cita -->
+      <div class="card text-center">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+          {{citas.IdCita}}
+          <button class="btn btn-danger" (click)="deleteCita(citas.IdCita)">
+            <i class="far fa-trash-alt"></i>
+          </button>
+          <button class="btn btn-info" (click)="editCita(citas)">
+            <i class="far fa-edit"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <p>{{citas.Especialidad}}</p>
+          <p>{{citas.NomPaciente}}</p>
+          <p>{{citas.NumTelefono}}</p>
+          <p>{{citas.Motivo}}</p>
         </div>
       </div>
     </div>
   </div>
+</div>
 
+<!-- Formulario de edición -->
+<div class="card mx-auto" *ngIf="editingCita">
+  <div class="card-header bg-white text-center">
+    <h5 style="color: black">Editar Cita Medica</h5>
+  </div>
+  <form>
+    <div class="entrada mb-3">
+      <input type="text" class="form-control" placeholder="Especialidad" name="Especialidad" [(ngModel)]="editingCita.Especialidad">
+    </div>
+    <div class="entrada mb-3">
+      <input type="text" class="form-control" placeholder="Nombre del Paciente" name="NomPaciente" [(ngModel)]="editingCita.NomPaciente">
+    </div>
+    <div class="entrada mb-3">
+      <input type="text" class="form-control" placeholder="Numero de Telefono" name="NumTelefono" [(ngModel)]="editingCita.NumTelefono">
+    </div>
+    <div class="entrada mb-3">
+      <textarea class="form-control" rows="3" placeholder="Motivo de la consulta" name="Motivo" [(ngModel)]="editingCita.Motivo"></textarea>
+    </div>
+    
+    <button type="button" class="btn btn-dark" (click)="updateCita()">Guardar Cambios</button>
+    <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>
+  </form>
+</div>
 
-  <footer class="bg-dark text-white text-center py-3">
-    <p>&copy; 2023 SaludParaTI. Todos los derechos reservados.</p>
-  </footer>
+<footer class="bg-dark text-white text-center py-3">
+  <p>&copy; 2023 SaludParaTI. Todos los derechos reservados.</p>
+</footer>

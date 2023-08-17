@@ -42,7 +42,7 @@ class CitaController {
         const {id}=req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'DELETE FROM Cita WHERE id=?',[id]
+                'DELETE FROM Cita WHERE IdCita=?',[id]
             );
         })
         res.json({text:"Cita "+req.params.id+" was deleted"});
@@ -50,14 +50,14 @@ class CitaController {
     }
 
     public async update(req:Request,res:Response):Promise<void>{
-        const {id}=req.params;
+        const { id } = req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'UPDATE Cita SET ? WHERE id=?',[req.body,id]//el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
+                'UPDATE Cita SET ? WHERE IdCita = ?', [req.body, id]
             );
-        })
-        res.json({text:"Cita "+req.params.id+" was updated"});
-    }
+        });
+        res.json({ text: "Cita " + req.params.id + " was updated" });
+    }        
 
     public async setp(req: Request, res: Response): Promise<any> {
         const { telefono } = req.params;
