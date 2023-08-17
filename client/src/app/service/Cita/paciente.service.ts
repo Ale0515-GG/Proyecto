@@ -23,23 +23,16 @@ export class CitaService {
     return this.http.get(`${this.API_URI}/cita/${id}`); //peticio al id que proporcione
   }
 
-  delteCita(id: String){
+  deleteCita(id: String){
     return this.http.delete(`${this.API_URI}/cita/${id}`);
   }
 
   saveCita(paciente: Cita){
     return this.http.post(`${this.API_URI}/cita`, paciente);
   }
-  updateCita(id:string|any, updateGame:Cita):Observable<Cita>{
-    return this.http.put(`${this.API_URI}/cita/${id}`,updateGame);
+  updateCita(id:string|any, updateCita:Cita):Observable<Cita>{
+    return this.http.put(`${this.API_URI}/cita/${id}`,updateCita);
 
   }
-
-  call(id:string, updatedPaciente: Cita){
-    return this.http.put(`${this.API_URI}/cita/${id}`,updatedPaciente);
-  }
-
-
-
 
 }
