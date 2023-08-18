@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { Paciente } from 'src/app/models/Paciente';
 import { PacienteService } from 'src/app/service/paciente.service';
+import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-pasiente',
