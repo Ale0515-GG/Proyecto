@@ -54,15 +54,4 @@ export class PasienteComponent implements OnInit {
   }
 }
 
-  //   getPacientequery(query:String){
-  //     this.http.get('http://localhost:3000/api/paciente',{
-  //       params: new HttpParams()
-  //       .set('access_token',this.token)
-  //       .set('q',query)
-  //     }).pipe{
-  //       map(result => result-Response.hits)
-  //     }.subscribe(result =>{
-  //       console.log(result)
-  //     })
-  //  }
 
