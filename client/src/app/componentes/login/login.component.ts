@@ -15,18 +15,16 @@ export class LoginComponent implements OnInit {
   Correo = '';
   Contrasena = '';
 
-  constructor(
-    private loginService: LoginService,
-    private router: Router,
-    private activeRoute: ActivatedRoute
-  ) {}
+  constructor( private loginService: LoginService,private router: Router,private activeRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    this.getLogins();
+    this.getLogin();
   }
 
-  getLogins() {
-    this.loginService.getLogins().subscribe(
+  getLogin() {
+    const params =this.activeRoute.snapshot.params;
+    this.loginService.getLogin(params['id']
+    ).subscribe(
       res => {
         this.login = res;
       },
@@ -34,21 +32,4 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  // Agrega aquí las funciones y métodos adicionales que necesites para tu componente
-
-  validarCredenciales() {
-    // Llama a la función del servicio para validar las credenciales
-    this.loginService.validarCredenciales(this.Correo, this.Contrasena).subscribe(
-      res => {
-        if (res.success) {
-          // Credenciales válidas, redirigir a una página de éxito o realizar alguna acción
-          this.router.navigate(['/pagina-inicio']);
-        } else {
-          // Credenciales inválidas, mostrar un mensaje de error o realizar alguna acción
-          console.log('Credenciales inválidas');
-        }
-      },
-      err => console.log(err)
-    );
-  }
 }

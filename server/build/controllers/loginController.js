@@ -68,13 +68,13 @@ class LoginController {
         return __awaiter(this, void 0, void 0, function* () {
             const { email, password } = req.body;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('SELECT * FROM Login WHERE Correo = ? AND Contrasena = ?', [email, password]);
+                return yield connection.query('SET Id FROM Login WHERE Correo = ? AND Contrasena = ?', [email, password]);
             }));
             if (result.length > 0) {
-                res.status(200).json({ success: true });
+                res.status(200).json({ success: false });
             }
             else {
-                res.status(404).json({ success: false });
+                res.status(404).json({ success: true });
             }
             console.log(result);
             res.status(404).json({ text: 'El Login no existe' }); //codigo de estado
