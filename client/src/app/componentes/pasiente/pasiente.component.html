@@ -12,7 +12,7 @@
       <div class="card-header">
         <h5>Datos Personales</h5>
       </div>
-      <div class="card-body">
+      <div class="card-body" >
         <div class="form-row">
           <input type="text" [formControl]="control" id="busqueda" class="form-control" placeholder="Buscar...">
           <button class="btn btn-primary" id="lupa" (click)="buscarPaciente" >Buscar</button>
@@ -20,11 +20,11 @@
           <br>
           <div class="form-group col-md-6">
             <label for="nombre">Nombre:</label>
-            <input type="text" [(ngModel)]="paciente.Nombre" class="form-control" id="nombre" value="Nombre del Paciente">
+            <input type="text" class="form-control" id="nombre" value="Nombre del Paciente">
           </div>
           <div class="form-group col-md-6">
             <label for="telefono">Teléfono:</label>
-            <input type="text" [(ngModel)]="paciente.telefono"  class="form-control" id="telefono" value="Número de Teléfono"> 
+            <input type="text"  class="form-control" id="telefono" value="Número de Teléfono"> 
           </div>
         </div>
       </div>
