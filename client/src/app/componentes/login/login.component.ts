@@ -20,6 +20,8 @@ constructor(private loginService: LoginService,private router:Router,private act
 ngOnInit() {
   this.getlogins();
 }
+
+
 getlogins(){
   this.loginService.getlogins().subscribe(
     res => {
