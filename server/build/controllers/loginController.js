@@ -64,16 +64,17 @@ class LoginController {
             res.json({ text: "Login " + req.params.id + " was updated" });
         });
     }
-    selectlogin(req, res) {
+    validateCredentials(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const { correo } = req.params;
-            const { contra } = req.params;
+            const { email, password } = req.body;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('SELECT * FROM Login WHERE Id=?, Correo=? Contrasena=?', [req.body, id]);
+                return yield connection.query('SELECT * FROM Login WHERE Correo = ? AND Contrasena = ?', [email, password]);
             }));
             if (result.length > 0) {
-                return res.json(result[0]); //revuelve al cliente
+                res.status(200).json({ success: true });
+            }
+            else {
+                res.status(404).json({ success: false });
             }
             console.log(result);
             res.status(404).json({ text: 'El Login no existe' }); //codigo de estado

@@ -58,24 +58,27 @@ class LoginController {
         res.json({text:"Login "+req.params.id+" was updated"});
     }
 
-
-
-    
-    public async selectlogin(req:Request,res:Response):Promise<any>{
-        const {id}=req.params;
-        const {correo}=req.params;
-        const {contra}= req.params;
+    public async validateCredentials(req:Request,res:Response):Promise<any>{
+        const { email, password } = req.body;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'SELECT * FROM Login WHERE Id=?, Correo=? Contrasena=?',[req.body,id]
+                'SELECT * FROM Login WHERE Correo = ? AND Contrasena = ?',[email, password]
             );
         })
-        if (result.length >0){
-            return res.json(result[0]); //revuelve al cliente
-        }
+        if (result.length > 0) {
+            res.status(200).json({ success: true });
+          } else {
+            res.status(404).json({ success: false });
+          }
         console.log(result);
         res.status(404).json({text:'El Login no existe'});//codigo de estado
     }
+
+
+
+
+
+
 }
 
 

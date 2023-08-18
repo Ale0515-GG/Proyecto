@@ -20,11 +20,11 @@ export class RegistroComponent {
   
 constructor(private loginService: LoginService,private router:Router,private activeRoute:ActivatedRoute){}
 
-savelogin(){
+saveLogin(){
 
   delete this.login.Id;
   
-    this.loginService.savelogin(this.login).subscribe(
+    this.loginService.saveLogin(this.login).subscribe(
       res =>{
         console.log(res);
         this.router.navigate(['/login']);

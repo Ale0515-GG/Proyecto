@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; //permite hacer peticiones http
-import { Login } from 'src/app/models/Login';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -14,26 +11,29 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  //Devuelve todos los pacientes
-  getlogins() {
-    return this.http.get(`${this.API_URI}/login`); //o direccion donde estan los pacientes o /Paciente
+  getLogins(): Observable<any> {
+    return this.http.get(`${this.API_URI}/login`);
   }
 
-  //Devuelve solo un paciente
-  getlogin(id: String){
-    return this.http.get(`${this.API_URI}/login/${id}`); //peticio al id que proporcione
+  getLogin(id: string): Observable<any> {
+    return this.http.get(`${this.API_URI}/login/${id}`);
   }
 
-  deletelogin(id: String){
+  deleteLogin(id: string): Observable<any> {
     return this.http.delete(`${this.API_URI}/login/${id}`);
   }
 
-  savelogin(paciente: Login){
-    return this.http.post(`${this.API_URI}/login`, paciente);
-  }
-  updatelogin(id:string|any, updateCita:Login):Observable<Login>{
-    return this.http.put(`${this.API_URI}/login/${id}`,updateCita);
-
+  saveLogin(login: any): Observable<any> {
+    return this.http.post(`${this.API_URI}/login`, login);
   }
 
+  updateLogin(id: string, updatedLogin: any): Observable<any> {
+    return this.http.put(`${this.API_URI}/login/${id}`, updatedLogin);
+  }
+
+  validarCredenciales(correo: string, contrasena: string): Observable<any> {
+    const credenciales = { correo, contrasena };
+    return this.http.post(`${this.API_URI}/login`, credenciales);
+  }
+  
 }
