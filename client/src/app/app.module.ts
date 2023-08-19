@@ -53,8 +53,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    // MatFormFieldModule,
-    // MatFormFieldModule,
+    MatFormFieldModule,
+     MatFormFieldModule,
+
     
   ],
   providers: [

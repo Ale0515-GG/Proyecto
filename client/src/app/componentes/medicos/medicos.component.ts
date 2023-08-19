@@ -26,16 +26,17 @@ export class MedicosComponent implements OnInit {
   }
 
 
-  saveNewMedi() {
-    this.mediService.saveMedi(this.medi).subscribe(
-      res => {
-        console.log(res);
-        this.router.navigate(['/medicos']);
-      },
-      err => console.error(err)
-    );
-  }
-}
+// <<<<<<< HEAD
+//   saveNewMedi() {
+//     this.mediService.saveMedi(this.medi).subscribe(
+//       res => {
+//         console.log(res);
+//         this.router.navigate(['/medicos']);
+//       },
+//       err => console.error(err)
+//     );
+//   }
+// }
 
 // @Component({
 //   selector: 'app-gene-med',
@@ -80,9 +81,22 @@ export class MedicosComponent implements OnInit {
 // //       console.log(res);
 // //       this.router.navigate(['/medicos']);
 // //     },
-// //     err => console.error(err)
-// //   )
-// // }
+// // //     err => console.error(err)
+// // //   )
+// // // }
 
-// // }
+// // // }
 
+// =======
+//   this.mediService.saveMedi(this.medi).subscribe(
+//     res =>{
+//       console.log(res);
+//       this.router.navigate(['/medicos']);
+//     },
+//     err => console.error(err)
+//   )
+// }
+
+// }
+
+// >>>>>>> 7f0efffafc490f7f936df46c5c645e62fc766335

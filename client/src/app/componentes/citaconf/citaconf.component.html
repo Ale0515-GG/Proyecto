@@ -1,67 +1,29 @@
-<<!DOCTYPE html>
-<html lang="en">
+<app-late></app-late>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cita Médica</title>
-    <!-- Agrega enlaces a tus archivos CSS y fuentes si es necesario -->
-</head>
-
-<body>
-    <app-late></app-late>
-    <div class="card mx-auto">
-        <div class="card-header bg-white text-center">
-            <h5 style="color: black">Cita Médica</h5>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let citas of cita">
+        
+        <div class="card text-center">
+          <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            {{citas.IdCita}}
+            <button class="btn btn-danger" (click)="deleteCita(citas.id)">
+              <i class="far fa-trash-alt"></i>
+            </button>
+          </div>
+          <div class="card-body">
+            <p>{{citas.Especialidad}}</p>
+            <p>{{citas.NomPaciente}}</p>
+            <p>{{citas.NumTelefono}}</p>
+            <p>{{citas.Motivo}}</p>
+            <a [routerLink]="['/citas/edit', citas.id]" class="btn btn-info btn-block">Editar Cita</a>
+          </div>
         </div>
-        <form action="/guardar-cita" method="POST">
-            <div class="card-body">
-                <div class="entrada mb-3">
-                    <select class="form-select" name="especialidad" aria-label="Default select example" disabled>
-                        <i class="fa-solid fa-landmark" style="color: #000000;"></i>
-                        <option value="Medico General">Medico General</option>
-                        <option value="Cirujano">Cirujano</option>
-                    </select>
-                </div>
-                <br>
-
-                <select class="form-select" aria-label="Default select example" disabled>
-                    <i class="fa-solid fa-landmark" style="color: #000000;"></i>
-                    <option selected>Medico</option>
-                    <option value="1">Luis Oswaldo</option>
-                    <option value="2">Ramiro Herrera</option>
-                    <option value="2">Mayra Galvan</option>
-                    <option value="2">Roxana</option>
-                </select>
-                <br>
-
-                <div class="entrada mb-3">
-                    <i class="fa-solid fa-book fa-beat-fade" style="color: #000000;"></i>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Numero de Consulta" disabled>
-                </div>
-                <div class="entrada mb-3">
-                    <i class="fa-solid fa-circle-user fa-beat-fade" style="color: #000000;"></i>
-                    <input type="text" class="form-control" name="nombrePaciente" placeholder="Nombre del Paciente" value="Fernando" readonly>
-                </div>
-                <div class="entrada mb-3">
-                    <i class="fa-solid fa-circle-user fa-beat-fade" style="color: #000000;"></i>
-                    <input type="text" class="form-control" name="telefono" placeholder="Numero de Telefono" value="4181241073" readonly>
-                </div>
-                <div class="entrada mb-3">
-                    <i class="fa-solid fa-book-open fa-beat-fade" style="color: #000000;"></i>
-                    <textarea class="form-control" name="motivo" rows="3" placeholder="Motivo de la consulta" readonly>Le duele la cabeza</textarea>
-                </div>
-                <div class="entrada mb-3">
-                    <i class="fa-solid fa-book fa-beat-fade" style="color: #000000;"></i>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Horario de Consulta" disabled>
-                </div>
-                <button type="button" class="btn btn-dark" disabled>Generar</button>
-            </div>
-        </form>
+      </div>
     </div>
-    <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2023 SaludParaTI. Todos los derechos reservados.</p>
-    </footer>
-</body>
+  </div>
 
-</html>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2023 SaludParaTI. Todos los derechos reservados.</p>
+  </footer>
