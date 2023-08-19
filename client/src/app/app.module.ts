@@ -23,9 +23,10 @@ import { CitaconfComponent } from './componentes/citaconf/citaconf.component';
 import { CitarealComponent } from './componentes/citareal/citareal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// import { MatFormFieldModule } from '@angular/material/form-field';
-// import { MatInputModule } from '@angular/material/input';
-
+//Angular material
+ import { MatFormFieldModule } from '@angular/material/form-field';
+ import { MatInputModule } from '@angular/material/input';
+ import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-     MatFormFieldModule,
+    MatInputModule,
+    MatSliderModule,
 
     
   ],

@@ -1,3 +1,5 @@
+<app-late></app-late>
+
 <div class="card mx-auto">
     <div class="card-header bg-white text-center">
       <h5 style="color: black">Registro</h5>
@@ -6,31 +8,19 @@
       <div>
         <div class="card-body">
           <div class="entrada mb-3">
-            <i class="fa-regular fa-user fa-beat-fade" style="color: #000000;"></i>
-            <input type="text" class="form-control" id="exampleInputName" name="name" placeholder="Nombre Completo">
-          </div>
-          <div class="entrada mb-3">
             <i class="fa-regular fa-envelope fa-beat-fade" style="color: #000000;"></i>
-            <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Correo Electrónico">
-          </div>
-          <div class="entrada mb-3">
-            <i class="fa-solid fa-phone fa-bounce" style="color: #000000;"></i>
-            <input type="tel" class="form-control" id="exampleInputPhone" name="phone" placeholder="Teléfono Celular">
-          </div>
+            <input type="email" class="form-control" id="exampleInputEmail1" name="Correo" aria-describedby="emailHelp" placeholder="Correo Electrónico" [(ngModel)]="login.Correo">
+            <br>
           <div class="entrada mb-3">
             <i class="fa-solid fa-key fa-beat-fade" style="color: #000000;"></i>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Contraseña">
+            <input type="password" class="form-control" id="exampleInputPassword1" name="Contrasena" placeholder="Contraseña" [(ngModel)]="login.Contrasena">
           </div>
-          <div class="entrada mb-3">
-            <i class="fa-solid fa-rotate-right fa-spin" style="color: #000000;"></i>
-            <input type="password" class="form-control" id="exampleInputPassword2" name="confirmPassword" placeholder="Repetir Contraseña">
-          </div>
-          <button type="submit" class="btn btn-primary">Registrarse</button>
+          <button type="submit" class="btn btn-primary" (click)="saveLogin()">Registrarse</button>
           <div id="emailHelp" class="form-text">
             Al registrarse, aceptas nuestras políticas de uso, condiciones y privacidad.
-            ¿Ya tienes una cuenta? <a href="Pagina-Principal">Inicia sesión</a>
+            ¿Ya tienes una cuenta? <a href="/login">Inicia sesión</a>
           </div>
         </div>
       </div>
-    </form>
+ 
   </div>  

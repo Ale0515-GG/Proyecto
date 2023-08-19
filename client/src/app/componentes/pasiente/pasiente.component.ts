@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { Paciente } from 'src/app/models/Paciente';
 import { PacienteService } from 'src/app/service/paciente.service';
+import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-pasiente',
@@ -54,15 +55,4 @@ export class PasienteComponent implements OnInit {
   }
 }
 
-  //   getPacientequery(query:String){
-  //     this.http.get('http://localhost:3000/api/paciente',{
-  //       params: new HttpParams()
-  //       .set('access_token',this.token)
-  //       .set('q',query)
-  //     }).pipe{
-  //       map(result => result-Response.hits)
-  //     }.subscribe(result =>{
-  //       console.log(result)
-  //     })
-  //  }
 

@@ -1,5 +1,5 @@
 export interface Login{
-    id?:number;
+    Id?:number;
     Correo?:string;
     Contrasena?:String;
 }
