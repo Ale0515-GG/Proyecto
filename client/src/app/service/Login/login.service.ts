@@ -31,9 +31,6 @@ export class LoginService {
     return this.http.put(`${this.API_URI}/login/${id}`, updatedLogin);
   }
 
-  validarCredenciales(correo: string, contrasena: string): Observable<any> {
-    const credenciales = { correo, contrasena };
-    return this.http.post(`${this.API_URI}/login`, credenciales);
-  }
+
   
 }
