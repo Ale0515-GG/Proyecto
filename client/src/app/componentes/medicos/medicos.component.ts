@@ -8,35 +8,30 @@ import { MedicoService } from 'src/app/service/medico.service';
   templateUrl: './medicos.component.html',
   styleUrls: ['./medicos.component.css']
 })
-
-export class MedicosComponent implements OnInit{
-  @HostBinding('class') clases ='row';
+export class MedicosComponent implements OnInit {
+  @HostBinding('class') clases = 'row';
 
   medi: Medico = {
-    Id:0,
-    Nombre:'',
-    Especialidad:'',
-    Telefono:'',
-   Correo:''
-};
+    Id: 0,
+    Nombre: '',
+    Especialidad: '',
+    Telefono: '',
+    Correo: ''
+  };
 
+  constructor(private mediService: MedicoService, private router: Router) {}
 
-constructor(private mediService: MedicoService,private router:Router){}
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // Initialization code if needed
   }
 
-saveNewMedi(){ //generamos el metodo
-  // console.log(this.game);
-
-  this.mediService.saveMedi(this.medi).subscribe(
-    res =>{
-      console.log(res);
-      this.router.navigate(['/medicos']);
-    },
-    err => console.error(err)
-  )
-}
-
-}
-
+   saveNewMedi() {
+     this.mediService.saveMedi(this.medi).subscribe(
+       res => {
+         console.log(res);
+         this.router.navigate(['/medicos']);
+       },
+       err => console.error(err)
+     );
+   }
+ }
