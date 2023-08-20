@@ -24,7 +24,7 @@ import { CitarealComponent } from './componentes/citareal/citareal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //notificacion 
-//import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 
 //Angular material
  import { MatFormFieldModule } from '@angular/material/form-field';
@@ -63,7 +63,7 @@ import { BuscarPipe } from './pipe/buscar.pipe';
     MatFormFieldModule,
     MatInputModule,
     MatSliderModule,
-    //ToastrModule.forRoot(),
+    ToastrModule.forRoot(),
 
     
   ],
