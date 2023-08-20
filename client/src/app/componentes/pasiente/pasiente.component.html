@@ -27,7 +27,7 @@
                     <th>Genero</th>
                 </tr>
             </thead>
-            <tbody id="PacienteTableBody" *ngFor="let ast of paciente">
+            <tbody id="PacienteTableBody" *ngFor="let ast of paciente | buscar:buscarpost">
               <tr>
               <td>{{ast.Nombre}}</td>
               <td>{{ast.Telefono}}</td>

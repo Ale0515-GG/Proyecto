@@ -27,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  import { MatFormFieldModule } from '@angular/material/form-field';
  import { MatInputModule } from '@angular/material/input';
  import { MatSliderModule } from '@angular/material/slider';
+import { BuscarPipe } from './pipe/buscar.pipe';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ConfirPacienteComponent,
     CitaconfComponent,
     CitarealComponent,
+    BuscarPipe,
     
 
 

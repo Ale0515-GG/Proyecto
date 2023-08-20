@@ -2,12 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
-import { Paciente } from 'src/app/models/Paciente';
 import { PacienteService } from 'src/app/service/paciente.service';
 import { Route } from '@angular/router';
 import { ExpedienteService } from '../../service/expediente.service';
 import { HistorialComponent } from '../historial/historial.component';
-
+import {MatTableDataSource} from '@angular/material/table'
 @Component({
   selector: 'app-pasiente',
   templateUrl: './pasiente.component.html',
@@ -20,9 +19,10 @@ export class PasienteComponent implements OnInit {
   pacienteEncontrado: any;
   
   control = new FormControl();
-
+  
   constructor(private pacienteService: PacienteService, private expedienteService:ExpedienteService) {}
 
+  buscarpost='';
   ngOnInit(): void {
     this.pacienteService.getPacientes().subscribe(
       res => {
@@ -39,6 +39,12 @@ export class PasienteComponent implements OnInit {
       err => console.error(err)
     );
   }
+
+//   applyFilter(event: Event) {
+//     const filterValue = (event.target as HTMLInputElement).value;
+//     this.dataSource.filter = filterValue.trim().toLowerCase();
+
+// }
 
   observerChangeSearch() {
     this.control.valueChanges.pipe(
@@ -62,5 +68,5 @@ export class PasienteComponent implements OnInit {
           this.pacienteEncontrado = null;
         } 
       );
-  }
+}
 }
