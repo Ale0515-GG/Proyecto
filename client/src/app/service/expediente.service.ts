@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; //permite hacer peticiones http
 import { Expediente } from '../models/Expediente';
 import { Observable } from 'rxjs';
@@ -13,6 +13,8 @@ export class ExpedienteService {
 
   constructor(private http: HttpClient) { }
 
+
+  @Output() disparador: EventEmitter<any> =new EventEmitter();
   //Devuelve todos los pacientes
   getExpedientes() {
     return this.http.get(`${this.API_URI}/expediente`); //o direccion donde estan los pacientes o /Paciente
