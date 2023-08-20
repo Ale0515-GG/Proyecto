@@ -1,20 +1,25 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
+import { ToastrService } from 'ngx-toastr';
 @Pipe({
   name: 'buscar'
 })
 export class BuscarPipe implements PipeTransform {
 
-  transform(lista: any[], filtro: string): any[] {
-    if (!lista || !filtro) {
-      return lista; // Si la lista o el filtro son nulos, devolver la lista original
+  constructor(private toastrService: ToastrService) {} // Inyecta el servicio de notificaciones
+
+  transform(value: any, arg: any): any {
+    const resultPost = [];
+    for (const post of value) {
+      if (post.Nombre.indexOf(arg) > -1) {
+        resultPost.push(post);
+      }
     }
-
-    filtro = filtro.toLowerCase(); // Convertir el filtro a minúsculas para la búsqueda insensible a mayúsculas
-
-    return lista.filter(item => {
-      // Aquí defines la lógica de búsqueda. Por ejemplo, si deseas buscar por nombre:
-      return item.Nombre.toLowerCase().includes(filtro);
-    });
+  
+    if (resultPost.length === 0) {
+      this.toastrService.warning('No se encontraron resultados', 'Aviso');
+    }
+  
+    return resultPost;
   }
+  
 }
