@@ -27,7 +27,7 @@
                     <th>Genero</th>
                 </tr>
             </thead>
-            <tbody id="PacienteTableBody" *ngFor="let ast of paciente">
+            <tbody id="PacienteTableBody" *ngFor="let ast of paciente | buscar:buscarpost">
               <tr>
               <td>{{ast.Nombre}}</td>
               <td>{{ast.Telefono}}</td>
@@ -47,31 +47,26 @@
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-striped">
-            <thead>
+            <thead >
               <tr>
+                <th>Paciente</th>
                 <th>Fecha</th>
                 <th>Diagnóstico</th>
+                <th>Medicamento</th>
                 <th>Médico</th>
                 <th>Acciones</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let ex of expediente">
               <tr>
-                <td>Fecha del Registro 1</td>
-                <td>Diagnóstico del Registro 1</td>
-                <td>Médico del Registro 1</td>
+                <td>{{ex.Nombre}}</td>
+                <td>{{ex.Fecha | date:'dd-MMM-yyyy'}}</td>
+                <td>{{ex.Diagnostico}}</td>
+                <td>{{ex.MedRecetado}}</td>
+                <td>{{ex.MedicoTratante}}</td>
                 <td>
                   <a href="/cargar-historial" type="button" class="btn btn-dark">Ver Detalles</a>
-                  <a href="/cargar-cita" type="button" class="btn btn-dark">Eliminar</a>
-                </td>
-              </tr>
-              <tr>
-                <td>Fecha del Registro 2</td>
-                <td>Diagnóstico del Registro 2</td>
-                <td>Médico del Registro 2</td>
-                <td>
-                  <a href="/cargar-historial" type="button" class="btn btn-dark">Ver Detalles</a>
-                  <a href="/cargar-cita" type="button" class="btn btn-dark">Eliminar</a>
+                  <a href="/cargar-cita" type="button" class="btn btn-danger">Eliminar</a>
                 </td>
               </tr>
             </tbody>
