@@ -23,8 +23,8 @@ export class MedicoService {
     return this.http.delete(`${this.API_URI}/medico/${id}`);
   }
 
-  saveMedi(medi:Medico){
-    return this.http.post(`${this.API_URI}/medico`,medi);
+  saveMedi(medico:Medico){
+    return this.http.post(`${this.API_URI}/medico`,medico);
   }
 
   updateMedi(id:string, updateMedi:Medico ): Observable<Medico>{
