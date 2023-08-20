@@ -11,7 +11,7 @@ import { LateComponent } from './componentes/late/late.component';
 import { HistorialComponent } from './componentes/historial/historial.component';
 import { PrincipalComponent } from './componentes/principal/principal.component';
 import { PasienteComponent } from './componentes/pasiente/pasiente.component';
-import { MedicosComponent } from './componentes/medicos/medicos.component';
+//import { MedicosComponent } from './componentes/medicos/medicos.component';
 
 import { GeneMEDComponent } from './componentes/gene-med/gene-med.component';
 import { GenePACComponent } from './componentes/gene-pac/gene-pac.component';
@@ -22,6 +22,9 @@ import { PacienteService } from './service/paciente.service';
 import { CitaconfComponent } from './componentes/citaconf/citaconf.component';
 import { CitarealComponent } from './componentes/citareal/citareal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//notificacion 
+import { ToastrModule } from 'ngx-toastr';
 
 //Angular material
  import { MatFormFieldModule } from '@angular/material/form-field';
@@ -39,7 +42,7 @@ import { BuscarPipe } from './pipe/buscar.pipe';
     HistorialComponent,
     PrincipalComponent,
     PasienteComponent,
-    MedicosComponent,
+   // MedicosComponent,
     GeneMEDComponent,
     GenePACComponent,
     ConfirPacienteComponent,
@@ -60,6 +63,7 @@ import { BuscarPipe } from './pipe/buscar.pipe';
     MatFormFieldModule,
     MatInputModule,
     MatSliderModule,
+    ToastrModule.forRoot(),
 
     
   ],

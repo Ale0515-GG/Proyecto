@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; //permite hacer peticiones http
 import { Paciente } from '../models/Paciente';
 import { Observable } from 'rxjs';
+//import { ToastrService } from 'ngx-toastr';
+
 
 
 @Injectable({
@@ -28,6 +30,7 @@ export class PacienteService {
   }
 
   savePaciente(paciente: Paciente){
+    //this.toastrService.success(`${paciente.Nombre} guardado correctamente`,'Aviso');
     return this.http.post(`${this.API_URI}/paciente`, paciente);
   }
 
