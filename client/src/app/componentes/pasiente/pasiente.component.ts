@@ -5,8 +5,6 @@ import { debounceTime } from 'rxjs';
 import { PacienteService } from 'src/app/service/paciente.service';
 import { Route } from '@angular/router';
 import { ExpedienteService } from '../../service/expediente.service';
-import { HistorialComponent } from '../historial/historial.component';
-import {MatTableDataSource} from '@angular/material/table'
 @Component({
   selector: 'app-pasiente',
   templateUrl: './pasiente.component.html',
