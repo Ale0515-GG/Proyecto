@@ -11,6 +11,8 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
+  
+
   getLogins(): Observable<any> {
     return this.http.get(`${this.API_URI}/login`);
   }
@@ -30,7 +32,9 @@ export class LoginService {
   updateLogin(id: string, updatedLogin: any): Observable<any> {
     return this.http.put(`${this.API_URI}/login/${id}`, updatedLogin);
   }
+  // En el servicio login.service.ts
+login(email: string, password: string): Observable<any> {
+  return this.http.post(`${this.API_URI}/login`, { email, password });
+}
 
-
-  
 }

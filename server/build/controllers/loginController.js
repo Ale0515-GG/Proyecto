@@ -64,7 +64,5 @@ class LoginController {
             res.json({ text: "Login " + req.params.id + " was updated" });
         });
     }
-
-  
 }
 exports.loginController = new LoginController();

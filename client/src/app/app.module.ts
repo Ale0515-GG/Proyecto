@@ -44,6 +44,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ConfirPacienteComponent,
     CitaconfComponent,
     CitarealComponent,
+    
 
 
   ],
