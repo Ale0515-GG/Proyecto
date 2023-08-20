@@ -14,10 +14,12 @@ import {MatTableDataSource} from '@angular/material/table'
 })
 export class PasienteComponent implements OnInit {
 
+  
   paciente: any = [];
   expediente: any =[];
   pacienteEncontrado: any;
   
+
   control = new FormControl();
   
   constructor(private pacienteService: PacienteService, private expedienteService:ExpedienteService) {}
@@ -39,12 +41,6 @@ export class PasienteComponent implements OnInit {
       err => console.error(err)
     );
   }
-
-//   applyFilter(event: Event) {
-//     const filterValue = (event.target as HTMLInputElement).value;
-//     this.dataSource.filter = filterValue.trim().toLowerCase();
-
-// }
 
   observerChangeSearch() {
     this.control.valueChanges.pipe(
