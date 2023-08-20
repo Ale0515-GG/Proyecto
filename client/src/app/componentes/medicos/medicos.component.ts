@@ -1,4 +1,4 @@
-import { Component,HostBinding,OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { MedicoService } from 'src/app/service/medico.service'; 
 
 @Component({
@@ -6,36 +6,34 @@ import { MedicoService } from 'src/app/service/medico.service';
   templateUrl: './medicos.component.html',
   styleUrls: ['./medicos.component.css']
 })
-
-export class GameListComponent implements	 OnInit{
+export class MedicosComponent implements OnInit {
   @HostBinding('class') classes='row';
-  games:any =[]
-  constructor(private gameService:MedicoService){
+  medicos: any = [];
 
-  }
-  ngOnInit(){
+  constructor(private medicoService: MedicoService) {}
+
+  ngOnInit() {
     this.getMedicos();
   }
 
   getMedicos(){
-    this.gameService.getMedicos().subscribe(
-      // res => console.log(res),
-      res => {
-        this.games=res;
+    this.medicoService.getMedicos().subscribe(
+      res=> {
+        this.medicos = res;
       },
       err => console.log(err)
-    )
+      )
   }
 
-  deleteMedi(id: string){
-    // console.log(id);//se lo manda a consola
-    this.gameService. deleteMedi(id).subscribe(
-      res =>{
-        console.log(res)//mueste lo de la api, aqui se puede poner lo de registro eliminado
-        this.getMedicos();
-      },
-      err => console.log(err)
-    )
+  deleteMedico(id: number | undefined) {
+    if (id !== undefined) {
+      this.medicoService.deleteMedi(id.toString()).subscribe(
+        res => {
+          console.log(res);
+          this.getMedicos();
+        },
+        (err: any) => console.error('Error al eliminar médico:', err)
+      );
+    }
   }
-
 }
