@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Medico } from 'src/app/models/Medico';
 import { MedicoService } from 'src/app/service/medico.service';
@@ -8,26 +8,34 @@ import { MedicoService } from 'src/app/service/medico.service';
   templateUrl: './gene-med.component.html',
   styleUrls: ['./gene-med.component.css']
 })
-export class GeneMEDComponent implements OnInit {
+export class GeneMEDComponent {
+  @HostBinding('class') clases ='row';
+
   medi: Medico = {
-    Id: 0,
-    Nombre: '',
-    Especialidad: '',
-    Telefono: '',
-    Correo: ''
-  };
+    Id:0,
+    Nombre:'',
+    Especialidad:'',
+    Telefono:'',
+   Correo:''
+};
 
-  constructor(private mediService: MedicoService, private router: Router) {}
-
-  ngOnInit(): void {}
-
-  saveNewMedi() {
-    this.mediService.saveMedi(this.medi).subscribe(
-      res => {
-        console.log(res);
-        this.router.navigate(['/medicos']);
-      },
-      err => console.error(err)
-    );
-  }
+ngOnInit(): void {
 }
+
+constructor(private mediService: MedicoService,private router:Router){}
+
+saveNewMedi(){ //generamos el metodo
+  // console.log(this.game);
+  delete this.medi.Id;
+
+  this.mediService.saveMedi(this.medi).subscribe(
+    res =>{
+      console.log(res);
+      this.router.navigate(['/medicos']);
+    },
+    err => console.error(err)
+  )
+}
+
+}
+

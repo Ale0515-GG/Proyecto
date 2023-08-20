@@ -3,30 +3,29 @@
 <html>
 <head>
     <title>Buscar Médicos</title>
+   
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-          <div class="col-md-4" *ngFor="let medico of medicos">
-            <div class="card text-center">
-              <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-                {{ medico.Nombre }}
-                <button class="btn btn-danger" (click)="deleteMedico(medico.Id)">
-                  <i class="far fa-trash-alt"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <p>Especialidad: {{ medico.Especialidad }}</p>
-                <p>Teléfono: {{ medico.Telefono }}</p>
-                <p>Correo Electrónico: {{ medico.Correo }}</p>
-              </div>
-            </div>
-          </div>
+   
+
+        <div class="mt-4">
+            <h2>Médicos Buscar</h2>
+            <input type="text" class="form-control" id="search" placeholder="Buscar médico por nombre">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Especialidad</th>
+                        <th>Teléfono</th>
+                        <th>Correo Electrónico</th>
+                    </tr>
+                </thead>
+                <tbody id="doctorTableBody">
+                    <!-- Aquí se mostrarán los médicos registrados -->
+                </tbody>
+            </table>
         </div>
-      </div>
-      
+  
     <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2023 SaludParaTI. Todos los derechos reservados.</p>
     </footer>
-</body>
-</html>
