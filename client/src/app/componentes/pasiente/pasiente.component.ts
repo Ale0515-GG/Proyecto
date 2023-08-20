@@ -5,6 +5,8 @@ import { debounceTime } from 'rxjs';
 import { Paciente } from 'src/app/models/Paciente';
 import { PacienteService } from 'src/app/service/paciente.service';
 import { Route } from '@angular/router';
+import { ExpedienteService } from '../../service/expediente.service';
+import { HistorialComponent } from '../historial/historial.component';
 
 @Component({
   selector: 'app-pasiente',
@@ -14,11 +16,12 @@ import { Route } from '@angular/router';
 export class PasienteComponent implements OnInit {
 
   paciente: any = [];
+  expediente: any =[];
   pacienteEncontrado: any;
   
   control = new FormControl();
 
-  constructor(private pacienteService: PacienteService) {}
+  constructor(private pacienteService: PacienteService, private expedienteService:ExpedienteService) {}
 
   ngOnInit(): void {
     this.pacienteService.getPacientes().subscribe(
@@ -28,6 +31,13 @@ export class PasienteComponent implements OnInit {
       err => console.error(err)
     );
     this.observerChangeSearch();
+
+    this.expedienteService.getExpedientes().subscribe(
+      res => {
+        this.expediente = res;
+      },
+      err => console.error(err)
+    );
   }
 
   observerChangeSearch() {
@@ -54,5 +64,3 @@ export class PasienteComponent implements OnInit {
       );
   }
 }
-
-
