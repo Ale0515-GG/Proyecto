@@ -32,7 +32,7 @@
               <td>{{ast.fecha_nacimiento | date:'dd-MMM-yyyy'}}</td>
               <td>{{ast.Genero}}</td>
               <td>
-                <a type="button" class="btn btn-success" [routerLink]="['/PACGENE/',ast.Id]">Editar</a>
+                <a type="button" class="btn btn-success"[routerLink]="['/PACGENE/',ast.Nombre]">Editar</a>
                 <a type="button" class="btn btn-danger" (click)="deletePaciente(ast.Id)" >Eliminar</a>
               </td>
             </tr>

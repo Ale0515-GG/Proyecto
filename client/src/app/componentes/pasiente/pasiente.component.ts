@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { PacienteService } from 'src/app/service/paciente.service';
-import { Route } from '@angular/router';
+import { Route, Router, RouterModule } from '@angular/router';
 import { ExpedienteService } from '../../service/expediente.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -15,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PasienteComponent implements OnInit {
 
+  edit : boolean = false;
   
   paciente: any = [];
   expediente: any =[];
@@ -23,7 +24,7 @@ export class PasienteComponent implements OnInit {
 
   control = new FormControl();
   
-  constructor(private pacienteService: PacienteService, private expedienteService:ExpedienteService, private toastrService:ToastrService) {}
+  constructor(private pacienteService: PacienteService, private expedienteService:ExpedienteService, private toastrService:ToastrService, private router:Router) {}
 
   buscarpost='';
   ngOnInit(): void {
@@ -113,5 +114,6 @@ deleteExpediente(idExpediente: string){
     err => this.toastrService.error(`No se pudo borrar el expediente`,'Error')
   )
 }
+
 
 }

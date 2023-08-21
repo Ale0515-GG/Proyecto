@@ -5,7 +5,6 @@ import { Paciente } from 'src/app/models/Paciente';
 import { PacienteService } from 'src/app/service/paciente.service';
 import { ToastrService } from 'ngx-toastr';
 
-
 @Component({
   selector: 'app-gene-pac',
   templateUrl: './gene-pac.component.html',
@@ -21,23 +20,37 @@ export class GenePACComponent {
     Genero: ''
 
 };
+
+paciente: any = [];
 constructor(private pacienteService: PacienteService,private router:Router, private toastrService:ToastrService, private activatedRoute:ActivatedRoute){}
 
 ngOnInit():void{
-this.cargar();
+
+  const params =this.activatedRoute.snapshot.params;
+
+  this.pacienteService.getPaciente(params['Nombre'])
+  .subscribe(
+    res => {
+      console.log(res); //nos regresa los valores de la base de datos
+      this.paciente = res; //todo el game nos lo imprime
+      this.edit = true;//VARIABLEEE
+    },
+    err => console.error(err)
+  )
+  
 }
-cargar():void{
-  this.activatedRoute.params.subscribe(
-    e=>{
-      let Id =e['id'];
-      if(Id){
-        this.pacienteService.getPaciente(Id).subscribe(
-          es=>this.Genepa
-        );
-      }
-    }
+
+updatePaciente(){
+  delete this.paciente.created_at;
+  this.pacienteService.updatePaciente(this.paciente.Id,this.paciente).subscribe(
+    res => {
+      console.log(res);
+      this.router.navigate(['/paciente/']);
+    },
+    err => console.log(err)
   )
 }
+
 
 saveNewPaciente(){ //generamos el metodo
   // console.log(this.game);

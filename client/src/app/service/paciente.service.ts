@@ -23,6 +23,10 @@ export class PacienteService {
   return this.http.get(`${this.API_URI}/paciente/${Nombre}`); //peticio al id que proporcione
   }
 
+  getPacient(Nombre: String){
+    return this.http.get(`${this.API_URI}/PACGENE/${Nombre}`); //peticio al id que proporcione
+    }
+
   deletePaciente(id: String){
     return this.http.delete(`${this.API_URI}/paciente/${id}`);
   }
