@@ -25,6 +25,8 @@ export class MedicosComponent implements OnInit {
       )
   }
 
+
+  
   deleteMedico(id: number | undefined) {
     if (id !== undefined) {
       this.medicoService.deleteMedi(id.toString()).subscribe(
@@ -36,4 +38,7 @@ export class MedicosComponent implements OnInit {
       );
     }
   }
+
+  
+
 }

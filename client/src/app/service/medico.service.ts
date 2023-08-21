@@ -22,6 +22,7 @@ export class MedicoService {
   deleteMedi(id:string){
     return this.http.delete(`${this.API_URI}/medico/${id}`);
   }
+  
 
   saveMedi(medico:Medico){
     return this.http.post(`${this.API_URI}/medico`,medico);
