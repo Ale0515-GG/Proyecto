@@ -49,7 +49,7 @@ class ExpedienteController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('DELETE FROM Expediente WHERE id=?', [id]);
+                return yield connection.query('DELETE FROM Expediente WHERE idPaciente=?', [id]);
             }));
             res.json({ text: "Expediente " + req.params.id + " was deleted" });
             // res.json({text:"deleting Expediente"});

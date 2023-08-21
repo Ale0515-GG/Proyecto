@@ -5,6 +5,8 @@ import { debounceTime } from 'rxjs';
 import { PacienteService } from 'src/app/service/paciente.service';
 import { Route } from '@angular/router';
 import { ExpedienteService } from '../../service/expediente.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-pasiente',
@@ -21,7 +23,7 @@ export class PasienteComponent implements OnInit {
 
   control = new FormControl();
   
-  constructor(private pacienteService: PacienteService, private expedienteService:ExpedienteService) {}
+  constructor(private pacienteService: PacienteService, private expedienteService:ExpedienteService, private toastrService:ToastrService) {}
 
   buscarpost='';
   ngOnInit(): void {
@@ -63,6 +65,53 @@ export class PasienteComponent implements OnInit {
           this.pacienteEncontrado = null;
         } 
       );
+}
+
+getPaciente(){
+  this.pacienteService.getPacientes().subscribe(
+    // res => console.log(res),
+    res => {
+      this.paciente=res;
+    },
+    err => console.log(err)
+  )
+}
+
+getExpediente(){
+  this.expedienteService.getExpedientes().subscribe(
+    // res => console.log(res),
+    res => {
+      this.expediente=res;
+    },
+    err => console.log(err)
+  )
+}
+
+
+deletePaciente(Id: string){
+  // console.log(id);//se lo manda a consola
+  this.pacienteService.deletePaciente(Id).subscribe(
+    res =>{
+      console.log(res)//mueste lo de la api, aqui se puede poner lo de registro eliminado
+      this.getPaciente();
+      this.toastrService.warning(`Se borro un paciente`,'Atencion')
+
+    },
+    err => this.toastrService.error(`No se pudo borrar el paciente`,'Error')
+  )
+}
+
+deleteExpediente(idPaciente: string){
+  // console.log(id);//se lo manda a consola
+  this.expedienteService.delteExpediente(idPaciente).subscribe(
+    res =>{
+      console.log(res)//mueste lo de la api, aqui se puede poner lo de registro eliminado
+      this.getExpediente();
+      this.toastrService.warning(`Se borro un expediente`,'Atencion')
+
+    },
+    err => this.toastrService.error(`No se pudo borrar el expediente`,'Error')
+  )
 }
 
 }

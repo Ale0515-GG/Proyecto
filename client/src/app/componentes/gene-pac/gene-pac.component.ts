@@ -5,6 +5,7 @@ import { Paciente } from 'src/app/models/Paciente';
 import { PacienteService } from 'src/app/service/paciente.service';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-gene-pac',
   templateUrl: './gene-pac.component.html',

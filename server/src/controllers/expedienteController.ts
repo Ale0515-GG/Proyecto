@@ -42,7 +42,7 @@ class ExpedienteController {
         const {id}=req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'DELETE FROM Expediente WHERE id=?',[id]
+                'DELETE FROM Expediente WHERE idPaciente=?',[id]
             );
         })
         res.json({text:"Expediente "+req.params.id+" was deleted"});
