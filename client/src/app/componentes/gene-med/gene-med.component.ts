@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Medico } from 'src/app/models/Medico';
 import { MedicoService } from 'src/app/service/medico.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-gene-med',
@@ -17,7 +18,7 @@ export class GeneMEDComponent implements OnInit {
     Correo: ''
   };
 
-  constructor(private mediService: MedicoService, private router: Router) {}
+  constructor(private mediService: MedicoService, private router: Router, private toastrService:ToastrService) {}
 
   ngOnInit(): void {}
 
@@ -26,8 +27,9 @@ export class GeneMEDComponent implements OnInit {
       res => {
         console.log(res);
         this.router.navigate(['/medicos']);
+        this.toastrService.success(`Medico guardado con exito!`,'Aviso') //notificación
       },
-      err => console.error(err)
+      err => this.toastrService.error(`No se guardo correctamente el Medico`,'Error')
     );
   }
 }
