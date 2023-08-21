@@ -42,7 +42,7 @@ class ExpedienteController {
         const {id}=req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'DELETE FROM Expediente WHERE idPaciente=?',[id]
+                'DELETE FROM Expediente WHERE idExpediente=?',[id]
             );
         })
         res.json({text:"Expediente "+req.params.id+" was deleted"});
@@ -53,7 +53,7 @@ class ExpedienteController {
         const {id}=req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'UPDATE Expediente SET ? WHERE id=?',[req.body,id]//el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
+                'UPDATE Expediente SET ? WHERE idExpediente=?',[req.body,id]//el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
             );
         })
         res.json({text:"Expediente "+req.params.id+" was updated"});

@@ -49,7 +49,7 @@ class ExpedienteController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('DELETE FROM Expediente WHERE idPaciente=?', [id]);
+                return yield connection.query('DELETE FROM Expediente WHERE idExpediente=?', [id]);
             }));
             res.json({ text: "Expediente " + req.params.id + " was deleted" });
             // res.json({text:"deleting Expediente"});
@@ -59,7 +59,7 @@ class ExpedienteController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('UPDATE Expediente SET ? WHERE id=?', [req.body, id] //el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
+                return yield connection.query('UPDATE Expediente SET ? WHERE idExpediente=?', [req.body, id] //el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
                 );
             }));
             res.json({ text: "Expediente " + req.params.id + " was updated" });

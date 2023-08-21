@@ -4,6 +4,7 @@ import { Expediente } from 'src/app/models/Expediente';
 import { ExpedienteService } from 'src/app/service/expediente.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { PacienteService } from '../../service/paciente.service';
 
 
 
@@ -16,8 +17,6 @@ import { ToastrService } from 'ngx-toastr';
 export class HistorialComponent implements OnInit {
 
   @HostBinding('class') classes = 'row';
-
-   
 
 
   expediente: Expediente = {
@@ -39,10 +38,16 @@ export class HistorialComponent implements OnInit {
       Nota : ''
   };
 
+  paciente: any = [];
   
-  constructor(private expedienteService: ExpedienteService, private router: Router,private toastrService:ToastrService){}
+  constructor(private expedienteService: ExpedienteService, private router: Router,private toastrService:ToastrService, private pacienteService:PacienteService){}
   ngOnInit(): void {
-    
+    this.pacienteService.getPacientes().subscribe(
+      res => {
+        this.paciente = res;
+      },
+      err => console.error(err)
+    );
   }
   
   saveNewExpediente(){
