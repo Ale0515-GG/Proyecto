@@ -10,12 +10,14 @@
     <h2>Formulario de Expediente Médico</h2>
     <form>
       <div class="form-row">
-      <div class="form-group">
+        
+        <div class="form-group">
           <label for="genero">Nombre:</label>
-        <select class="form-control" id="nombre"  name="Nombre" [(ngModel)]="expediente.Nombre">
-          <option  *ngFor="let ex of paciente" [value]="ex.Nombre">{{ex.Nombre}}</option>
-        </select>
-      </div>
+          <select class="form-control" id="nombre" name="Nombre" [(ngModel)]="expediente.Nombre">
+            <option *ngFor="let ex of paciente" [ngValue]="ex.Nombre">{{ex.Nombre}}</option>
+          </select>
+        </div>
+        
         <div class="form-group col-md-6">
           <label for="edad">Edad:</label>
           <input type="number" class="form-control" id="edad" name="Edad" [(ngModel)]="expediente.Edad" placeholder="Ingrese su edad">

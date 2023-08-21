@@ -1,5 +1,4 @@
 import {Request, Response } from 'express';
-
 import pool from '../database';
 
 class ExpedienteController {
@@ -58,6 +57,7 @@ class ExpedienteController {
         })
         res.json({text:"Expediente "+req.params.id+" was updated"});
     }
+   
 
 }
 

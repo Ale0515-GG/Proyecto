@@ -101,9 +101,9 @@ deletePaciente(Id: string){
   )
 }
 
-deleteExpediente(idPaciente: string){
+deleteExpediente(idExpediente: string){
   // console.log(id);//se lo manda a consola
-  this.expedienteService.delteExpediente(idPaciente).subscribe(
+  this.expedienteService.delteExpediente(idExpediente).subscribe(
     res =>{
       console.log(res)//mueste lo de la api, aqui se puede poner lo de registro eliminado
       this.getExpediente();

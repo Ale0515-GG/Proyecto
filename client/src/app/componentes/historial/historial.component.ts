@@ -70,6 +70,7 @@ export class HistorialComponent implements OnInit {
     )
   }
 
-  
+
+
 
 }
