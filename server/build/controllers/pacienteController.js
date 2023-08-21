@@ -65,9 +65,9 @@ class PacienteController {
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
+            const { Nombre } = req.params;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('UPDATE Paciente SET ? WHERE id=?', [req.body, id] //el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
+                return yield connection.query('UPDATE Paciente SET ? WHERE Nombre=?', [req.body, Nombre] //el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
                 );
             }));
             res.json({ text: "Paciente " + req.params.id + " was updated" });

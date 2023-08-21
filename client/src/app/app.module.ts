@@ -29,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  import { MatSliderModule } from '@angular/material/slider';
 import { BuscarPipe } from './pipe/buscar.pipe';
 import { ToastrModule } from 'ngx-toastr';
+import { PaceditComponent } from './componentes/pacedit/pacedit.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ToastrModule } from 'ngx-toastr';
     CitaconfComponent,
     CitarealComponent,
     BuscarPipe,
+    PaceditComponent,
 
 
   ],

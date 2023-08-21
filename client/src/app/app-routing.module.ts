@@ -12,6 +12,7 @@ import { GenePACComponent } from './componentes/gene-pac/gene-pac.component';
 import { CitaconfComponent } from './componentes/citaconf/citaconf.component';
 import { ConfirPacienteComponent } from './componentes/confir-paciente/confir-paciente.component';
 import { CitarealComponent } from './componentes/citareal/citareal.component';
+import { PaceditComponent } from './componentes/pacedit/pacedit.component';
 
 const routes: Routes = [
 
@@ -26,7 +27,7 @@ const routes: Routes = [
   {path: 'Medicos', component: MedicosComponent},
   {path: 'Medicosge', component: GeneMEDComponent},
   {path: 'PACGENE', component: GenePACComponent},
-  {path: 'PACGENE/:id', component: GenePACComponent},
+  {path: 'Edit/:id', component: PaceditComponent},
   {path: 'Confirpaciente', component: ConfirPacienteComponent},
   {path: 'Citaconf', component: CitaconfComponent}
   

@@ -24,7 +24,7 @@ export class PacienteService {
   }
 
   getPacient(Nombre: String){
-    return this.http.get(`${this.API_URI}/PACGENE/${Nombre}`); //peticio al id que proporcione
+    return this.http.get(`${this.API_URI}/Edit/${Nombre}`); //peticio al id que proporcione
     }
 
   deletePaciente(id: String){

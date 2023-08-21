@@ -12,28 +12,28 @@
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="nombre">Nombre:</label>
-          <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre" name="Nombre" [(ngModel)]="Genepa.Nombre">
+          <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre" name="Nombre" [(ngModel)]="paciente.Nombre">
         </div>
         <div class="form-group col-md-6">
           <label for="telefono">Teléfono:</label>
-          <input type="tel" class="form-control" id="telefono" placeholder="Ingrese el número de teléfono" name="Telefono" [(ngModel)]="Genepa.Telefono">
+          <input type="tel" class="form-control" id="telefono" placeholder="Ingrese el número de teléfono" name="Telefono" [(ngModel)]="paciente.Telefono">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
-          <input type="date" class="form-control" id="fecha-nacimiento" name="fecha_nacimiento"[(ngModel)]="Genepa.fecha_nacimiento">
+          <input type="text" class="form-control" id="fecha-nacimiento" name="fecha_nacimiento"[(ngModel)]="paciente.fecha_nacimiento">
         </div>
         <div class="form-group col-md-6">
           <label for="telefono">Genero:</label>
-          <select class="form-control" id="genero"  name="Genero"[(ngModel)]="Genepa.Genero">
+          <select class="form-control" id="genero"  name="Genero"[(ngModel)]="paciente.Genero">
             <option value="Masculino">Masculino</option>
             <option value="Femenino">Femenino</option>
             <option value="Otro">Otro</option>
           </select>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary" (click)="saveNewPaciente()">Agregar Paciente</button>
+      <button type="submit" class="btn btn-primary" (click)="updatePaciente()">Agregar Paciente</button>
     </form>
   </div>
  </body>
