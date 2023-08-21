@@ -25,7 +25,6 @@ constructor(private pacienteService: PacienteService,private router:Router, priv
 saveNewPaciente(){ //generamos el metodo
   // console.log(this.game);
   delete this.Genepa.Id;
-this.pacienteService.savePaciente(this.Genepa)
   this.pacienteService.savePaciente(this.Genepa).subscribe(
     res =>{
       console.log(res);
