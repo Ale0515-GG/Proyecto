@@ -44,7 +44,7 @@ cargar(){
   )
 }
 
-updatePaciente(){
+updatePaciente(Nombre: String){
   delete this.paciente.created_at;
   this.pacienteService.updatePaciente(this.paciente.Nombre,this.paciente).subscribe(
     res => {
