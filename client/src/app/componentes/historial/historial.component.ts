@@ -3,6 +3,7 @@ import { Component,HostBinding, OnInit } from '@angular/core';
 import { Expediente } from 'src/app/models/Expediente';
 import { ExpedienteService } from 'src/app/service/expediente.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -39,7 +40,7 @@ export class HistorialComponent implements OnInit {
   };
 
   
-  constructor(private expedienteService: ExpedienteService, private router: Router){}
+  constructor(private expedienteService: ExpedienteService, private router: Router,private toastrService:ToastrService){}
   ngOnInit(): void {
     
   }
@@ -57,8 +58,9 @@ export class HistorialComponent implements OnInit {
     .subscribe(res=> {
       console.log(res);
       this.router.navigate(['/expediente'])
+      this.toastrService.success(`¡Paciente guardado con exito!`,'Aviso') //notificación
     },
-    err => console.error(err)
+    err => this.toastrService.error(`No se guardo correctamente el paciente`,'Error')
     )
   }
 

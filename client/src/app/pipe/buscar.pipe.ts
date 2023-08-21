@@ -11,6 +11,7 @@ export class BuscarPipe implements PipeTransform {
         resultPost.push(post);
       };
     };
+
     return resultPost;
   }
   }

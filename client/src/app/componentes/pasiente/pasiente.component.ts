@@ -5,6 +5,7 @@ import { debounceTime } from 'rxjs';
 import { PacienteService } from 'src/app/service/paciente.service';
 import { Route } from '@angular/router';
 import { ExpedienteService } from '../../service/expediente.service';
+
 @Component({
   selector: 'app-pasiente',
   templateUrl: './pasiente.component.html',
@@ -63,4 +64,5 @@ export class PasienteComponent implements OnInit {
         } 
       );
 }
+
 }
