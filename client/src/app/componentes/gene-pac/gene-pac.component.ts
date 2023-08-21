@@ -3,6 +3,7 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Paciente } from 'src/app/models/Paciente';
 import { PacienteService } from 'src/app/service/paciente.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-gene-pac',
@@ -19,7 +20,7 @@ export class GenePACComponent {
 
 };
 
-constructor(private pacienteService: PacienteService,private router:Router){}
+constructor(private pacienteService: PacienteService,private router:Router, private toastrService:ToastrService){}
 
 saveNewPaciente(){ //generamos el metodo
   // console.log(this.game);
@@ -29,8 +30,10 @@ this.pacienteService.savePaciente(this.Genepa)
     res =>{
       console.log(res);
       this.router.navigate(['/paciente']);
+      this.toastrService.success(`¡Paciente guardado con exito!`,'Aviso')
     },
-    err => console.error(err)
+    err => 
+    this.toastrService.error(`No se guardo correctamente el paciente`,'Error')
   )
 }
 

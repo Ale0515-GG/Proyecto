@@ -28,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  import { MatInputModule } from '@angular/material/input';
  import { MatSliderModule } from '@angular/material/slider';
 import { BuscarPipe } from './pipe/buscar.pipe';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,6 @@ import { BuscarPipe } from './pipe/buscar.pipe';
     CitaconfComponent,
     CitarealComponent,
     BuscarPipe,
-    
 
 
   ],
@@ -60,7 +60,7 @@ import { BuscarPipe } from './pipe/buscar.pipe';
     MatFormFieldModule,
     MatInputModule,
     MatSliderModule,
-
+    ToastrModule.forRoot(),
     
   ],
   providers: [
