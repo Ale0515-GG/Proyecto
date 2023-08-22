@@ -1,24 +1,27 @@
-import { ExpedienteService } from 'src/app/service/expediente.service';
+
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MedicoService } from '../../service/medico.service';
-
+import { Paciente } from 'src/app/models/Paciente';
+import { ExpedienteService } from 'src/app/service/expediente.service'; 
 import { ToastrService } from 'ngx-toastr';
+import { MedicoService } from 'src/app/service/medico.service';
+import { Medico } from '../../models/Medico';
 
 @Component({
-  selector: 'app-update-ex',
-  templateUrl: './update-ex.component.html',
-  styleUrls: ['./update-ex.component.css']
+  selector: 'app-actuex',
+  templateUrl: './actuex.component.html',
+  styleUrls: ['./actuex.component.css']
 })
+export class ActuexComponent {
 
 
-export class UpdateExComponent {
-  edit : boolean = false;
+edit : boolean = false;
 
-  expe: any = [];
-  
-  medico: any=[];
-  
+expediente: any = [];
+medico: any = [];
+
+
+
   constructor(private expedienteService: ExpedienteService,private medicoService:MedicoService,private router:Router, private toastrService:ToastrService, private activatedRoute:ActivatedRoute){}
 
   ngOnInit():void{
@@ -27,7 +30,7 @@ export class UpdateExComponent {
   
     this.expedienteService.getExpedientes().subscribe(
       res => {
-        this.expe = res;
+        this.expediente = res;
       },
       err => console.error(err)
     );
@@ -48,7 +51,7 @@ export class UpdateExComponent {
         let id=e['id'];
         if(id){
           this.expedienteService.getExpediente(id).subscribe(
-            es=>this.expe=es
+            es=>this.expediente=es
           );
         }
       }
@@ -57,7 +60,7 @@ export class UpdateExComponent {
   
   
   updateExpediente(){
-    this.expedienteService.updateExpediente(this.expe.idExpediente,this.expe).subscribe(
+    this.expedienteService.updateExpediente(this.expediente.idExpediente,this.expediente).subscribe(
       res => {
         console.log(res);
         this.router.navigate(['/expediente/']);

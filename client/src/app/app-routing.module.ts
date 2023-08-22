@@ -13,7 +13,8 @@ import { CitaconfComponent } from './componentes/citaconf/citaconf.component';
 import { ConfirPacienteComponent } from './componentes/confir-paciente/confir-paciente.component';
 import { CitarealComponent } from './componentes/citareal/citareal.component';
 import { PaceditComponent } from './componentes/pacedit/pacedit.component';
-import { UpdateExComponent } from './componentes/update-ex/update-ex.component';
+import { ActuexComponent } from './componentes/actuex/actuex.component';
+import { EditarMedicoComponent } from './editar-medico/editar-medico.component';
 
 const routes: Routes = [
 
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path: 'pagina-inicio',component:PrincipalComponent},
   {path: 'registrar', component: RegistroComponent},
   {path: 'cargar-historial', component: HistorialComponent},
-  {path: 'cargar-historial/:id', component: UpdateExComponent},
+  {path: 'cargar-historial/:id', component: ActuexComponent},
   {path: 'cargar-cita', component: CitarealComponent},
   {path: 'paciente', component: PasienteComponent},
   {path: 'Medicos', component: MedicosComponent},
@@ -31,7 +32,8 @@ const routes: Routes = [
   {path: 'PACGENE', component: GenePACComponent},
   {path: 'paciente/:id', component: PaceditComponent},
   {path: 'Confirpaciente', component: ConfirPacienteComponent},
-  {path: 'Citaconf', component: CitaconfComponent}
+  {path: 'Citaconf', component: CitaconfComponent},
+  {path: 'Medicos/:id', component: EditarMedicoComponent},
   
 ];
 

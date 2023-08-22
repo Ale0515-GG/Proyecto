@@ -33,7 +33,7 @@
                         <p>Correo Electrónico: {{ medico.Correo }}</p>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-warning" (click)="editarMedico(medico)">Editar</button>
+                        <button class="btn btn-warning" [routerLink]="['/Medicos/',medico.Id]">Editar</button>
                     </div>
                 </div>
             </div>

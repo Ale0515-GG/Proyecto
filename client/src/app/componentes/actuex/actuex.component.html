@@ -1,5 +1,4 @@
 <app-late></app-late>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,26 +10,25 @@
     <h2>Formulario de Expediente Médico</h2>
     <form>
       <div class="form-row">
-        
-        
+         
         <div class="form-group col-md-6">
           <label for="edad">Edad:</label>
-          <input type="number" class="form-control" id="edad" name="Edad" [(ngModel)]="expe.Edad" placeholder="Ingrese su edad">
+          <input type="number" class="form-control" id="edad" name="Edad" [(ngModel)]="expediente.Edad" placeholder="Ingrese su edad">
         </div>
       </div>
       <div class="form-group">
         <label for="direccion">Dirección:</label>
-        <input type="text" class="form-control" id="direccion"  name="Direecion"[(ngModel)]="expe.Direecion" placeholder="Ingrese su dirección">
+        <input type="text" class="form-control" id="direccion"  name="Direecion"[(ngModel)]="expediente.Direecion" placeholder="Ingrese su dirección">
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="telefono">Teléfono:</label>
-          <input type="tel" class="form-control" id="telefono" name="Telefono" [(ngModel)]="expe.Telefono" placeholder="Ingrese su número de teléfono">
+          <input type="tel" class="form-control" id="telefono" name="Telefono" [(ngModel)]="expediente.Telefono" placeholder="Ingrese su número de teléfono">
         </div>
       </div>
       <div class="form-group">
         <label for="genero">Género:</label>
-        <select class="form-control" id="genero"  name="Genero"[(ngModel)]="expe.Genero">
+        <select class="form-control" id="genero"  name="Genero"[(ngModel)]="expediente.Genero">
           <option value="masculino">Masculino</option>
           <option value="femenino">Femenino</option>
           <option value="otro">Otro</option>
@@ -38,35 +36,35 @@
       </div>
       <div class="form-group">
         <label for="sintomas">Síntomas:</label>
-        <textarea class="form-control" id="sintomas" rows="3" name="Sintomas" [(ngModel)]="expe.Sintomas" placeholder="Describa sus síntomas"></textarea>
+        <textarea class="form-control" id="sintomas" rows="3" name="Sintomas" [(ngModel)]="expediente.Sintomas" placeholder="Describa sus síntomas"></textarea>
       </div>
       <div class="form-group">
         <label for="diagnostico">Diagnóstico:</label>
-        <textarea class="form-control" id="diagnostico" rows="3" name="Diagnostico" [(ngModel)]="expe.Diagnostico" placeholder="Ingrese el diagnóstico"></textarea>
+        <textarea class="form-control" id="diagnostico" rows="3" name="Diagnostico" [(ngModel)]="expediente.Diagnostico" placeholder="Ingrese el diagnóstico"></textarea>
       </div>
       <div class="form-group">
         <label for="tratamiento">Tratamiento:</label>
-        <textarea class="form-control" id="tratamiento" rows="3"  name="Tratamiento" [(ngModel)]="expe.Tratamiento" placeholder="Ingrese el tratamiento"></textarea>
+        <textarea class="form-control" id="tratamiento" rows="3"  name="Tratamiento" [(ngModel)]="expediente.Tratamiento" placeholder="Ingrese el tratamiento"></textarea>
       </div>
       <div class="form-group">
         <label for="medicamentos">Medicamentos recetados:</label>
-        <textarea class="form-control" id="medicamentos" rows="3" name="MedRecetado" [(ngModel)]="expe.MedRecetado" placeholder="Ingrese los medicamentos recetados"></textarea>
+        <textarea class="form-control" id="medicamentos" rows="3" name="MedRecetado" [(ngModel)]="expediente.MedRecetado" placeholder="Ingrese los medicamentos recetados"></textarea>
       </div>
       <div class="form-group">
-        <label for="fecha">Fecha de consulta ({{expe.Fecha}}):</label>
-        <input type="date" class="form-control" id="fecha" name="Fecha" [(ngModel)]="expe.Fecha" >
+        <label for="fecha">Fecha de consulta ({{expediente.Fecha| date:'dd-MMM-yyyy'}})</label>
+        <input type="date" class="form-control" id="fecha" name="Fecha" [(ngModel)]="expediente.Fecha" >
       </div>
       
       <div class="form-group">
         <label for="genero">Medico:</label>
-        <select class="form-control" id="nombre" name="Nombre" [(ngModel)]="expe.MedicoTratante">
+        <select class="form-control" id="nombre" name="Nombre" [(ngModel)]="expediente.MedicoTratante">
           <option *ngFor="let med of medico" [ngValue]="med.Nombre">{{med.Nombre}}</option>
         </select>
       </div>
 
       <div class="form-group">
         <label for="notas">Notas adicionales:</label>
-        <textarea class="form-control" id="notas" rows="3" name="Nota" [(ngModel)]="expe.Nota" placeholder="Ingrese notas adicionales"></textarea>
+        <textarea class="form-control" id="notas" rows="3" name="Nota" [(ngModel)]="expediente.Nota" placeholder="Ingrese notas adicionales"></textarea>
       </div>
       
       <button type="submit" class="btn btn-primary" (click)="updateExpediente()">Guardar</button>
