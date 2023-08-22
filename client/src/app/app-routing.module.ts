@@ -13,6 +13,7 @@ import { CitaconfComponent } from './componentes/citaconf/citaconf.component';
 import { ConfirPacienteComponent } from './componentes/confir-paciente/confir-paciente.component';
 import { CitarealComponent } from './componentes/citareal/citareal.component';
 import { PaceditComponent } from './componentes/pacedit/pacedit.component';
+import { UpdateExComponent } from './componentes/update-ex/update-ex.component';
 
 const routes: Routes = [
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'pagina-inicio',component:PrincipalComponent},
   {path: 'registrar', component: RegistroComponent},
   {path: 'cargar-historial', component: HistorialComponent},
+  {path: 'cargar-historial/:id', component: UpdateExComponent},
   {path: 'cargar-cita', component: CitarealComponent},
   {path: 'paciente', component: PasienteComponent},
   {path: 'Medicos', component: MedicosComponent},

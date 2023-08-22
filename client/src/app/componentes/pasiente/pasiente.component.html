@@ -61,13 +61,15 @@
             </thead>
             <tbody *ngFor="let ex of expediente | buscar:buscarpost">
               <tr>
+
                 <td>{{ex.Nombre}}</td>
                 <td>{{ex.Fecha | date:'dd-MMM-yyyy'}}</td>
                 <td>{{ex.Diagnostico}}</td>
                 <td>{{ex.MedRecetado}}</td>
                 <td>{{ex.MedicoTratante}}</td>
                 <td>
-                  <a type="button" class="btn btn-danger" (click)="deleteExpediente(ex.idExpediente)">Eliminar</a>
+                  <a type="button" class="btn btn-success" [routerLink]="['/cargar-historial/',ex.idExpediente]">Editar</a></td>
+                  <td> <a type="button" class="btn btn-danger" (click)="deleteExpediente(ex.idExpediente)">Eliminar</a>
                 </td>
               </tr> 
             </tbody>

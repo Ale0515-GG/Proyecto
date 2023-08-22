@@ -2,6 +2,8 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 import { CitaService } from 'src/app/service/Cita/paciente.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-citaconf',
   templateUrl: './citaconf.component.html',
@@ -15,7 +17,8 @@ export class CitaconfComponent {
   constructor(
     private citaService: CitaService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastrService:ToastrService
   ) {}
 
   ngOnInit() {
@@ -36,8 +39,9 @@ export class CitaconfComponent {
       res => {
         console.log(res);
         this.getCitas();
+        this.toastrService.warning(`Se borro `,'Atencion')
       },
-      err => console.log(err)
+      err => this.toastrService.error(`No se pudo borrar `,'Error')
     );
   }
 
@@ -55,8 +59,9 @@ export class CitaconfComponent {
         console.log(res);
         this.editingCita = null; // Limpiamos la variable de edición
         this.getCitas();
+         this.toastrService.success(`Actualización Completa`,'Aviso')
       },
-      err => console.log(err)
+      err => this.toastrService.error(`No se pudo actualizar`,'Error')
     );
   }
 }

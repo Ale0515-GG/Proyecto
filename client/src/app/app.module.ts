@@ -30,7 +30,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BuscarPipe } from './pipe/buscar.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { PaceditComponent } from './componentes/pacedit/pacedit.component';
+<<<<<<< HEAD
 import { EditarMedicoComponent } from './editar-medico/editar-medico.component';
+=======
+import { UpdateExComponent } from './componentes/update-ex/update-ex.component';
+>>>>>>> 78b816b45793e88a9fab5d24a7105e67d611e84a
 
 @NgModule({
   declarations: [
@@ -50,7 +54,11 @@ import { EditarMedicoComponent } from './editar-medico/editar-medico.component';
     CitarealComponent,
     BuscarPipe,
     PaceditComponent,
+<<<<<<< HEAD
     EditarMedicoComponent,
+=======
+    UpdateExComponent,
+>>>>>>> 78b816b45793e88a9fab5d24a7105e67d611e84a
 
 
   ],

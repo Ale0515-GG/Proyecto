@@ -15,7 +15,7 @@ class ExpedienteController {
         const {id}=req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'SELECT * FROM Expediente WHERE id=?',[id]
+                'SELECT * FROM Expediente WHERE idExpediente =?',[id]
             );
         })
         if (result.length >0){

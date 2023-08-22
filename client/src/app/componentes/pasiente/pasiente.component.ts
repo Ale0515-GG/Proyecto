@@ -34,6 +34,7 @@ export class PasienteComponent implements OnInit {
       },
       err => console.error(err)
     );
+    
     this.observerChangeSearch();
 
     this.expedienteService.getExpedientes().subscribe(
