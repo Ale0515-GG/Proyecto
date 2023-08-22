@@ -6,23 +6,28 @@
     </div>
     <form >
       <div class="entrada mb-3">
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Especialidad"name="Especialidad" [(ngModel)]="cita.Especialidad"></div>
+        <input type="text" class="form-control" required="required"  id="formGroupExampleInput2" placeholder="Especialidad"name="Especialidad" [(ngModel)]="cita.Especialidad"></div>
   
         <br>
         <div class="entrada mb-3">
-          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nombre del Paciente"name="NomPaciente" [(ngModel)]="cita.NomPaciente">
+          <input type="text" class="form-control" required="required"  id="formGroupExampleInput2" placeholder="Nombre del Paciente"name="NomPaciente" [(ngModel)]="cita.NomPaciente">
         </div>
         <div class="entrada mb-3">
-          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Numero de Telefono"  name="NumTelefono" [(ngModel)]="cita.NumTelefono">
+          <input type="text" class="form-control" required="required"  id="formGroupExampleInput2" placeholder="Numero de Telefono"  name="NumTelefono" [(ngModel)]="cita.NumTelefono">
         </div>
         <div class="entrada mb-3">
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Motivo de la consulta"  name="Motivo" [(ngModel)]="cita.Motivo"></textarea>
+          <textarea class="form-control" required="required"  id="exampleFormControlTextarea1" rows="3" placeholder="Motivo de la consulta"  name="Motivo" [(ngModel)]="cita.Motivo"></textarea>
         </div>
   
         <button type="submit" class="btn btn-dark" (click)="saveNewCita()" >Generar</button>
-     
+        <br>
+        <br>
+        <br>
+        <br>
+        
     </form>
   </div>
+  <br>
 
  
 
@@ -31,9 +36,3 @@
     <p>&copy; 2023 SaludParaTI. Todos los derechos reservados.</p>
   </footer>
   
-  <script>
-    document.querySelector('.btn-dark').addEventListener('click', function () {
-        // Recarga la página al hacer clic en el botón "Generar"
-        window.location.reload();
-    });
-</script>
