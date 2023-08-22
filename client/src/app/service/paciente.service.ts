@@ -19,12 +19,12 @@ export class PacienteService {
   }
 
   //Devuelve solo un paciente
-  getPaciente(Nombre: String){
-  return this.http.get(`${this.API_URI}/paciente/${Nombre}`); //peticio al id que proporcione
+  getPaciente(id: String){
+  return this.http.get(`${this.API_URI}/paciente/${id}`); //peticio al id que proporcione
   }
 
-  getPacient(Nombre: String){
-    return this.http.get(`${this.API_URI}/Edit/${Nombre}`); //peticio al id que proporcione
+  getPacient(id: String){
+    return this.http.get(`${this.API_URI}/paciente/${id}`); //peticio al id que proporcione
     }
 
   deletePaciente(id: String){

@@ -18,15 +18,13 @@ ngOnInit():void{
 
   const params =this.activatedRoute.snapshot.params;
 
-  this.pacienteService.getPaciente(params['Nombre'])
-  .subscribe(
+  this.pacienteService.getPacientes().subscribe(
     res => {
-      console.log(res); //nos regresa los valores de la base de datos
-      this.paciente = res; //todo el game nos lo imprime
-      this.edit = true;//VARIABLEEE
+      this.paciente = res;
     },
     err => console.error(err)
-  )
+  );
+ 
   
   this.cargar();
 
@@ -34,9 +32,9 @@ ngOnInit():void{
 cargar(){
   this.activatedRoute.params.subscribe(
     e=>{
-      let Nombre=e['Nombre'];
-      if(Nombre){
-        this.pacienteService.getPacient(Nombre).subscribe(
+      let id=e['id'];
+      if(id){
+        this.pacienteService.getPacient(id).subscribe(
           es=>this.paciente=es
         );
       }
@@ -44,14 +42,16 @@ cargar(){
   )
 }
 
-updatePaciente(Nombre: String){
-  delete this.paciente.created_at;
-  this.pacienteService.updatePaciente(this.paciente.Nombre,this.paciente).subscribe(
+
+updatePaciente(){
+  this.pacienteService.updatePaciente(this.paciente.Id,this.paciente).subscribe(
     res => {
       console.log(res);
       this.router.navigate(['/paciente/']);
+      this.toastrService.success(`Actualización Completa`,'Aviso')
+
     },
-    err => console.log(err)
+    err => this.toastrService.error(`No se pudo actualizar el paciente`,'Error')
   )
 }
 

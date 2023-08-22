@@ -27,7 +27,7 @@ const routes: Routes = [
   {path: 'Medicos', component: MedicosComponent},
   {path: 'Medicosge', component: GeneMEDComponent},
   {path: 'PACGENE', component: GenePACComponent},
-  {path: 'Edit/:id', component: PaceditComponent},
+  {path: 'paciente/:id', component: PaceditComponent},
   {path: 'Confirpaciente', component: ConfirPacienteComponent},
   {path: 'Citaconf', component: CitaconfComponent}
   

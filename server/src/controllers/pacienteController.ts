@@ -58,11 +58,13 @@ class PacienteController {
         // res.json({text:"deleting paciente"});
     }
 
+
+
     public async update(req:Request,res:Response):Promise<void>{
-        const {Nombre}=req.params;
+        const {id}=req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'UPDATE Paciente SET ? WHERE Nombre=?',[req.body,Nombre]//el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
+                'UPDATE Paciente SET ? WHERE Id=?',[req.body,id]//el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
             );
         })
         res.json({text:"Paciente "+req.params.id+" was updated"});
