@@ -1,41 +1,43 @@
-
 <app-late></app-late>
-<title>Buscar Médicos</title>
-   
+<title>Agregar Médicos</title>
 
 <body>
-    <div class="container">
-        <h1>Agregar Médicos</h1>
-        
-        <div class="card">
-            <div class="card-header">
-              <h5>Información del Médico</h5>
-            </div>
-            <div class="card-body">
-                <form id="doctorForm">
-                    <div class="form-group">
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Nombre del médico" name="Nombre"[(ngModel)]="medi.Nombre">
-                    </div>
-                    <div class="form-group">
-                        <label for="especialidad">Especialidad:</label>
-                        <input type="text" class="form-control" id="especialidad" placeholder="Especialidad del médico"name="Especialidad"[(ngModel)]="medi.Especialidad">
-                    </div>
-                    <div class="form-group">
-                        <label for="telefono">Teléfono:</label>
-                        <input type="text" class="form-control" id="telefono" placeholder="Teléfono del médico" name="Telefono" [(ngModel)]="medi.Telefono">
-                    </div>
-                    <div class="form-group">
-                        <label for="correo">Correo Electrónico:</label>
-                        <input type="email" class="form-control" id="correo" placeholder="Correo electrónico del médico" name="Correo" [(ngModel)]="medi.Correo">
-                    </div>
-                    <button type="submit" class="btn btn-primary" (click)="saveNewMedi()">Agregar Médico</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    </body>
+  <div class="container">
+    <h1>Agregar Médicos</h1>
 
-        <footer class="bg-dark text-white text-center py-3">
-            <p>&copy; 2023 SaludParaTI. Todos los derechos reservados.</p>
-        </footer>
+    <div class="card">
+      <div class="card-header">
+        <h5>Información del Médico</h5>
+      </div>
+      <div class="card-body">
+        <form id="doctorForm">
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre del médico" name="Nombre"
+              [(ngModel)]="medi.Nombre">
+          </div>
+          <div class="form-group">
+            <label for="especialidad">Especialidad:</label>
+            <input type="text" class="form-control" id="especialidad" placeholder="Especialidad del médico"
+              name="Especialidad" [(ngModel)]="medi.Especialidad">
+          </div>
+          <div class="form-group">
+            <label for="telefono">Teléfono:</label>
+            <input type="text" class="form-control" id="telefono" placeholder="Teléfono del médico" name="Telefono"
+              [(ngModel)]="medi.Telefono">
+          </div>
+          <div class="form-group">
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" class="form-control" id="correo" placeholder="Correo electrónico del médico"
+              name="Correo" [(ngModel)]="medi.Correo">
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="saveNewMedi()">Agregar Médico</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+<footer class="bg-dark text-white text-center py-3">
+  <p>&copy; 2023 SaludParaTI. Todos los derechos reservados.</p>
+</footer>

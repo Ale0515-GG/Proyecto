@@ -56,4 +56,6 @@ export class MedicosComponent implements OnInit {
       this.getMedicos();
     }
   }
+
+  
 }

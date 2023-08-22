@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Medico } from 'src/app/models/Medico';
@@ -33,6 +33,7 @@ export class MedicoService {
   
 
   searchMedicosByName(nombre: string): Observable<Medico[]> {
-    return this.http.get<Medico[]>(`${this.API_URI}/medico/search?nombre=${nombre}`);
+    const params = new HttpParams().set('nombre', nombre);
+    return this.http.get<Medico[]>(`${this.API_URI}/medico/search`, { params });
   }
 }

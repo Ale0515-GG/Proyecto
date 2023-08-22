@@ -41,7 +41,8 @@ export class EditarMedicoComponent implements OnInit {
         res => {
           console.log('Médico actualizado:', res);
           this.toastrService.success('Médico actualizado con éxito', 'Aviso');
-          this.router.navigate(['/medicos']);
+          this.router.navigate(['/Medicos', this.medico.Id]);
+          this.router.navigate(['/Medicos']); // Redirige al detalle del médico actualizado
         },
         err => {
           console.error('Error al actualizar médico:', err);
@@ -52,8 +53,8 @@ export class EditarMedicoComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['/medicos']);
+     
+    this.router.navigate(['/Medicos']);// Redirige a MedicosComponent
   }
 }
-
 

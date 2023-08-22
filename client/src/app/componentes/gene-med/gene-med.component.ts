@@ -30,10 +30,11 @@ export class GeneMEDComponent implements OnInit {
     this.medicoService.saveMedi(this.medi).subscribe(
       () => {
         this.toastrService.success('Médico guardado con éxito', 'Aviso');
-        this.router.navigate(['/medicos']);
+        this.router.navigate(['/Medicos']); // Redirige a MedicosComponent
       },
       () => this.toastrService.error('No se guardó correctamente el Médico', 'Error')
     );
   }
 }
+
 

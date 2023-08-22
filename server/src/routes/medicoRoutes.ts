@@ -13,7 +13,7 @@ class MedicoRoutes{
         this.router.put('/:id', medicoController.update);
         this.router.delete('/:id', medicoController.delete);
         this.router.get('/:id', medicoController.select);
-        this.router.get('/search', medicoController.searchByName); // Agregar esta línea
+        this.router.get('/search', medicoController.searchByName); 
     }
 }
 const  medicoRoutes = new MedicoRoutes();
