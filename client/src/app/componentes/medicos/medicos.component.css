@@ -1,7 +1,7 @@
-/* medicos.component.css */
+
 
 .header {
-    background-color: #007BFF;
+    background-color: #007BFF; /* Azul primario */
     color: white;
     padding: 20px;
     text-align: center;
@@ -21,7 +21,7 @@
   }
   
   .btn-detalle {
-    background-color: #28A745;
+    background-color: #28A745; /* Verde para botones positivos */
     border: none;
     color: white;
     padding: 8px 16px;
