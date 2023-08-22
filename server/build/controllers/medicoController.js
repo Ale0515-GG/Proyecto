@@ -64,5 +64,14 @@ class MedicoController {
             res.json({ text: "Medico " + req.params.id + " was updated" });
         });
     }
+    searchByName(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const nombre = req.query.nombre;
+            const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
+                return yield connection.query('SELECT * FROM Medico WHERE Nombre LIKE ?', [`%${nombre}%`]);
+            }));
+            res.json(result);
+        });
+    }
 }
 exports.medicoController = new MedicoController();

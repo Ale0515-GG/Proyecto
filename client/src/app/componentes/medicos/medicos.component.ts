@@ -1,4 +1,5 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MedicoService } from 'src/app/service/medico.service'; 
 
 @Component({
@@ -7,26 +8,24 @@ import { MedicoService } from 'src/app/service/medico.service';
   styleUrls: ['./medicos.component.css']
 })
 export class MedicosComponent implements OnInit {
-  @HostBinding('class') classes='row';
   medicos: any = [];
+  nombreBusqueda: string = '';
 
-  constructor(private medicoService: MedicoService) {}
+  constructor(private medicoService: MedicoService, private router: Router) {}
 
   ngOnInit() {
     this.getMedicos();
   }
 
-  getMedicos(){
+  getMedicos() {
     this.medicoService.getMedicos().subscribe(
-      res=> {
+      res => {
         this.medicos = res;
       },
       err => console.log(err)
-      )
+    );
   }
 
-
-  
   deleteMedico(id: number | undefined) {
     if (id !== undefined) {
       this.medicoService.deleteMedi(id.toString()).subscribe(
@@ -39,6 +38,22 @@ export class MedicosComponent implements OnInit {
     }
   }
 
-  
+  editarMedico(id: number | undefined) {
+    if (id !== undefined) {
+      this.router.navigate(['/editar-medico', id]);
+    }
+  }
 
+  buscarMedicos() {
+    if (this.nombreBusqueda.trim() !== '') {
+      this.medicoService.searchMedicosByName(this.nombreBusqueda).subscribe(
+        res => {
+          this.medicos = res;
+        },
+        err => console.error('Error al buscar médicos:', err)
+      );
+    } else {
+      this.getMedicos();
+    }
+  }
 }

@@ -8,11 +8,12 @@ class MedicoRoutes {
         this.config();
     }
     config() {
-        this.router.get('/', medicoController_1.medicoController.list); //ruta inicial
+        this.router.get('/', medicoController_1.medicoController.list);
         this.router.post('/', medicoController_1.medicoController.create);
         this.router.put('/:id', medicoController_1.medicoController.update);
         this.router.delete('/:id', medicoController_1.medicoController.delete);
         this.router.get('/:id', medicoController_1.medicoController.select);
+        this.router.get('/search', medicoController_1.medicoController.searchByName); // Agregar esta línea
     }
 }
 const medicoRoutes = new MedicoRoutes();

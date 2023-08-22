@@ -2,30 +2,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Buscar Médicos</title>
+    <title>Médicos</title>
 </head>
 <body>
-
     <div class="container">
-        <div class="row">
-          <div class="col-md-4" *ngFor="let medico of medicos">
-            <div class="card text-center">
-              <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-                {{ medico.Nombre }}
-                <button class="btn btn-danger" (click)="deleteMedico(medico.Id)">
-                  <i class="far fa-trash-alt"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <p>Especialidad: {{ medico.Especialidad }}</p>
-                <p>Teléfono: {{ medico.Telefono }}</p>
-                <p>Correo Electrónico: {{ medico.Correo }}</p>
-              </div>
+      <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="buscarNombre">Buscar por nombre:</label>
+                <input type="text" class="form-control" id="buscarNombre" placeholder="Nombre del médico" [(ngModel)]="nombreBusqueda">
+                <button class="btn btn-primary mt-2" (click)="buscarMedicos()">Buscar</button>
             </div>
-          </div>
         </div>
-      </div>
-      
+    </div>
+
+        <div class="row">
+            <div class="col-md-4" *ngFor="let medico of medicos">
+                <div class="card text-center">
+                    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                        {{ medico.Nombre }}
+                        <!-- Cambia esta línea -->
+<button class="btn btn-danger" (click)="deleteMedico(medico.Id!)">
+
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <p>Especialidad: {{ medico.Especialidad }}</p>
+                        <p>Teléfono: {{ medico.Telefono }}</p>
+                        <p>Correo Electrónico: {{ medico.Correo }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-warning" (click)="editarMedico(medico)">Editar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2023 SaludParaTI. Todos los derechos reservados.</p>
     </footer>

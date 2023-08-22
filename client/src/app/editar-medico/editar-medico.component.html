@@ -1,0 +1,36 @@
+<app-late></app-late>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Actualizar Médico</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Actualización de Médico</h2>
+        <form>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre" name="Nombre" [(ngModel)]="medico.Nombre">
+            </div>
+            <div class="form-group">
+                <label for="especialidad">Especialidad:</label>
+                <input type="text" class="form-control" id="especialidad" placeholder="Ingrese la especialidad" name="Especialidad" [(ngModel)]="medico.Especialidad">
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" class="form-control" id="telefono" placeholder="Ingrese el número de teléfono" name="Telefono" [(ngModel)]="medico.Telefono">
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" class="form-control" id="correo" placeholder="Ingrese el correo electrónico" name="Correo" [(ngModel)]="medico.Correo">
+            </div>
+            <button type="button" class="btn btn-primary" (click)="updateMedico()">Actualizar</button>
+            <button type="button" class="btn btn-secondary" (click)="cancel()">Cancelar</button>
+        </form>
+    </div>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2023 SaludParaTI. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
+

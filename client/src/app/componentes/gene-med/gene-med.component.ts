@@ -18,18 +18,22 @@ export class GeneMEDComponent implements OnInit {
     Correo: ''
   };
 
-  constructor(private mediService: MedicoService, private router: Router, private toastrService:ToastrService) {}
+  constructor(
+    private medicoService: MedicoService,
+    private router: Router,
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit(): void {}
 
   saveNewMedi() {
-    this.mediService.saveMedi(this.medi).subscribe(
-      res => {
-        console.log(res);
-        this.toastrService.success(`Medico guardado con exito!`,'Aviso') //notificación
+    this.medicoService.saveMedi(this.medi).subscribe(
+      () => {
+        this.toastrService.success('Médico guardado con éxito', 'Aviso');
         this.router.navigate(['/medicos']);
       },
-      err => this.toastrService.error(`No se guardo correctamente el Medico`,'Error')
+      () => this.toastrService.error('No se guardó correctamente el Médico', 'Error')
     );
   }
 }
+

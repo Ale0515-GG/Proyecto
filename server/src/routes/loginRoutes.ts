@@ -16,5 +16,7 @@ class LoginRoutes{
         this.router.get('/:id',loginController.select);
     }
 }
+
+
 const  loginRoutes = new LoginRoutes();
 export default loginRoutes.router;

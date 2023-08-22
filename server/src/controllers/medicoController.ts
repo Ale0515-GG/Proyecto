@@ -57,6 +57,18 @@ class MedicoController {
         })
         res.json({text:"Medico "+req.params.id+" was updated"});
     }
-}
+
+
+    public async searchByName(req: Request, res: Response): Promise<void> {
+        const nombre = req.query.nombre as string;
+        const result = await pool.then(async (connection) => {
+            return await connection.query(
+                'SELECT * FROM Medico WHERE Nombre LIKE ?', [`%${nombre}%`]
+            );
+        })
+        res.json(result);
+    }
+}    
+
 
 export const medicoController = new MedicoController()
