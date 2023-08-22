@@ -9,9 +9,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./pacedit.component.css']
 })
 export class PaceditComponent {
-  edit : boolean = false;
+edit : boolean = false;
 
 paciente: any = [];
+
 constructor(private pacienteService: PacienteService,private router:Router, private toastrService:ToastrService, private activatedRoute:ActivatedRoute){}
 
 ngOnInit():void{

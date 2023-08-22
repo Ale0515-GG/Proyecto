@@ -2,6 +2,8 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 import { Cita } from 'src/app/models/Cita';
 import { CitaService } from 'src/app/service/Cita/paciente.service';
 import { ActivatedRoute,Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { window } from 'rxjs';
 
 @Component({
   selector: 'app-citareal',
@@ -23,7 +25,7 @@ export class CitarealComponent implements	 OnInit {
       Motivo: '',
   }
   
-constructor(private citaService: CitaService,private router:Router,private activeRoute:ActivatedRoute){}
+constructor(private citaService: CitaService,private toastrService:ToastrService ,private router:Router,private activeRoute:ActivatedRoute){}
 
 
 ngOnInit(){
@@ -39,8 +41,11 @@ delete this.cita.IdCita;
     res =>{
       console.log(res);
       this.router.navigate(['/cita']);
+      this.toastrService.success(`¡Guardado con exito!`,'Aviso')
+      
     },
-    err => console.error(err)
+    err => 
+    this.toastrService.error(`No se guardo correctamente `,'Error')
   )
 }
 

@@ -30,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BuscarPipe } from './pipe/buscar.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { PaceditComponent } from './componentes/pacedit/pacedit.component';
+import { UpdateExComponent } from './componentes/update-ex/update-ex.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { PaceditComponent } from './componentes/pacedit/pacedit.component';
     CitarealComponent,
     BuscarPipe,
     PaceditComponent,
+    UpdateExComponent,
 
 
   ],
