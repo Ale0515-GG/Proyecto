@@ -16,6 +16,7 @@ export class UpdateExComponent {
   edit : boolean = false;
 
   expe: any = [];
+  
   medico: any=[];
   
   constructor(private expedienteService: ExpedienteService,private medicoService:MedicoService,private router:Router, private toastrService:ToastrService, private activatedRoute:ActivatedRoute){}
