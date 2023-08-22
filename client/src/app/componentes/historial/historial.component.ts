@@ -5,6 +5,7 @@ import { ExpedienteService } from 'src/app/service/expediente.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PacienteService } from '../../service/paciente.service';
+import { MedicoService } from '../../service/medico.service';
 
 
 
@@ -39,12 +40,20 @@ export class HistorialComponent implements OnInit {
   };
 
   paciente: any = [];
+  medico: any=[];
   
-  constructor(private expedienteService: ExpedienteService, private router: Router,private toastrService:ToastrService, private pacienteService:PacienteService){}
+  constructor(private expedienteService: ExpedienteService, private router: Router,private toastrService:ToastrService, private pacienteService:PacienteService, private medicoService:MedicoService){}
   ngOnInit(): void {
     this.pacienteService.getPacientes().subscribe(
       res => {
         this.paciente = res;
+      },
+      err => console.error(err)
+    );
+
+    this.medicoService.getMedicos().subscribe(
+      res => {
+        this.medico = res;
       },
       err => console.error(err)
     );

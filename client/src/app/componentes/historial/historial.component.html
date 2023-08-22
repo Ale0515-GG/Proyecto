@@ -61,10 +61,14 @@
         <label for="fecha">Fecha de consulta:</label>
         <input type="date" class="form-control" id="fecha" name="Fecha" [(ngModel)]="expediente.Fecha" >
       </div>
+      
       <div class="form-group">
-        <label for="medico">Médico tratante:</label>
-        <input type="text" class="form-control" id="medico" name="MedicoTratante" [(ngModel)]="expediente.MedicoTratante" placeholder="Ingrese el nombre del médico tratante">
+        <label for="genero">Medico:</label>
+        <select class="form-control" id="nombre" name="Nombre" [(ngModel)]="expediente.MedicoTratante">
+          <option *ngFor="let med of medico" [ngValue]="med.Nombre">{{med.Nombre}}</option>
+        </select>
       </div>
+
       <div class="form-group">
         <label for="notas">Notas adicionales:</label>
         <textarea class="form-control" id="notas" rows="3" name="Nota" [(ngModel)]="expediente.Nota" placeholder="Ingrese notas adicionales"></textarea>
