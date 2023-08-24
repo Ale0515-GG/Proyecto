@@ -1,9 +1,9 @@
 {
   "hosting": {
-    "public": "/client/dist/app-articulos",
+    "public": "dist/app-articulos",
     "ignore": [
       "firebase.json",
-      "**/.*", 
+      "**/.*",
       "**/node_modules/**"
     ],
     "rewrites": [
