@@ -7,7 +7,7 @@ import { Medico } from 'src/app/models/Medico';
   providedIn: 'root'
 })
 export class MedicoService {
-  API_URI = 'http://localhost:3000/api';
+  API_URI = 'http://192.168.0.24:3000/api';
 
   constructor(private http: HttpClient) { }
 
