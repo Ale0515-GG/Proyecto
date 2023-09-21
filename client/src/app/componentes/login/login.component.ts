@@ -37,12 +37,12 @@ export class LoginComponent {
           },
           (error) => {
             console.error('Error al validar credenciales', error);
-            this.toastrService.error(`Credenciales Incorrectas`,'Error')
+            this.toastrService.error(`No exite el Usuario`,'Error');
           }
         );
     } else {
       console.error('Correo electrónico o contraseña no válidos');
-      this.toastrService.error(`Correo electrónico o contraseña no válidos`,'Error')
+      this.toastrService.error(`Correo electrónico o contraseña no válidos`,'Error');
     }
   }
 

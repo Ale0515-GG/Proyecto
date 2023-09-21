@@ -1,38 +1,24 @@
+<div class="d-flex justify-content-center">
+  <div class="modificado">
+    <h4 class="text-center">Inicia Sesión con tu cuenta</h4>
 
+    <p class="text-center">Introduce tu dirección de correo electrónico</p>
 
-<div class="card mx-auto">
-  <div class="card-header bg-white text-center">
-    <h5 style="color: black">Inicia Sesion</h5>
-  </div>
-  <form>
-    <div class="card-body">
-      <div class="entrada mb-3">
-        <div class="d-flex justify-content-center">
-          <div class="modificado">
-        
-              <p class="text-danger"></p>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email address</label> 
-                <input [(ngModel)]="ingresar.Correo" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ingresa Correo">
-              </div>
-        
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input [(ngModel)]="ingresar.Contrasena" type="password" class="form-control" id="password" placeholder="Ingresa Contraseña">
-              </div>
-        
-              <div class="d-flex justify-content-center">
-                <button (click)="getIngresar()" class="btn btn-primary" >Siguiente</button>
-              </div>
-        
-            <!--<p class="text-center not">¿Aún no tienes cuenta? <a routerLink="/sign-up">Regístrate ahora</a></p>-->
-          </div>
-        </div>
+      <p class="text-danger"></p>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label> 
+        <input [(ngModel)]="ingresar.Correo" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Escribe tu correo aquí..">
       </div>
-    </div>
-  </form>
-</div>
 
-<footer class="bg-dark text-white text-center py-3">
-  <p>&copy; 2023 SaludParaTI. Todos los derechos reservados.</p>
-</footer>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input [(ngModel)]="ingresar.Contrasena" type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña aquí...">
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button (click)="getIngresar()" class="btn btn-primary" >Siguiente</button>
+      </div>
+
+    <p class="text-center not">¿Aún no tienes cuenta? <a routerLink="/sign-up">Regístrate ahora</a></p>
+  </div>
+</div>

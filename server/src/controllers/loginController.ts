@@ -1,5 +1,4 @@
 import {Request, Response } from 'express';
-
 import pool from '../database';
 
 class LoginController {
@@ -60,3 +59,4 @@ class LoginController {
 
 
 export const loginController = new LoginController()
+export default loginController;

@@ -61,3 +61,4 @@ class LoginController {
     }
 }
 exports.loginController = new LoginController();
+exports.default = exports.loginController;
