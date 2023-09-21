@@ -33,6 +33,7 @@ export class LoginComponent {
             if (resultado) {
               // Si las credenciales son válidas, redirige a la página principal
               this.router.navigate(['/pagina-inicio']);
+              this.toastrService.success(`¡Bienvenido!`)
             }
           },
           (error) => {
