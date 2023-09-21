@@ -3,67 +3,59 @@ import {Request, Response } from 'express';
 import pool from '../database';
 
 class LoginController {
-    public async list (req: Request, res: Response){
+
+    /*public async list (req: Request, res: Response){
          const result =  await pool.then(async (connection)=> {
              return await connection.query(
                 "SELECT * FROM Login"
              );
         })   
          res.json(result);
+    }*/
+
+    public async list(req : Request, resp : Response){
+        const result = await pool.then(async (connection)=>{
+            return await connection.query(
+            "SELECT * FROM Login"
+        );
+    })
+        resp.json(result);
     }
 
-    public async select(req:Request,res:Response):Promise<any>{
-        const {id}=req.params;
-        const result = await pool.then(async (connection) => {
+    // public async create(req : Request, resp: Response):Promise<void>{
+    //     const { confirmPassword, ...cuentaData } = req.body; // Exclude confirmPassword property
+    //     console.log(cuentaData);
+    //     await pool.query('INSERT INTO cuentas set ?', [cuentaData]);
+    //     resp.json({ message: 'Cuenta Guardada' });
+    // }
+
+    // public async delete(req: Request, resp: Response){
+    //     const {cveUser}= req.params;
+    //     await pool.query('DELETE FROM cuentas WHERE cveUser=?',[cveUser])
+    //     resp.json({message: 'la cuenta fue eliminada'});
+    // }
+
+//  public async update(req: Request, resp: Response){
+//          const {cveUser}= req.params;
+//         await pool.query('UPDATE cuentas set? WHERE cveUser=?',[req.body,cveUser]);
+//      resp.json({message: 'Actualizando cuenta'});
+//      }
+
+
+    public async getOne(req: Request, resp: Response){
+        const {Correo, Contrasena}= req.params;
+        const registro = await pool.then(async (connection)=>{
             return await connection.query(
-                'SELECT * FROM Login WHERE id=?',[id]
+            "SELECT * FROM Login WHERE Correo = ? and Contrasena = ?",
+            [Correo, Contrasena]
             );
         })
-        if (result.length >0){
-            return res.json(result[0]); //revuelve al cliente
+        if(registro.length > 0){
+            return resp.json(registro[0]);
         }
-        console.log(result);
-        res.status(404).json({text:'El Login no existe'});//codigo de estado
+        resp.status(404).json({text: "El usuario no existe"})
     }
-
-    public async create (req:Request, res:Response): Promise<void>{
-        //console.log(req.body)
-        const result = await pool.then(async (connection) => {
-            return await connection.query(
-                'INSERT INTO Login set ?',[req.body]
-            );
-        })
-    
-        res.json({texto:"Login Saved"});
-    
-    }
-
-    public async delete(req:Request,res:Response):Promise<any>{
-        const {id}=req.params;
-        const result = await pool.then(async (connection) => {
-            return await connection.query(
-                'DELETE FROM Login WHERE id=?',[id]
-            );
-        })
-        res.json({text:"Login "+req.params.id+" was deleted"});
-    }
-
-    public async update(req:Request,res:Response):Promise<void>{
-        const {id}=req.params;
-        const result = await pool.then(async (connection) => {
-            return await connection.query(
-                'UPDATE Login SET ? WHERE id=?',[req.body,id]//el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
-            );
-        })
-        res.json({text:"Login "+req.params.id+" was updated"});
-    }
-
-
-    
-
-
 }
-
 
 
 

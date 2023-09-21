@@ -1,7 +1,10 @@
 // login.component.ts
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/service/Login/login.service';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
+import { Login } from 'src/app/models/Login';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-login',
@@ -9,9 +12,38 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  Correo = '';
-  Contra = '';
-
-  constructor(private loginService: LoginService, private router: Router) {}
+  ingresar: Login = {
+    Correo: '',
+    Contrasena: ''
+  };
+  resultadoValidacion: any;
+  constructor(
+    private loginServices: LoginService,
+    private router: Router,
+    private activateRouter: ActivatedRoute,
+    private toastrService:ToastrService
+  ){}
+  getIngresar() {
+    if (this.ingresar.Correo && this.ingresar.Contrasena) {
+        this.loginServices
+        .getIngresar(this.ingresar.Correo, this.ingresar.Contrasena)
+        .subscribe(
+          (resultado) => {
+            this.resultadoValidacion = resultado;
+            if (resultado) {
+              // Si las credenciales son válidas, redirige a la página principal
+              this.router.navigate(['/pagina-inicio']);
+            }
+          },
+          (error) => {
+            console.error('Error al validar credenciales', error);
+            this.toastrService.error(`Credenciales Incorrectas`,'Error')
+          }
+        );
+    } else {
+      console.error('Correo electrónico o contraseña no válidos');
+      this.toastrService.error(`Correo electrónico o contraseña no válidos`,'Error')
+    }
+  }
 
 }

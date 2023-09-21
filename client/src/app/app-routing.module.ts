@@ -18,7 +18,7 @@ import { EditarMedicoComponent } from './editar-medico/editar-medico.component';
 
 const routes: Routes = [
 
-  {path: '', component: PrincipalComponent},
+  {path: '', component: LoginComponent},
   
   {path: 'pagina-inicio',component:PrincipalComponent},
   {path: 'registrar', component: RegistroComponent},

@@ -8,11 +8,8 @@ class LoginRoutes {
         this.config();
     }
     config() {
+        this.router.get('/:Correo/:Contrasena', loginController_1.loginController.getOne);
         this.router.get('/', loginController_1.loginController.list); //ruta inicial
-        this.router.post('/', loginController_1.loginController.create);
-        this.router.put('/:id', loginController_1.loginController.update);
-        this.router.delete('/:id', loginController_1.loginController.delete);
-        this.router.get('/:id', loginController_1.loginController.select);
     }
 }
 const loginRoutes = new LoginRoutes();

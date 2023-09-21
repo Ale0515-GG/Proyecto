@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  API_URI = 'http://192.168.0.24:3000/api';
+  API_URI = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) { }
 
@@ -37,4 +37,8 @@ login(email: string, password: string): Observable<any> {
   return this.http.post(`${this.API_URI}/login`, { email, password });
 }
 
+getIngresar(Correo : string,Contrasena : string){
+  return this.http.get(`${this.API_URI}/login/${Correo}/${Contrasena}`)
+
+}
 }

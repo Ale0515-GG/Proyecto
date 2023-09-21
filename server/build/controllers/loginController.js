@@ -15,53 +15,48 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.loginController = void 0;
 const database_1 = __importDefault(require("../database"));
 class LoginController {
-    list(req, res) {
+    /*public async list (req: Request, res: Response){
+         const result =  await pool.then(async (connection)=> {
+             return await connection.query(
+                "SELECT * FROM Login"
+             );
+        })
+         res.json(result);
+    }*/
+    list(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
                 return yield connection.query("SELECT * FROM Login");
             }));
-            res.json(result);
+            resp.json(result);
         });
     }
-    select(req, res) {
+    // public async create(req : Request, resp: Response):Promise<void>{
+    //     const { confirmPassword, ...cuentaData } = req.body; // Exclude confirmPassword property
+    //     console.log(cuentaData);
+    //     await pool.query('INSERT INTO cuentas set ?', [cuentaData]);
+    //     resp.json({ message: 'Cuenta Guardada' });
+    // }
+    // public async delete(req: Request, resp: Response){
+    //     const {cveUser}= req.params;
+    //     await pool.query('DELETE FROM cuentas WHERE cveUser=?',[cveUser])
+    //     resp.json({message: 'la cuenta fue eliminada'});
+    // }
+    //  public async update(req: Request, resp: Response){
+    //          const {cveUser}= req.params;
+    //         await pool.query('UPDATE cuentas set? WHERE cveUser=?',[req.body,cveUser]);
+    //      resp.json({message: 'Actualizando cuenta'});
+    //      }
+    getOne(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('SELECT * FROM Login WHERE id=?', [id]);
+            const { Correo, Contrasena } = req.params;
+            const registro = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
+                return yield connection.query("SELECT * FROM Login WHERE Correo = ? and Contrasena = ?", [Correo, Contrasena]);
             }));
-            if (result.length > 0) {
-                return res.json(result[0]); //revuelve al cliente
+            if (registro.length > 0) {
+                return resp.json(registro[0]);
             }
-            console.log(result);
-            res.status(404).json({ text: 'El Login no existe' }); //codigo de estado
-        });
-    }
-    create(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            //console.log(req.body)
-            const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('INSERT INTO Login set ?', [req.body]);
-            }));
-            res.json({ texto: "Login Saved" });
-        });
-    }
-    delete(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('DELETE FROM Login WHERE id=?', [id]);
-            }));
-            res.json({ text: "Login " + req.params.id + " was deleted" });
-        });
-    }
-    update(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('UPDATE Login SET ? WHERE id=?', [req.body, id] //el primer ? va con el req.body los que se van a editar  y el segundo con id(idPaciente)
-                );
-            }));
-            res.json({ text: "Login " + req.params.id + " was updated" });
+            resp.status(404).json({ text: "El usuario no existe" });
         });
     }
 }

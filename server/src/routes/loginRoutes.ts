@@ -9,11 +9,8 @@ class LoginRoutes{
     }
 
     config(): void{
+        this.router.get('/:Correo/:Contrasena', loginController.getOne);
         this.router.get('/',loginController.list); //ruta inicial
-        this.router.post('/',loginController.create);
-        this.router.put('/:id',loginController.update);
-        this.router.delete('/:id',loginController.delete);
-        this.router.get('/:id',loginController.select);
     }
 }
 
