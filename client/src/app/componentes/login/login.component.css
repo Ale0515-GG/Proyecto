@@ -2,6 +2,10 @@
     position: relative;
 }
 
+.tour{
+    background-image: url(../../../assets/fondo.jpg);
+}
+
 i{
     position: absolute;
     left: 11px;
@@ -22,6 +26,8 @@ i{
 button{
     width: 100%;
 }
+
+
 
 footer {
     position: absolute;
