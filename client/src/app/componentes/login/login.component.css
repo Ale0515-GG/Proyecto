@@ -2,12 +2,25 @@
     position: relative;
 }
 
-.tour {
+.tour{
     background-image: url('../../../assets/fondo.jpg'); 
     background-size: cover; /* Ajusta la imagen para cubrir todo el elemento */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
-    height: 100vh; /* Ajusta la altura al 100% del viewport */
+    background-attachment: fixed;
+    height: 90vh; /* Ajusta la altura al 100% del viewport */
   }
+
+.card {
+    width: 400px;
+    padding: 0px; /* Elimina la segunda declaración de padding: auto; */
+    margin-top: 40px;
+}
+
+
+body{
+    margin: 0;
+    padding: 0;
+}
   
 i{
     position: absolute;
