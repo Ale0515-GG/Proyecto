@@ -1,11 +1,9 @@
 footer {
-    position: absolute;
-   bottom: 0;
-   left: 0;
-   width: 100%;
-   margin: 0;
-   
- }
+   position: absolute;
+   bottom: 10;
+   text-align: justify;
+   width: 100%; 
+}
 
  html , body {
     margin: 0;
