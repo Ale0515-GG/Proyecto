@@ -2,19 +2,24 @@
     position: relative;
 }
 
-.tour{
-    background-image: url(../../../assets/fondo.jpg);
-}
-
+.tour {
+    background-image: url('../../../assets/fondo.jpg'); 
+    background-size: cover; /* Ajusta la imagen para cubrir todo el elemento */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    height: 100vh; /* Ajusta la altura al 100% del viewport */
+  }
+  
 i{
     position: absolute;
     left: 11px;
     top: 10px;
 }
+/*  
+//ESTO ES LO DEL ICONO
 
 .form-control{
     padding-left: 40px;
-}
+} */
 
 .card{
     width: 400px;
@@ -27,11 +32,9 @@ button{
     width: 100%;
 }
 
-
-
 footer {
     position: absolute;
-    bottom: 0;
-    text-align: center;
-    width: 100%;
+    bottom: 10;
+    text-align: justify;
+    width: 100%; 
 }
