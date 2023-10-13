@@ -30,6 +30,7 @@ constructor(private citaService: CitaService,private toastrService:ToastrService
 
 ngOnInit(){
   this.getCita();
+  
 }
 
 
@@ -73,15 +74,17 @@ updateGame(){
 }
 
 
-getCita(){
+getCita() {
+  this.citaService.getCitas().subscribe(
+    res => {
+      console.log(res);
+      this.router.navigate(['/cita']);
+    },
+    err => console.error(err)
+  );
+}
 
-this.citaService.getCitas().subscribe(
-  res =>{
-    console.log(res);
-    this.router.navigate(['/cita']);
-  },
-  err => console.error(err)
-)
+
 }
-}
+
 
