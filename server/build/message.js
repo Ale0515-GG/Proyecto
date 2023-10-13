@@ -4,7 +4,7 @@ const client = require('twilio')(accountSid, authToken);
 
 client.messages
     .create({
-        body: 'Esta lalo contigo?',
+        body: 'mensaje',
         from: 'whatsapp:+14155238886',
         to: 'whatsapp:+5214281701228'
     })
@@ -13,10 +13,25 @@ client.messages
 
 const sendMessage = async(req,res)=>{
     try{
-        const {} = req.body;
+        const { number, message } = req.body;
+
+        const response = await client.messages.create({
+           body: message, 
+           from: 'whatsapp:+5214281701228', //numero de la clinica   
+           to: `whatsapp:${number}` 
+        });
+
+        console.log(response);
+
+        res.json({
+            msg: 'Mensaje enviado correctamente'
+        });
 
     }catch(error){
-        console.log(error)
+        console.log(error);
+        res.status(500).json({
+            msg: 'Error al enviar mensaje'
+        });
     }
 }
 
