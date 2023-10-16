@@ -33,6 +33,7 @@ import { PaceditComponent } from './componentes/pacedit/pacedit.component';
 
 import { EditarMedicoComponent } from './editar-medico/editar-medico.component';
 import { ActuexComponent } from './componentes/actuex/actuex.component';
+import { MapaComponent } from './componentes/mapa/mapa.component';
 
 
 
@@ -57,6 +58,7 @@ import { ActuexComponent } from './componentes/actuex/actuex.component';
     PaceditComponent,
     EditarMedicoComponent,
     ActuexComponent,
+    MapaComponent,
 
 
   ],

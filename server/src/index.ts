@@ -36,6 +36,7 @@ class Server{
         this.app.use('/api/cita',citaRoutes);
         this.app.use('/api/expediente',expedienteRoutes);
         this.app.use('/api/login',loginRoutes);
+        //this.app.use('/api/mapa',mapaRoutes);
 
 
 

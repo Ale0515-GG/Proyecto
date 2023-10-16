@@ -15,6 +15,7 @@ import { CitarealComponent } from './componentes/citareal/citareal.component';
 import { PaceditComponent } from './componentes/pacedit/pacedit.component';
 import { ActuexComponent } from './componentes/actuex/actuex.component';
 import { EditarMedicoComponent } from './editar-medico/editar-medico.component';
+import { MapaComponent } from './componentes/mapa/mapa.component';
 
 const routes: Routes = [
 
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: 'Confirpaciente', component: ConfirPacienteComponent},
   {path: 'Citaconf', component: CitaconfComponent},
   {path: 'Medicos/:id', component: EditarMedicoComponent},
+  {path: 'mapa', component: MapaComponent},
   
 ];
 

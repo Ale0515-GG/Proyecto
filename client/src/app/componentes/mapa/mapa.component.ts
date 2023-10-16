@@ -1,3 +1,14 @@
+// import { Component } from '@angular/core';
+
+// @Component({
+//   selector: 'app-mapa',
+//   templateUrl: './mapa.component.html',
+//   styleUrls: ['./mapa.component.css']
+// })
+// export class MapaComponent {
+
+// }
+
 /*import { Component } from '@angular/core';
 */
 import { Component, OnInit } from '@angular/core';
@@ -11,16 +22,13 @@ export class PrincipalComponent {
 }
 */
 
-@Component({
-  selector: 'app-principal',
-  templateUrl: './principal.component.html',
-  styleUrls: ['./principal.component.css']
+ @Component({
+   selector: 'app-mapa',
+   templateUrl: './mapa.component.html',
+   styleUrls: ['./mapa.component.css']
 })
-/*export class AppComponent {
-  title = 'App-Articulos';
-}*/
 
-export class PrincipalComponent implements OnInit {
+export class MapaComponent implements OnInit {
   // Se crea el titulo
   title = 'App-Articulos';
 
@@ -40,7 +48,13 @@ export class PrincipalComponent implements OnInit {
     this.buildMap();
   }
 
+
+  
   buildMap(){
+
+    const navControl = new mapboxgl.NavigationControl({
+      visualizePitch: true
+    })
 
     this.map = new mapboxgl.Map({
       container: 'map',
@@ -52,13 +66,9 @@ export class PrincipalComponent implements OnInit {
 
     });
 
-    const navControl = new mapboxgl.NavigationControl({
-      visualizePitch: true
-    })
-
     this.map.addControl(navControl, 'top-right');
-
-
+    
+    
     this.map.addControl(new mapboxgl.GeolocateControl({
       positionOptions:{
         enableHighAccuracy: true
