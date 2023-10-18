@@ -5,7 +5,6 @@ import { environment } from '../../../environments/environment'; // Importa envi
 import * as mapboxgl from 'mapbox-gl';
 /*
 
-
 export class PrincipalComponent {
 
 }

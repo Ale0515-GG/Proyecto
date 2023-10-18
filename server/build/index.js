@@ -35,6 +35,7 @@ class Server {
         this.app.use('/api/cita', citaRoutes_1.default);
         this.app.use('/api/expediente', expedienteRoutes_1.default);
         this.app.use('/api/login', loginRoutes_1.default);
+        //this.app.use('/api/mapa',mapaRoutes);
     }
     //para iniciar el servidor
     start() {
