@@ -25,7 +25,7 @@ export class PrincipalComponent implements OnInit {
 
   // Se crea definición de diseño y propiedades
   map:mapboxgl.Map | undefined;
-  style = 'mapbox://stylee/mapbox/streets-v11'
+  style = 'mapbox://styles/mapbox/streets-v11'
   lat = 21.157396628357205;
   lng = -100.93256288252164;
   zoom = 16;
