@@ -4,6 +4,7 @@ import { CitaService } from 'src/app/service/Cita/paciente.service';
 import { ActivatedRoute,Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { window } from 'rxjs';
+import { PacienteService } from '../../service/paciente.service';
 
 @Component({
   selector: 'app-citareal',
@@ -23,13 +24,23 @@ export class CitarealComponent implements	 OnInit {
       NomPaciente: '',
       NumTelefono:'',
       Motivo: '',
-  }
+  };
+
+  paciente: any = [];
+
   
-constructor(private citaService: CitaService,private toastrService:ToastrService ,private router:Router,private activeRoute:ActivatedRoute){}
+constructor(private citaService: CitaService,private toastrService:ToastrService ,private pacienteService:PacienteService,private router:Router,private activeRoute:ActivatedRoute){}
 
 
 ngOnInit(){
   this.getCita();
+
+  this.pacienteService.getPacientes().subscribe(
+    res => {
+      this.paciente = res;
+    },
+    err => console.error(err)
+  );
   
 }
 

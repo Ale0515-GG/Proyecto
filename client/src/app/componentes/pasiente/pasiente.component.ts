@@ -6,6 +6,8 @@ import { PacienteService } from 'src/app/service/paciente.service';
 import { Route, Router, RouterModule } from '@angular/router';
 import { ExpedienteService } from '../../service/expediente.service';
 import { ToastrService } from 'ngx-toastr';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 
 
 @Component({
@@ -115,6 +117,11 @@ deleteExpediente(idExpediente: string){
     err => this.toastrService.error(`No se pudo borrar el expediente`,'Error')
   )
 }
+
+
+
+
+
 
 
 }

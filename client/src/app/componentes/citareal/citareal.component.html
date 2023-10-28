@@ -9,7 +9,10 @@
         </div>
         <br>
         <div class="entrada mb-3">
-            <input type="text" class="form-control" required id="formGroupExampleInput2" placeholder="Nombre del Paciente" name="NomPaciente" [(ngModel)]="cita.NomPaciente">
+            <label for="genero">Nombre:</label>
+            <select class="form-control" id="nombre" name="Nombre" [(ngModel)]="cita.NomPaciente">
+              <option *ngFor="let ex of paciente" [ngValue]="ex.Nombre">{{ex.Nombre}}</option>
+            </select>
         </div>
         <div class="entrada mb-3">
             <input type="text" class="form-control" required id="formGroupExampleInput2" placeholder="Numero de Telefono" name="NumTelefono" [(ngModel)]="cita.NumTelefono">
@@ -21,7 +24,7 @@
         <br>
         <br>
         <br>
-        <br>
+        
     </form>
 </div>
 <br>
