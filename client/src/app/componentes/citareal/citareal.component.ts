@@ -47,13 +47,12 @@ ngOnInit(){
 
 saveNewCita(){
 
-delete this.expediente.idPaciente;
 delete this.cita.IdCita;
 
   this.citaService.saveCita(this.cita).subscribe(
     res =>{
       console.log(res);
-      this.router.navigate(['/Citaconf']);
+      this.router.navigate(['/cita']);
       this.toastrService.success(`¡Guardado con exito!`,'Aviso')
       
     },
