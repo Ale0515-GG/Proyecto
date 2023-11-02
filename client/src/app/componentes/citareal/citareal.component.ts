@@ -52,7 +52,7 @@ delete this.cita.IdCita;
   this.citaService.saveCita(this.cita).subscribe(
     res =>{
       console.log(res);
-      this.router.navigate(['/cita']);
+      this.router.navigate(['/Citaconf']);
       this.toastrService.success(`¡Guardado con exito!`,'Aviso')
       
     },
