@@ -15,6 +15,8 @@ const citaRoutes_1 = __importDefault(require("./routes/citaRoutes"));
 const expedienteRoutes_1 = __importDefault(require("./routes/expedienteRoutes"));
 const loginRoutes_1 = __importDefault(require("./routes/loginRoutes"));
 // console.log("Serve");
+//API STREAMING
+const http = require('./app')
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -44,5 +46,8 @@ class Server {
         });
     }
 }
+http.listen(3000, () => {
+    console.log(('Servidor en el puerto 300'))
+})
 const server = new Server();
 server.start();
