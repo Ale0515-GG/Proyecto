@@ -5,7 +5,7 @@ import {Socket} from 'ngx-socket-io';
   providedIn: 'root'
 })
 export class WebSocketService {
-  events = ['Nuevo Usuario', 'Bye Usuario'];
+  events = ['new-user', 'bye-user'];
   cbEvent:EventEmitter<any> = new EventEmitter<any>();
 
 

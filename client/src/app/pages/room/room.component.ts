@@ -33,24 +33,28 @@ export class RoomComponent implements OnInit{
     peer.on('open', (id: string) => {
       const body = {
         idPeer: id,
-        rommName: this.roomName
+        roomName: this.roomName
       };
       console.log('ID PEER:', id);
   
-      // this.webSocketService.joinRoom(body);
+      this.webSocketService.joinRoom(body);
     });
-    // Define la respuesta de la llamada
-    peer.on('call', (callEnter: MediaConnection) => {
-      callEnter.answer(this.currentScream); // Corregido el argumento a 'stream'
-      callEnter.on('stream', (streamRemote: MediaStream) => {
-        // Ahora callEnter y streamRemote tienen tipos definidos.
-        // Puedes acceder a las propiedades y métodos específicos de esos tipos.
+    peer.on('call', (callEnter: MediaConnection) => { // Reemplaza 'TipoDeCallEnter' con el tipo correcto
+      callEnter.answer(this.currentScream);
+      callEnter.on('stream', (streamRemote: MediaStream) => { // Reemplaza 'TipoDeStream' con el tipo correcto
+        this.addVideoUser(streamRemote);
       });
     });
   }
   
+  
   initSocket = () => {
     this.webSocketService.cbEvent.subscribe((res) => {
+      if(res.name === 'new-user'){
+        const {idPeer} = res.data;
+        console.log(idPeer)
+        this.sendCall(idPeer, this.currentScream)
+      }
       console.log('SOCKET', res);
     });
   }
@@ -66,9 +70,9 @@ export class RoomComponent implements OnInit{
       }).then(stream=>{
         //muestra camara por usuario
         this.currentScream=stream;
-        this.addVideo(stream);
+        this.addVideoUser(stream);
         this.currentScream=stream;
-        this.addVideo(stream);
+        this.addVideoUser(stream);
       }).catch(()=>{
         console.log('*** ERROR *** Not Permisos');
       });
@@ -77,8 +81,20 @@ export class RoomComponent implements OnInit{
     }
   }
 
-  addVideo = (stream: any) =>{
+  addVideoUser = (stream: any) =>{
     this.listUser.push(stream);
+    const unique = new Set(this.listUser);
+    this.listUser=[...unique]
   }
+
+  sendCall = (idPeer: string, stream: MediaStream) => {
+    const newUserCall = this.peerService.call(idPeer, stream);
+    if (!!newUserCall) {
+      newUserCall.on('stream', (userStream: MediaStream) => {
+        this.addVideoUser(userStream);
+      });
+    }
+  }
+  
 
 }
