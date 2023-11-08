@@ -34,7 +34,14 @@ import { PaceditComponent } from './componentes/pacedit/pacedit.component';
 import { EditarMedicoComponent } from './editar-medico/editar-medico.component';
 import { ActuexComponent } from './componentes/actuex/actuex.component';
 import { MapaComponent } from './componentes/mapa/mapa.component';
+import { HomeComponent } from './pages/home/home.component';
+import { RoomComponent } from './pages/room/room.component';
+import { VideoPlayerComponent } from './componentes/video-player/video-player.component';
+import { MenuBottonComponent } from './componentes/menu-botton/menu-botton.component';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
+//SOCKET STREAMING 
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCredentials: true} };
 
 
 
@@ -59,6 +66,11 @@ import { MapaComponent } from './componentes/mapa/mapa.component';
     EditarMedicoComponent,
     ActuexComponent,
     MapaComponent,
+    HomeComponent,
+    RoomComponent,
+    VideoPlayerComponent,
+    MenuBottonComponent,
+    
 
 
   ],
@@ -74,6 +86,7 @@ import { MapaComponent } from './componentes/mapa/mapa.component';
     MatInputModule,
     MatSliderModule,
     ToastrModule.forRoot(),
+    SocketIoModule.forRoot(config)
     
   ],
   providers: [

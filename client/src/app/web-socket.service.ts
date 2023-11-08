@@ -1,0 +1,27 @@
+import { Injectable, EventEmitter } from '@angular/core';
+import {Socket} from 'ngx-socket-io';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class WebSocketService {
+  events = ['Nuevo Usuario', 'Bye Usuario'];
+  cbEvent:EventEmitter<any> = new EventEmitter<any>();
+
+
+  constructor(private socket: Socket) { 
+    this.listener();
+  }
+
+  listener = () =>{
+    this.events.forEach(evenName=>{
+      this.socket.on(evenName, (data: { name: string, value: any }) => {
+        this.cbEvent.emit({ name: evenName, data });
+      });
+    });
+  }
+  //envia
+  joinRoom(data: any) {
+    this.socket.emit('join', data);
+  }
+}
