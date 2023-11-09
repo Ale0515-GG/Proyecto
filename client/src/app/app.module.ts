@@ -34,6 +34,8 @@ import { PaceditComponent } from './componentes/pacedit/pacedit.component';
 import { EditarMedicoComponent } from './editar-medico/editar-medico.component';
 import { ActuexComponent } from './componentes/actuex/actuex.component';
 import { MapaComponent } from './componentes/mapa/mapa.component';
+import { YoutubeComponent } from './componentes/youtube/youtube.component';
+import { NoticiasComponent } from './componentes/noticias/noticias.component';
 
 
 
@@ -59,7 +61,8 @@ import { MapaComponent } from './componentes/mapa/mapa.component';
     EditarMedicoComponent,
     ActuexComponent,
     MapaComponent,
-
+    YoutubeComponent,
+    NoticiasComponent,
 
   ],
 
