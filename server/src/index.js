@@ -1,19 +1,16 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const morgan_1 = __importDefault(require("morgan"));
-const cors_1 = __importDefault(require("cors"));
+const express_1 = require("express");
+const morgan_1 = require("morgan");
+const cors_1 = require("cors");
 const http_1 = require("http");
 const socket_io_1 = require("socket.io"); // Importa Socket para definir el tipo de 'socket'
-const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
-const pacienteRoutes_1 = __importDefault(require("./routes/pacienteRoutes"));
-const medicoRoutes_1 = __importDefault(require("./routes/medicoRoutes"));
-const citaRoutes_1 = __importDefault(require("./routes/citaRoutes"));
-const expedienteRoutes_1 = __importDefault(require("./routes/expedienteRoutes"));
-const loginRoutes_1 = __importDefault(require("./routes/loginRoutes"));
+const indexRoutes_1 = require("./routes/indexRoutes");
+const pacienteRoutes_1 = require("./routes/pacienteRoutes");
+const medicoRoutes_1 = require("./routes/medicoRoutes");
+const citaRoutes_1 = require("./routes/citaRoutes");
+const expedienteRoutes_1 = require("./routes/expedienteRoutes");
+const loginRoutes_1 = require("./routes/loginRoutes");
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
