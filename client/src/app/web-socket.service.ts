@@ -13,15 +13,16 @@ export class WebSocketService {
     this.listener();
   }
 
-  listener = () =>{
+   listener = () =>{
     this.events.forEach(evenName=>{
-      this.socket.on(evenName, (data: { name: string, value: any }) => {
-        this.cbEvent.emit({ name: evenName, data });
-      });
-    });
-  }
+       this.socket.on(evenName, (data: { name: string, value: any }) => {
+         this.cbEvent.emit({ name: evenName, data });
+       });
+   });
+   }
+
   //envia
-  joinRoom(data: any) {
+  joinRoom(data:any) {
     this.socket.emit('join', data);
   }
 }

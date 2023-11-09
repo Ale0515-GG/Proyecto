@@ -10,6 +10,10 @@ import citaRoutes from './routes/citaRoutes';
 import expedienteRoutes from './routes/expedienteRoutes';
 import loginRoutes from './routes/loginRoutes';
 
+//streaming
+
+
+
 // console.log("Serve");
 
 class Server{
@@ -52,3 +56,5 @@ class Server{
 
 const server = new Server();
 server.start();
+
+

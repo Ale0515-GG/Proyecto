@@ -14,6 +14,7 @@ const medicoRoutes_1 = __importDefault(require("./routes/medicoRoutes"));
 const citaRoutes_1 = __importDefault(require("./routes/citaRoutes"));
 const expedienteRoutes_1 = __importDefault(require("./routes/expedienteRoutes"));
 const loginRoutes_1 = __importDefault(require("./routes/loginRoutes"));
+//streaming
 // console.log("Serve");
 class Server {
     constructor() {

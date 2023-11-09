@@ -8,7 +8,7 @@ export class PeerService {
   peer: any;
 
   constructor() { 
-    this.peer = new Peer('undersand', {
+    this.peer = new Peer('undefined', {
       host: 'localhost', 
       port: 3001,        
     });
