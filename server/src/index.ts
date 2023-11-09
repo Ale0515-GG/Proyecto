@@ -2,7 +2,7 @@ import express, { Express, Request, Response } from "express";
 import morgan from "morgan";
 import cors from "cors";
 import { createServer } from "http";
-import { Server as SocketIOServer, Socket } from "socket.io"; // Importa Socket para definir el tipo de 'socket'
+//import { Server as SocketIOServer, Socket } from "socket.io"; // Importa Socket para definir el tipo de 'socket'
 
 
 import indexRoutes from "./routes/indexRoutes";
@@ -14,20 +14,20 @@ import loginRoutes from "./routes/loginRoutes";
 
 interface UserData {
     roomName: string;
-    
+    // Agrega otros campos si es necesario
   }
 class Server {
   private app: Express;
   private server: any;
-  private io: SocketIOServer;
+  //private io: SocketIOServer;
 
   constructor() {
     this.app = express();
     this.server = createServer(this.app);
-    this.io = new SocketIOServer(this.server);
+    //this.io = new SocketIOServer(this.server);
     this.config();
     this.routes();
-    this.sockets();
+    //this.sockets();
   }
 
   private config(): void {
@@ -45,10 +45,10 @@ class Server {
     this.app.use("/api/cita", citaRoutes);
     this.app.use("/api/expediente", expedienteRoutes);
     this.app.use("/api/login", loginRoutes);
-     //this.app.use('/api/mapa',mapaRoutes);
+    // this.app.use('/api/mapa',mapaRoutes);
   }
 
-  private sockets(): void {
+  /*private sockets(): void {
     this.io.on("connection", (socket: Socket) => {
       console.log("Un usuario se ha conectado");
 
@@ -63,7 +63,7 @@ class Server {
         });
       });
     });
-  }
+  }*/
 
   public start(): void {
     this.server.listen(this.app.get("port"), () => {
