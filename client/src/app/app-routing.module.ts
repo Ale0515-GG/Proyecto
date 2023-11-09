@@ -18,6 +18,7 @@ import { EditarMedicoComponent } from './editar-medico/editar-medico.component';
 import { MapaComponent } from './componentes/mapa/mapa.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RoomComponent } from './pages/room/room.component';
+import { FarmaciaComponent } from './componentes/farmacia/farmacia.component';
 
 const routes: Routes = [
 
@@ -37,8 +38,10 @@ const routes: Routes = [
   {path: 'Citaconf', component: CitaconfComponent},
   {path: 'Medicos/:id', component: EditarMedicoComponent},
   {path: 'mapa', component: MapaComponent},
+  {path: 'farmacia', component: FarmaciaComponent},
   {path: 'citazoom', component: HomeComponent},
   {path: ':id', component: RoomComponent},
+  
 ];
 
 @NgModule({

@@ -39,6 +39,7 @@ import { RoomComponent } from './pages/room/room.component';
 import { VideoPlayerComponent } from './componentes/video-player/video-player.component';
 import { MenuBottonComponent } from './componentes/menu-botton/menu-botton.component';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { FarmaciaComponent } from './componentes/farmacia/farmacia.component';
 
 //SOCKET STREAMING 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCredentials: true} };
@@ -70,6 +71,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCre
     RoomComponent,
     VideoPlayerComponent,
     MenuBottonComponent,
+    FarmaciaComponent,
     
 
 
