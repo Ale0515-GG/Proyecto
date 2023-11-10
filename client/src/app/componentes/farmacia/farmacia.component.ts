@@ -20,7 +20,28 @@ export class FarmaciaComponent implements OnInit{
   title = 'App-Articulos';
     ngOnInit(): void {
      paypal
-     .Buttons()
+     .Buttons({
+      createOrder: (data:any,actions:any) => {
+        return actions.order.create({
+          purchase_units:[
+            {
+              description: this.producto.descripcion,
+              amount     :{
+                currency_code: 'MXN',
+                value        : this.producto.precio
+              }
+            }
+          ]
+        })
+      },
+      onApprove: async(data:any,actions:any) =>{
+        const order = await actions.order.capture();
+        console.log(order);
+      },
+      onError: (err: any) => {
+        console.log(err);
+      }
+     })
      .render (this.paypalElement.nativeElement);
     }
 }
