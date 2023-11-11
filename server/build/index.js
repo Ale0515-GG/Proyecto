@@ -7,7 +7,6 @@ const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const http_1 = require("http");
-//import { Server as SocketIOServer, Socket } from "socket.io"; // Importa Socket para definir el tipo de 'socket'
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const pacienteRoutes_1 = __importDefault(require("./routes/pacienteRoutes"));
 const medicoRoutes_1 = __importDefault(require("./routes/medicoRoutes"));
@@ -38,7 +37,7 @@ class Server {
         this.app.use("/api/cita", citaRoutes_1.default);
         this.app.use("/api/expediente", expedienteRoutes_1.default);
         this.app.use("/api/login", loginRoutes_1.default);
-        // this.app.use('/api/mapa',mapaRoutes);
+        //this.app.use('/api/mapa',mapaRoutes);
     }
     /*private sockets(): void {
       this.io.on("connection", (socket: Socket) => {

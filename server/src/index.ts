@@ -2,7 +2,8 @@ import express, { Express, Request, Response } from "express";
 import morgan from "morgan";
 import cors from "cors";
 import { createServer } from "http";
-//import { Server as SocketIOServer, Socket } from "socket.io"; // Importa Socket para definir el tipo de 'socket'
+//import { Server as SocketIOServer, Socket } from "socket.io"; 
+import * as io from "socket.io-client"
 
 
 import indexRoutes from "./routes/indexRoutes";
@@ -14,7 +15,7 @@ import loginRoutes from "./routes/loginRoutes";
 
 interface UserData {
     roomName: string;
-    // Agrega otros campos si es necesario
+
   }
 class Server {
   private app: Express;
@@ -45,7 +46,7 @@ class Server {
     this.app.use("/api/cita", citaRoutes);
     this.app.use("/api/expediente", expedienteRoutes);
     this.app.use("/api/login", loginRoutes);
-    // this.app.use('/api/mapa',mapaRoutes);
+    //this.app.use('/api/mapa',mapaRoutes);
   }
 
   /*private sockets(): void {
