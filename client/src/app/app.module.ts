@@ -40,6 +40,11 @@ import { VideoPlayerComponent } from './componentes/video-player/video-player.co
 import { MenuBottonComponent } from './componentes/menu-botton/menu-botton.component';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { FarmaciaComponent } from './componentes/farmacia/farmacia.component';
+import { ProductListComponent } from './componentes/product-list/product-list.component';
+import { ProductItemComponent } from './componentes/product-item/product-item.component';
+import { CartComponent } from './componentes/cart/cart.component';
+import { CartItemComponent } from './componentes/cart-item/cart-item.component';
+import { ModalComponent } from './componentes/modal/modal.component';
 
 //SOCKET STREAMING 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCredentials: true} };
@@ -72,6 +77,11 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCre
     VideoPlayerComponent,
     MenuBottonComponent,
     FarmaciaComponent,
+    ProductListComponent,
+    ProductItemComponent,
+    CartComponent,
+    CartItemComponent,
+    ModalComponent,
     
 
 
