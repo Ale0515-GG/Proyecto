@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CartItemModel } from 'src/app/models/cart-item-model';
 
 @Component({
   selector: 'app-cart-item',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class CartItemComponent {
 
+  @Input() cartItem:CartItemModel;
+  constructor(){
+    this.cartItem = {} as CartItemModel;
+  }
 }

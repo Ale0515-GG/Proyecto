@@ -1,9 +1,9 @@
 <div class="card text-center mb-3">
-    <img src="https://www.soriana.com/dw/image/v2/BGBD_PRD/on/demandware.static/-/Sites-soriana-grocery-master-catalog/default/dwbf24ce63/images/product/7501008499382_A.jpg?sw=473&sh=473&sm=fit" class="card-img-top">
+    <img [src]="product.imageUrl">
     <div class="card-body">
-      <h5 class="card-title">Antiinflamatorio Flanax 550 mg Naproxeno 12 Tabletas</h5>
-      <p class="card-text">$229.00</p>
-      <button class="btn btn-primary">
+      <h5 class="card-title">{{product.name}}</h5>
+      <p class="card-text">{{product.price}}</p>
+      <button class="btn btn-primary" (click)="addToCart()">
         <i class="fas fa-cart-plus"></i> Comprar</button>
     </div>
   </div>
