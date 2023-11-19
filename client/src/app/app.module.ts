@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -45,10 +45,12 @@ import { ProductItemComponent } from './componentes/product-item/product-item.co
 import { CartComponent } from './componentes/cart/cart.component';
 import { CartItemComponent } from './componentes/cart-item/cart-item.component';
 import { ModalComponent } from './componentes/modal/modal.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 //SOCKET STREAMING 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCredentials: true} };
-
+//external
 
 
 @NgModule({
@@ -98,12 +100,16 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCre
     MatInputModule,
     MatSliderModule,
     ToastrModule.forRoot(),
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    NgxPayPalModule,
+    NgxSpinnerModule,
+    
     
   ],
   providers: [
     PacienteService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
