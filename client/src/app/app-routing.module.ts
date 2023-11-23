@@ -44,6 +44,7 @@ const routes: Routes = [
   {path: 'mapa', component: MapaComponent},
   {path: 'farmacia', component: FarmaciaComponent},
   {path: 'pay', component: PayComponent},
+  {path: 'youtube', component: YoutubeComponent},
   {path: 'citazoom', component: HomeComponent},
   {path: ':id', component: RoomComponent},
   
