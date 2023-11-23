@@ -19,6 +19,7 @@ import { MapaComponent } from './componentes/mapa/mapa.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RoomComponent } from './pages/room/room.component';
 import { FarmaciaComponent } from './componentes/farmacia/farmacia.component';
+import { PayComponent } from './pay/pay.component';
 
 const routes: Routes = [
 
@@ -39,6 +40,7 @@ const routes: Routes = [
   {path: 'Medicos/:id', component: EditarMedicoComponent},
   {path: 'mapa', component: MapaComponent},
   {path: 'farmacia', component: FarmaciaComponent},
+  {path: 'pay', component: PayComponent},
   {path: 'citazoom', component: HomeComponent},
   {path: ':id', component: RoomComponent},
   
