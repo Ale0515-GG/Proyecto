@@ -75,7 +75,7 @@ img{
         justify-content: center;
         align-items: center;
         align-content: center;
-        background-color: tomato;
+        background-color: rgb(71, 89, 255);
         border: solid 3px rgb(255, 255, 255 / 59%);
         border-radius: .5rem;
         box-shadow:

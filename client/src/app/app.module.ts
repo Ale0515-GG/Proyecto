@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -41,10 +41,18 @@ import { RoomComponent } from './pages/room/room.component';
 import { VideoPlayerComponent } from './componentes/video-player/video-player.component';
 import { MenuBottonComponent } from './componentes/menu-botton/menu-botton.component';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { FarmaciaComponent } from './componentes/farmacia/farmacia.component';
+import { ProductListComponent } from './componentes/product-list/product-list.component';
+import { ProductItemComponent } from './componentes/product-item/product-item.component';
+import { CartComponent } from './componentes/cart/cart.component';
+import { CartItemComponent } from './componentes/cart-item/cart-item.component';
+import { ModalComponent } from './componentes/modal/modal.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 //SOCKET STREAMING 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCredentials: true} };
-
+//external
 
 
 @NgModule({
@@ -74,6 +82,12 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCre
     RoomComponent,
     VideoPlayerComponent,
     MenuBottonComponent,
+    FarmaciaComponent,
+    ProductListComponent,
+    ProductItemComponent,
+    CartComponent,
+    CartItemComponent,
+    ModalComponent,
     
 
 
@@ -90,12 +104,16 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCre
     MatInputModule,
     MatSliderModule,
     ToastrModule.forRoot(),
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    NgxPayPalModule,
+    NgxSpinnerModule,
+    
     
   ],
   providers: [
     PacienteService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

@@ -21,6 +21,7 @@ import { NoticiasComponent } from './componentes/noticias/noticias.component';
 
 import { HomeComponent } from './pages/home/home.component';
 import { RoomComponent } from './pages/room/room.component';
+import { FarmaciaComponent } from './componentes/farmacia/farmacia.component';
 
 const routes: Routes = [
 
@@ -40,10 +41,10 @@ const routes: Routes = [
   {path: 'Citaconf', component: CitaconfComponent},
   {path: 'Medicos/:id', component: EditarMedicoComponent},
   {path: 'mapa', component: MapaComponent},
-  {path: 'youtube', component: YoutubeComponent},
-  {path: 'noticia', component: NoticiasComponent},
+  {path: 'farmacia', component: FarmaciaComponent},
   {path: 'citazoom', component: HomeComponent},
   {path: ':id', component: RoomComponent},
+  
 ];
 
 @NgModule({
