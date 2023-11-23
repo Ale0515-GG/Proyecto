@@ -34,6 +34,8 @@ import { PaceditComponent } from './componentes/pacedit/pacedit.component';
 import { EditarMedicoComponent } from './editar-medico/editar-medico.component';
 import { ActuexComponent } from './componentes/actuex/actuex.component';
 import { MapaComponent } from './componentes/mapa/mapa.component';
+import { YoutubeComponent } from './componentes/youtube/youtube.component';
+import { NoticiasComponent } from './componentes/noticias/noticias.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RoomComponent } from './pages/room/room.component';
 import { VideoPlayerComponent } from './componentes/video-player/video-player.component';
@@ -75,6 +77,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCre
     EditarMedicoComponent,
     ActuexComponent,
     MapaComponent,
+    YoutubeComponent,
+    NoticiasComponent,
     HomeComponent,
     RoomComponent,
     VideoPlayerComponent,

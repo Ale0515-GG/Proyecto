@@ -14,6 +14,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment'; // Importa environment
 import * as mapboxgl from 'mapbox-gl';
+//import * as mapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions'
 /*
 
 
@@ -34,7 +35,7 @@ export class MapaComponent implements OnInit {
 
   // Se crea definición de diseño y propiedades
   map:mapboxgl.Map | undefined;
-  style = 'mapbox://stylee/mapbox/streets-v11'
+  style = 'mapbox://styles/mapbox/streets-v11'
   lat = 21.157396628357205;
   lng = -100.93256288252164;
   zoom = 16;
@@ -61,23 +62,51 @@ export class MapaComponent implements OnInit {
       style: this.style,
       zoom: this.zoom,
       center: [this.lng, this.lat],
-      accessToken: environment.mapbox.mapboxAccessToken,
-      attributionControl: false,
+      //accessToken: environment.mapbox.mapboxAccessToken,
+      attributionControl: false
 
     });
 
     this.map.addControl(navControl, 'top-right');
     
-    
-    this.map.addControl(new mapboxgl.GeolocateControl({
+
+    // Geolocalización
+    /*this.map.addControl(new mapboxgl.GeolocateControl({
       positionOptions:{
         enableHighAccuracy: true
       },
       trackUserLocation: true,
       showUserHeading: true
-    }))
+    }));*/
+
+    let geolocate = new mapboxgl.GeolocateControl({
+      positionOptions:{
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true,
+      showUserHeading: true
+    });
+
+    this.map.addControl(geolocate, 'top-right');
+    geolocate.on('geolocate', locateUser);
+
+    this.map.on('load', function(){
+      geolocate.trigger();
+    })
+
+
+    // Escala
+    this.map.addControl(new mapboxgl.ScaleControl(), 'bottom-right')
+
+    //full Screen
+    this.map.addControl(new mapboxgl.FullscreenControl(), 'top-right')
+
+
 
 
   }
 }
 
+function locateUser(e: any){
+  console.log("Lng : " + e.coords.longitude + " " + "Lat : " + e.coords.latitude)
+}

@@ -1,0 +1,34 @@
+<app-late></app-late>
+  <div class="wrapper">
+    <div class="box">
+  
+      <h1 class="title" id="titulo"></h1>
+      <div class="center">
+        <div class="money-box-btn">
+          <a>
+            <span class="txt-money"> BIENVENIDO A SALUD PARA TI </span>
+          </a>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="container">
+        <label for="lang"> Selecciona una de las opciones para buscar </label>
+        <select [(ngModel)]="seleccion" (ngModelChange)="onChange()">
+          <option *ngFor="let opcion of opciones" [value]="opcion">{{ opcion }}</option>
+        </select>
+      </div>
+      <br>
+      <div class="square-container">
+        <div *ngFor="let video of videos" class="square-box">
+          <h2>{{ video.snippet.title }}</h2>
+          <p>{{ video.snippet.description }}</p>
+          <div *ngIf="video.id.videoId">
+            <iframe [src]="getVideoUrl(video.id.videoId)" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+  
+  
+      </div>
+    </div>
