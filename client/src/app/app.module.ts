@@ -36,7 +36,14 @@ import { ActuexComponent } from './componentes/actuex/actuex.component';
 import { MapaComponent } from './componentes/mapa/mapa.component';
 import { YoutubeComponent } from './componentes/youtube/youtube.component';
 import { NoticiasComponent } from './componentes/noticias/noticias.component';
+import { HomeComponent } from './pages/home/home.component';
+import { RoomComponent } from './pages/room/room.component';
+import { VideoPlayerComponent } from './componentes/video-player/video-player.component';
+import { MenuBottonComponent } from './componentes/menu-botton/menu-botton.component';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
+//SOCKET STREAMING 
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCredentials: true} };
 
 
 
@@ -63,6 +70,12 @@ import { NoticiasComponent } from './componentes/noticias/noticias.component';
     MapaComponent,
     YoutubeComponent,
     NoticiasComponent,
+    HomeComponent,
+    RoomComponent,
+    VideoPlayerComponent,
+    MenuBottonComponent,
+    
+
 
   ],
 
@@ -77,6 +90,7 @@ import { NoticiasComponent } from './componentes/noticias/noticias.component';
     MatInputModule,
     MatSliderModule,
     ToastrModule.forRoot(),
+    SocketIoModule.forRoot(config)
     
   ],
   providers: [

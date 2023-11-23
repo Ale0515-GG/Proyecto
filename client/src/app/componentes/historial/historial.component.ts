@@ -72,7 +72,7 @@ export class HistorialComponent implements OnInit {
     .subscribe(res=> {
       console.log(res);
       this.toastrService.success(`Expediente guardado con exito!`,'Aviso') //notificación
-      this.router.navigate(['/expediente'])
+      this.router.navigate(['/paciente'])
      
     },
     err => this.toastrService.error(`No se guardo correctamente el expediente`,'Error')

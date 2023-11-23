@@ -19,6 +19,8 @@ import { MapaComponent } from './componentes/mapa/mapa.component';
 import { YoutubeComponent } from './componentes/youtube/youtube.component';
 import { NoticiasComponent } from './componentes/noticias/noticias.component';
 
+import { HomeComponent } from './pages/home/home.component';
+import { RoomComponent } from './pages/room/room.component';
 
 const routes: Routes = [
 
@@ -39,8 +41,9 @@ const routes: Routes = [
   {path: 'Medicos/:id', component: EditarMedicoComponent},
   {path: 'mapa', component: MapaComponent},
   {path: 'youtube', component: YoutubeComponent},
-  {path: 'noticia', component: NoticiasComponent}
-  
+  {path: 'noticia', component: NoticiasComponent},
+  {path: 'citazoom', component: HomeComponent},
+  {path: ':id', component: RoomComponent},
 ];
 
 @NgModule({
