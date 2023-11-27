@@ -8,7 +8,6 @@ import { PacienteService } from '../../service/paciente.service';
 import { MedicoService } from '../../service/medico.service';
 
 
-
 @Component({
   selector: 'app-historial',
   templateUrl: './historial.component.html',
