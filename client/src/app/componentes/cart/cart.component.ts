@@ -48,9 +48,11 @@ export class CartComponent implements OnInit {
             ]
           });
         },
+        //cuando se hace la compra
         onApprove: async (data: any, actions: any) => {
           const order = await actions.order.capture();
           console.log(order);
+          this.vaciarCart();
         },
         onError: (err: any) => {
           console.log(err);
