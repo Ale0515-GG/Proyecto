@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PayComponent } from './pay.component';
+import { ZoomComponent } from './zoom.component';
 
-describe('PayComponent', () => {
-  let component: PayComponent;
-  let fixture: ComponentFixture<PayComponent>;
+describe('ZoomComponent', () => {
+  let component: ZoomComponent;
+  let fixture: ComponentFixture<ZoomComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PayComponent]
+      declarations: [ZoomComponent]
     });
-    fixture = TestBed.createComponent(PayComponent);
+    fixture = TestBed.createComponent(ZoomComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
