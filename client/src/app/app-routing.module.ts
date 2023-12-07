@@ -18,6 +18,7 @@ import { EditarMedicoComponent } from './editar-medico/editar-medico.component';
 import { MapaComponent } from './componentes/mapa/mapa.component';
 import { YoutubeComponent } from './componentes/youtube/youtube.component';
 import { NoticiasComponent } from './componentes/noticias/noticias.component';
+import { JitsiComponent } from './componentes/jitsi/jitsi.component';
 
 import { HomeComponent } from './pages/home/home.component';
 import { RoomComponent } from './pages/room/room.component';
@@ -47,9 +48,11 @@ const routes: Routes = [
   {path: 'pay', component: PayComponent},
   {path: 'youtube', component: YoutubeComponent},
   {path: 'zoom', component: ZoomComponent},
+  {path: 'jitsi', component: JitsiComponent},
   {path: 'citazoom', component: HomeComponent},
   {path: ':id', component: RoomComponent},
   {path: 'zoom', component: ZoomComponent},
+
   
 ];
 

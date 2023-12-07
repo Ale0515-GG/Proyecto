@@ -8,35 +8,35 @@ declare var JitsiMeetExternalAPI: any;
   styleUrls: ['./zoom.component.css']
 })
 export class ZoomComponent  implements OnInit, AfterViewInit  {
-  domain: string = "meet.jit.si"; // For self-hosted use your domain
+  domain: string = "meet.jit.si";
   room: any;
   options: any;
   api: any;
   user: any;
 
   // For Custom Controls
-  isAudioMuted = false;
-  isVideoMuted = false;
+  isAudioMuted = true;
+  isVideoMuted = true;
 
   constructor(
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.room = 'JitsiMeetingApiExample'; // Set your room name
+    this.room = 'Cita Virtual Salud Para Ti'; // Set your room name
     this.user = {
-      name: 'Coding Wall' // Set your username
+      name: 'Salud Para Ti' // Set your username
     }
   }
 
   ngAfterViewInit(): void {
     this.options = {
       roomName: this.room,
-      width: 900,
-      height: 500,
-      configOverwrite: { prejoinPageEnabled: false },
+      width: 1350,
+      height: 600,
+      configOverwrite: { prejoinPageEnabled: true },
       interfaceConfigOverwrite: {
-        TITLE_VIEW_MAX_COLUMNS: 8
+        TITLE_VIEW_MAX_COLUMNS: 4
       },
       parentNode: document.querySelector('#jitsi-iframe'),
       userInfo: {
@@ -74,7 +74,7 @@ export class ZoomComponent  implements OnInit, AfterViewInit  {
   }
 
   handleVideoConferenceLeft = () => {
-    this.router.navigate(['/zoom']);
+    this.router.navigate(['/pagina-inicio']);
   }
 
   handleMuteStatus = (audio: any) => {
