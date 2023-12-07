@@ -23,6 +23,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { RoomComponent } from './pages/room/room.component';
 import { FarmaciaComponent } from './componentes/farmacia/farmacia.component';
 import { PayComponent } from './pay/pay.component';
+import { ZoomComponent } from './componentes/zoom/zoom.component';
 
 const routes: Routes = [
 
@@ -45,8 +46,10 @@ const routes: Routes = [
   {path: 'farmacia', component: FarmaciaComponent},
   {path: 'pay', component: PayComponent},
   {path: 'youtube', component: YoutubeComponent},
+  {path: 'zoom', component: ZoomComponent},
   {path: 'citazoom', component: HomeComponent},
   {path: ':id', component: RoomComponent},
+  {path: 'zoom', component: ZoomComponent},
   
 ];
 
