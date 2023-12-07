@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class CitaService {
 
-  API_URI = 'http://localhost:3000/api';
+  API_URI = 'http://192.168.1.74:3000/api';
 
   constructor(private http: HttpClient) { }
 

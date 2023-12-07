@@ -1,105 +1,76 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { CartItemModel } from 'src/app/models/cart-item-model';
 import { Product } from 'src/app/models/product';
 import { MessageService } from 'src/app/service/message.service';
 import { StorageService } from '../../service/storage.service';
-import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
-import { environment } from 'src/environments/environment';
-import { NgxPayPalModule } from 'ngx-paypal';
+
+declare var paypal: any;
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit{
+export class CartComponent implements OnInit {
 
+  @ViewChild('paypal', { static: true }) paypalElement!: ElementRef;
   cartItems: CartItemModel[] = [];
-  total=0;
+  total = 0;
 
-  public payPalConfig ?: IPayPalConfig;
+  producto = {
+    descripcion: 'producto en venta',
+    precio: () => this.getTotal(),
+    img: 'imagen de tu producto'
+  };
 
-  constructor(private messageService: MessageService,
-    private storageService:StorageService){
-
-  }
+  constructor(
+    private messageService: MessageService,
+    private storageService: StorageService
+  ) {}
 
   ngOnInit(): void {
-    this.initConfig();  
-    if(this.storageService.existsCart()) {
-      this.cartItems = this.storageService.getCart();
-    }
+    this.cartItems = this.storageService.existsCart() ? this.storageService.getCart() : [];
     this.getItem();
     this.total = this.getTotal();
+
+    paypal
+      .Buttons({
+        createOrder: (data: any, actions: any) => {
+          return actions.order.create({
+            purchase_units: [
+              {
+                description: this.producto.descripcion,
+                amount: {
+                  currency_code: 'MXN',
+                  value: this.producto.precio() 
+                }
+              }
+            ]
+          });
+        },
+        //cuando se hace la compra
+        onApprove: async (data: any, actions: any) => {
+          const order = await actions.order.capture();
+          console.log(order);
+          this.vaciarCart();
+        },
+        onError: (err: any) => {
+          console.log(err);
+        }
+      })
+      .render(this.paypalElement.nativeElement);
   }
 
-  private initConfig(): void {
-    this.payPalConfig = {
-        currency: 'EUR',
-        clientId: environment.clientId,
-        createOrderOnClient: (data) => < ICreateOrderRequest > {
-            intent: 'CAPTURE',
-            purchase_units: [{
-                amount: {
-                    currency_code: 'EUR',
-                    value: '9.99',
-                    breakdown: {
-                        item_total: {
-                            currency_code: 'EUR',
-                            value: '9.99'
-                        }
-                    }
-                },
-                items: [{
-                    name: 'Enterprise Subscription',
-                    quantity: '1',
-                    category: 'DIGITAL_GOODS',
-                    unit_amount: {
-                        currency_code: 'EUR',
-                        value: '9.99',
-                    },
-                }]
-            }]
-        },
-        advanced: {
-            commit: 'true'
-        },
-        style: {
-            label: 'paypal',
-            layout: 'vertical'
-        },
-        onApprove: (data, actions) => {
-            console.log('onApprove - transaction was approved, but not authorized', data, actions);
-            actions.order.get().then((details:any) => {
-                console.log('onApprove - you can get full order details inside onApprove: ', details);
-            });
-
-        },
-        onClientAuthorization: (data) => {
-            console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-        },
-        onCancel: (data, actions) => {
-            console.log('OnCancel', data, actions);
-
-        },
-        onError: err => {
-            console.log('OnError', err);
-        },
-        onClick: (data, actions) => {
-            console.log('onClick', data, actions);
-        }
-    };
-}
-
-  getItem():void{
-    this.messageService.getMessage().subscribe((product: Product) =>{
+  getItem(): void {
+    this.messageService.getMessage().subscribe((product: Product) => {
       let exists = false;
-      this.cartItems.forEach(item =>{
-        if (item.productId === product.id){
-          exists = true
+      this.cartItems.forEach(item => {
+        if (item.productId === product.id) {
+          exists = true;
           item.qty++;
         }
       });
-      if (!exists){
+      if (!exists) {
         const cartItem = new CartItemModel(product);
         this.cartItems.push(cartItem);
       }
@@ -110,23 +81,23 @@ export class CartComponent implements OnInit{
 
   getTotal(): number {
     let total = 0;
-    this.cartItems.forEach(item =>{
+    this.cartItems.forEach(item => {
       total += item.qty * item.productPrice;
     });
-    return + total.toFixed(2);
+    return +total.toFixed(2);
   }
 
-  vaciarCart(): void{
-    this.cartItems =[];
-    this.total=0;
+  vaciarCart(): void {
+    this.cartItems = [];
+    this.total = 0;
     this.storageService.clear();
   }
 
-  deleteItem(i:number):void{
-    if(this.cartItems[i].qty >1){
+  deleteItem(i: number): void {
+    if (this.cartItems[i].qty > 1) {
       this.cartItems[i].qty--;
-    }else{
-      this.cartItems.splice(i,1);
+    } else {
+      this.cartItems.splice(i, 1);
     }
     this.total = this.getTotal();
     this.storageService.setCart(this.cartItems);

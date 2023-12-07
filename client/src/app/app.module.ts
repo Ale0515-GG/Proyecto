@@ -50,6 +50,8 @@ import { ModalComponent } from './componentes/modal/modal.component';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { PayComponent } from './pay/pay.component';
+import { ZoomComponent } from './componentes/zoom/zoom.component';
+import { JitsiComponent } from './componentes/jitsi/jitsi.component';
 
 //SOCKET STREAMING 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCredentials: true} };
@@ -90,6 +92,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCre
     CartItemComponent,
     ModalComponent,
     PayComponent,
+    ZoomComponent,
+    JitsiComponent,
     
 
 

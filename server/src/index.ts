@@ -1,10 +1,8 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import morgan from "morgan";
 import cors from "cors";
 import { createServer } from "http";
 //import { Server as SocketIOServer, Socket } from "socket.io"; 
-import * as io from "socket.io-client"
-
 
 import indexRoutes from "./routes/indexRoutes";
 import pacienteRoutes from "./routes/pacienteRoutes";
@@ -15,8 +13,8 @@ import loginRoutes from "./routes/loginRoutes";
 
 interface UserData {
     roomName: string;
+}
 
-  }
 class Server {
   private app: Express;
   private server: any;
@@ -25,7 +23,12 @@ class Server {
   constructor() {
     this.app = express();
     this.server = createServer(this.app);
-    //this.io = new SocketIOServer(this.server);
+    /*this.io = new SocketIOServer(this.server, {
+      cors: {
+        origin: "http://192.168.1.74:4200",
+        methods: ["GET", "POST"]
+      }
+    });*/
     this.config();
     this.routes();
     //this.sockets();
@@ -34,7 +37,11 @@ class Server {
   private config(): void {
     this.app.set("port", process.env.PORT || 3000);
     this.app.use(morgan("dev"));
-    this.app.use(cors());
+    this.app.use(cors({
+      origin: "http://192.168.1.74:4200",
+      methods: ["GET", "POST"],
+      credentials: true,
+  }));
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: false }));
   }
@@ -46,7 +53,6 @@ class Server {
     this.app.use("/api/cita", citaRoutes);
     this.app.use("/api/expediente", expedienteRoutes);
     this.app.use("/api/login", loginRoutes);
-    //this.app.use('/api/mapa',mapaRoutes);
   }
 
   /*private sockets(): void {
