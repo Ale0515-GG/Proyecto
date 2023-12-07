@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const http_1 = require("http");
+//import { Server as SocketIOServer, Socket } from "socket.io"; 
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const pacienteRoutes_1 = __importDefault(require("./routes/pacienteRoutes"));
 const medicoRoutes_1 = __importDefault(require("./routes/medicoRoutes"));
@@ -18,7 +19,12 @@ class Server {
     constructor() {
         this.app = (0, express_1.default)();
         this.server = (0, http_1.createServer)(this.app);
-        //this.io = new SocketIOServer(this.server);
+        /*this.io = new SocketIOServer(this.server, {
+          cors: {
+            origin: "http://192.168.1.74:4200",
+            methods: ["GET", "POST"]
+          }
+        });*/
         this.config();
         this.routes();
         //this.sockets();
@@ -26,7 +32,11 @@ class Server {
     config() {
         this.app.set("port", process.env.PORT || 3000);
         this.app.use((0, morgan_1.default)("dev"));
-        this.app.use((0, cors_1.default)());
+        this.app.use((0, cors_1.default)({
+            origin: "http://192.168.1.74:4200",
+            methods: ["GET", "POST"],
+            credentials: true,
+        }));
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: false }));
     }
@@ -37,7 +47,6 @@ class Server {
         this.app.use("/api/cita", citaRoutes_1.default);
         this.app.use("/api/expediente", expedienteRoutes_1.default);
         this.app.use("/api/login", loginRoutes_1.default);
-        //this.app.use('/api/mapa',mapaRoutes);
     }
     /*private sockets(): void {
       this.io.on("connection", (socket: Socket) => {
