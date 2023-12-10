@@ -32,8 +32,8 @@ export class ZoomComponent  implements OnInit, AfterViewInit  {
   ngAfterViewInit(): void {
     this.options = {
       roomName: this.room,
-      width: 1350,
-      height: 600,
+      width: 1500,
+      height: 670,
       configOverwrite: { prejoinPageEnabled: true },
       interfaceConfigOverwrite: {
         TITLE_VIEW_MAX_COLUMNS: 4
@@ -74,7 +74,7 @@ export class ZoomComponent  implements OnInit, AfterViewInit  {
   }
 
   handleVideoConferenceLeft = () => {
-    this.router.navigate(['/pagina-inicio']);
+    this.router.navigate(['/zoom']);
   }
 
   handleMuteStatus = (audio: any) => {
