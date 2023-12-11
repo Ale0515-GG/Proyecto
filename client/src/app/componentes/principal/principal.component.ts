@@ -3,6 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment'; // Importa environment
 import * as mapboxgl from 'mapbox-gl';
+import { Router } from '@angular/router';
 /*
 
 export class PrincipalComponent {
@@ -31,8 +32,8 @@ export class PrincipalComponent implements OnInit {
   zoom = 16;
   /*21.157396628357205, -100.93256288252164*/
 
-  constructor() {
-    (mapboxgl as any).accessToken = environment.mapbox.mapboxAccessToken;
+  constructor(private router:Router) {
+    (mapboxgl as any).accessToken = environment.mapbox.mapboxAccessToken; 
   }
 
   ngOnInit(): void {
@@ -67,6 +68,9 @@ export class PrincipalComponent implements OnInit {
     }))
 
 
+  }
+  MostrarMapa(){
+    this.router.navigate(['/mapa']);
   }
 }
 
