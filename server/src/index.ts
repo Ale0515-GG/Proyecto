@@ -2,7 +2,6 @@ import express, { Express } from "express";
 import morgan from "morgan";
 import cors from "cors";
 import { createServer } from "http";
-//import { Server as SocketIOServer, Socket } from "socket.io"; 
 
 import indexRoutes from "./routes/indexRoutes";
 import pacienteRoutes from "./routes/pacienteRoutes";
@@ -18,27 +17,19 @@ interface UserData {
 class Server {
   private app: Express;
   private server: any;
-  //private io: SocketIOServer;
 
   constructor() {
     this.app = express();
     this.server = createServer(this.app);
-    /*this.io = new SocketIOServer(this.server, {
-      cors: {
-        origin: "http://192.168.1.74:4200",
-        methods: ["GET", "POST"]
-      }
-    });*/
     this.config();
     this.routes();
-    //this.sockets();
   }
 
   private config(): void {
     this.app.set("port", process.env.PORT || 3000);
     this.app.use(morgan("dev"));
     this.app.use(cors({
-      origin: "http://192.168.1.74:4200",
+      origin: "http://localhost:4200",
       methods: ["GET", "POST"],
       credentials: true,
   }));
@@ -54,23 +45,6 @@ class Server {
     this.app.use("/api/expediente", expedienteRoutes);
     this.app.use("/api/login", loginRoutes);
   }
-
-  /*private sockets(): void {
-    this.io.on("connection", (socket: Socket) => {
-      console.log("Un usuario se ha conectado");
-
-      socket.on("join", (data: UserData) => {
-        const roomName = data.roomName;
-        socket.join(roomName);
-        socket.to(roomName).broadcast.emit("new-user", data);
-        console.log("Usuario conectado", data);
-
-        socket.on("disconnect", () => {
-          socket.to(roomName).broadcast.emit("bye-user", data);
-        });
-      });
-    });
-  }*/
 
   public start(): void {
     this.server.listen(this.app.get("port"), () => {
