@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center mb-4">Información sobre el clima</h1>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card weather-card">
+        <img width="180" alt="Imagen del clima" src="../../../assets/weather.png" class="mx-auto img-fluid">
+        <form (submit)="submitLocation(cityName, cityCode)">
+          <div class="form-group">
+            <input type="text" placeholder="Nombre de la ciudad, estado o país" class="form-control" autofocus #cityName>
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Código del país" class="form-control" #cityCode>
+          </div>
+          <button class="btn btn-primary btn-block mt-2">
+            Obtener clima
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div *ngIf="clima" class="card weather-info">
+        <h1 class="h4">Clima actual</h1>
+        <p class="weather-info-item">Ciudad: {{clima.name}}</p>
+        <p class="weather-info-item">Temperatura: {{clima.main.temp}} °C</p>
+        <p class="weather-info-item">Humedad: {{clima.main.humidity}}</p>
+        <p class="weather-info-item">Presión: {{clima.main.pressure}}</p>
+        <p class="weather-info-item">Descripción: {{clima.weather[0].description}}</p>
+      </div>
+    </div>
+  </div>

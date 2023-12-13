@@ -51,6 +51,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { PayComponent } from './pay/pay.component';
 import { ZoomComponent } from './componentes/zoom/zoom.component';
+import { ClimaComponent } from './componentes/clima/clima.component';
 
 //SOCKET STREAMING 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCredentials: true} };
@@ -92,6 +93,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {withCre
     ModalComponent,
     PayComponent,
     ZoomComponent,
+    ClimaComponent,
     
 
 

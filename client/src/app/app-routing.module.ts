@@ -23,6 +23,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { RoomComponent } from './pages/room/room.component';
 import { FarmaciaComponent } from './componentes/farmacia/farmacia.component';
 import { ZoomComponent } from './componentes/zoom/zoom.component';
+import { ClimaComponent } from './componentes/clima/clima.component';
 
 const routes: Routes = [
 
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path: 'Medicos/:id', component: EditarMedicoComponent},
   {path: 'mapa', component: MapaComponent},
   {path: 'farmacia', component: FarmaciaComponent},
+  {path: 'clima', component: ClimaComponent},
   {path: 'youtube', component: YoutubeComponent},
   {path: 'zoom', component: ZoomComponent},
   {path: 'citazoom', component: HomeComponent},
